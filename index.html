@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bảng giá tainguyenmmo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg1: #87c7ff;
+      --bg2: #d8efff;
+      --card: rgba(255,255,255,.88);
+      --text: #20233a;
+      --muted: #5d6282;
+      --accent: #ff6b35;
+      --shadow: 0 18px 40px rgba(56, 72, 140, .18);
+      --radius: 26px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.8), transparent 20%),
+        radial-gradient(circle at 80% 10%, rgba(255,255,255,.7), transparent 18%),
+        radial-gradient(circle at 75% 40%, rgba(255,255,255,.55), transparent 16%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+      min-height: 100vh;
+    }
+
+    .clouds {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      opacity: .55;
+    }
+    .cloud {
+      position: absolute;
+      background: rgba(255,255,255,.78);
+      filter: blur(1px);
+      border-radius: 999px;
+      box-shadow: 40px 10px 0 10px rgba(255,255,255,.74), -35px 8px 0 8px rgba(255,255,255,.7), 5px -12px 0 12px rgba(255,255,255,.78);
+    }
+    .cloud.c1 { width: 120px; height: 42px; top: 90px; left: 6%; }
+    .cloud.c2 { width: 160px; height: 50px; top: 140px; right: 10%; }
+    .cloud.c3 { width: 140px; height: 44px; top: 360px; left: 68%; }
+    .cloud.c4 { width: 180px; height: 54px; top: 760px; left: 12%; }
+
+    .wrap {
+      width: min(1380px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 34px 0 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(42px, 7vw, 84px);
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #ffd978;
+      text-shadow:
+        0 3px 0 #8d2d11,
+        0 6px 0 #b73b15,
+        0 10px 28px rgba(120, 40, 10, .38);
+      -webkit-text-stroke: 2px #b03a16;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 14px;
+      padding: 14px 34px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #ff8b5f, #ef5b2a);
+      color: white;
+      font-size: clamp(24px, 3vw, 38px);
+      font-weight: 800;
+      box-shadow: var(--shadow);
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin: 28px 0 34px;
+    }
+    .chip {
+      border: 0;
+      border-radius: 16px;
+      padding: 14px 22px;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 10px 18px rgba(0,0,0,.1);
+      color: #fff;
+      transition: transform .18s ease, filter .18s ease;
+    }
+    .chip:hover, .chip.active { transform: translateY(-2px); filter: saturate(1.08); }
+    .all { background: linear-gradient(180deg, #ffe88f, #ffcd42); color: #513300; }
+    .chatgpt { background: linear-gradient(180deg, #f28a53, #c25c22); }
+    .gemini { background: linear-gradient(180deg, #56d0ea, #258fcb); }
+    .canva { background: linear-gradient(180deg, #39cde2, #0e99d7); }
+    .capcut { background: linear-gradient(180deg, #7ac65f, #4e9a38); }
+    .expressvpn { background: linear-gradient(180deg, #ff7b78, #de3b31); }
+    .hma { background: linear-gradient(180deg, #ffcc68, #d98c18); color: #4c2b00; }
+    .grok { background: linear-gradient(180deg, #7c7cff, #4f53db); }
+    .tool { background: linear-gradient(180deg, #c080ff, #8649db); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      align-items: start;
+    }
+
+    .section {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,.65);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 22px;
+      color: white;
+      font-weight: 800;
+      font-size: clamp(20px, 2vw, 30px);
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+    .section-header .icon {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: rgba(255,255,255,.22);
+      font-size: 22px;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.22);
+      flex: 0 0 auto;
+    }
+
+    .head-chatgpt { background: linear-gradient(90deg, #ef9058, #c75b1e); }
+    .head-gemini { background: linear-gradient(90deg, #4fd5e5, #2090cf); }
+    .head-canva { background: linear-gradient(90deg, #37cce4, #0795d8); }
+    .head-capcut { background: linear-gradient(90deg, #76c75c, #4d9d36); }
+    .head-expressvpn { background: linear-gradient(90deg, #ff7e7c, #dd3f33); }
+    .head-hma { background: linear-gradient(90deg, #ffc95d, #da8c1a); color: #4c2b00; }
+    .head-grok { background: linear-gradient(90deg, #7e7bff, #4f56df); }
+    .head-tool { background: linear-gradient(90deg, #b883ff, #854dd8); }
+
+    .content {
+      padding: 18px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .item {
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(216, 222, 255, .8);
+      border-radius: 22px;
+      padding: 18px 20px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.8);
+    }
+
+    .topline {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 10px;
+    }
+    .name {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: clamp(18px, 1.35vw, 23px);
+      line-height: 1.45;
+      font-weight: 700;
+      flex: 1;
+    }
+    .bullet { font-size: 18px; margin-top: 5px; }
+    .price {
+      flex: 0 0 auto;
+      color: var(--accent);
+      font-size: clamp(22px, 1.7vw, 34px);
+      line-height: 1.1;
+      font-weight: 800;
+      white-space: nowrap;
+      text-align: right;
+    }
+    .desc {
+      margin: 0;
+      padding-left: 31px;
+      color: var(--muted);
+      font-size: clamp(15px, 1.05vw, 19px);
+      line-height: 1.7;
+    }
+
+    .footer {
+      margin-top: 30px;
+      text-align: center;
+      color: #415178;
+      font-size: 15px;
+      font-weight: 600;
+      opacity: .9;
+    }
+
+    @media (max-width: 1100px) {
+      .grid { grid-template-columns: 1fr; }
+      .price { white-space: normal; }
+    }
+
+    @media (max-width: 720px) {
+      .wrap { width: min(100% - 16px, 100%); padding-top: 20px; }
+      .toolbar { justify-content: flex-start; }
+      .chip { padding: 12px 16px; border-radius: 14px; }
+      .section-header { padding: 16px 18px; }
+      .content { padding: 14px; }
+      .item { padding: 16px; border-radius: 18px; }
+      .topline { flex-direction: column; }
+      .price { text-align: left; }
+      .name { font-size: 17px; }
+      .desc { padding-left: 28px; font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="clouds">
+    <div class="cloud c1"></div>
+    <div class="cloud c2"></div>
+    <div class="cloud c3"></div>
+    <div class="cloud c4"></div>
+  </div>
+
+  <main class="wrap">
+    <header class="hero">
+      <h1>BẢNG GIÁ</h1>
+      <div class="brand">tainguyenmmo</div>
+    </header>
+
+    <nav class="toolbar" aria-label="Danh mục nhanh">
+      <button class="chip all active" data-filter="all">Tất cả</button>
+      <button class="chip chatgpt" data-filter="chatgpt">ChatGPT</button>
+      <button class="chip gemini" data-filter="gemini">Gemini</button>
+      <button class="chip canva" data-filter="canva">Canva</button>
+      <button class="chip capcut" data-filter="capcut">CapCut</button>
+      <button class="chip expressvpn" data-filter="expressvpn">ExpressVPN</button>
+      <button class="chip hma" data-filter="hma">HMA VPN</button>
+      <button class="chip grok" data-filter="grok">Super Grok</button>
+      <button class="chip tool" data-filter="tool">Tool</button>
+    </nav>
+
+    <section class="grid" id="sections">
+      <article class="section" data-group="chatgpt">
+        <div class="section-header head-chatgpt"><span class="icon">🤖</span>THƯ MỤC CHAT GPT</div>
+        <div class="content">
+          <div class="item">
+            <div class="topline">
+              <div class="name"><span class="bullet">🔥</span><span>Team ChatGPT Bussiness <small>( Tut mới, Team trust )</small></span></div>
+              <div class="price">80.000đ</div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="topline">
+              <div class="name"><span class="bullet">✨</span><span>ChatGPT Plus 1 Tháng <small>( Chính chủ, Team siêu trâu )</small></span></div>
+              <div class="price">110.000đ</div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="topline">
+              <div class="name"><span class="bullet">📩</span><span>ChatGPT Plus 1 Tháng <small>[ Acc cấp, Hàng hotmail trust ]</small></span></div>
+              <div class="price">50.000đ</div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="section" data-group="gemini">
+        <div class="section-header head-gemini"><span class="icon">💎</span>THƯ MỤC GEMINI</div>
+        <div class="content">
+          <div class="item">
+            <div class="topline">
+              <div class="name"><span class="bullet">1️⃣</span><span>Gemini Pro 1 Năm <small>[ Tặng kèm GG 2TB 1 năm, HOT ]</small></span></div>
+              <div class="price">99.000đ</div>
+            </div>
+            <p class="desc">+Full ưu đãi GG: Veo3 1K, NotebookLM, Gemini Pro, tặng kèm GG Drive 2TB 1 năm. Add family, hỗ trợ fix lỗi 12 tháng, bảo hành gói 3 tháng, nâng chính chủ, …</p>
+          </div>
+          <div class="item">
+            <div class="topline">
+              <div class="name"><span class="bullet">2️⃣</span><span>Family Gemini Pro + GG 2TB Hạn 1 năm <small>[ Add được 5 người ]</small></span></div>
+              <div class="price">249.000đ</div>
+            </div>
+            <p class="desc">+Bảo hành 3 tháng mất gói, giao full thông tin mail, trọn ưu đãi 1 năm của Google, mail khách tự bảo quản ạ.</p>
+          </div>
+          <div class="item">
+            <div class="topline">
+              <div class="name"><span class="bullet">3️⃣</span><span>Gemini Pro + GG 2TB hạn 4 tháng <small>[ Không add family, Chính chủ ]</small></span></div>
+              <div class="price">35.000đ</div>
+            </div>
+            <p class="desc">+Full ưu đãi GG: Veo3 1K, NotebookLM, Gemini Pro, tặng kèm GG Drive 2TB 4 tháng. Cá nhân, không add family, bảo hành gói 1 tháng, nâng chính chủ, …</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="section" data-group="canva">
+        <div class="section-header head-canva"><span class="icon">🎨</span>THƯ MỤC CANVA PRO/EDU</div>
+        <div class="content">
+          <div class="item">
+            <div class="topline">
+              <div class="name"><span class="bullet">1️⃣</span><span>Đội Canva Edu 500 Slot Hạn 3 Năm <small>[ SIÊU HOT ]</small></span></div>
+              <div class="price">134.000đ</div>
+            </div>
+            <p class="desc">+Mời được 500 người vào đội sử dụng Edu. Full mọi chức năng như Pro ( có AI ). Hàng ngon để kinh doanh.</p>
+          </div>
+          <div class="item">
+            <div class="topline">
+              <div class="name"><span class="bullet">2️⃣</span><span>Canva Edu 1 Năm <small>( Mail chính chủ )</small></span></div>
+              <div class="price">49.000đ</div>
+            </div>
+            <p class="desc">+Bảo hành full 1 năm, mở khóa các mẫu, elements mất phí, sử dụng gần như bản Pro, …</p>
+          </div>
+          <div class="item">
+            <div class="topline">
+              <div class="name"><span class="bullet">3️⃣</span><span>Canva Edu 6 tháng</span></div>
+              <div class="price">30.000đ</div>
+            </div>
+            <p class="desc">+Bảo hành full 6 tháng, mở khóa các mẫu, elements mất phí, sử dụng gần như bản Pro.</p>
+          </div>
+          <div class="item">
+            <div class="topline">
+              <div class="name"><span class="bullet">4️⃣</span><span>Canva edu 1 tháng</span></div>
+              <div class="price">20.000đ</div>
+            </div>
+            <p class="desc">+Bảo hành full 1 tháng, mở khóa các mẫu, elements mất phí, sử dụng gần như bản Pro, …</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="section" data-group="capcut">
+        <div class="section-header head-capcut"><span class="icon">🎬</span>THƯ MỤC CAPCUT</div>
+        <div class="content">
+          <div class="item">
+            <div class="topline">
+              <div class="name"><span class="bullet">1️⃣</span><span>Capcut Pro 35 ngày</span></div>
+              <div class="price">80.000đ</div>
+            </div>
+            <p class="desc">+Gói ổn định, bảo hành full. Hỗ trợ PC, iOS, Android, …</p>
+          </div>
+          <div class="item">
+            <div class="topline">
+              <div class="name"><span class="bullet">2️⃣</span><span>Capcut Pro 6 tháng cá nhân</span></div>
+              <div class="price">220.000đ</div>
+            </div>
+            <p class="desc">+Hàng cá nhân, ổn định, riêng tư, bảo hành full.</p>
+          </div>
+          <div class="item">
+            <div class="topline">
+              <div class="name"><span class="bullet">3️⃣</span><span>Capcut Pro Hơn 12 Tháng</span></div>
+              <div class="price">449.000đ</div>
+            </div>
+            <p class="desc">+Acc cấp, bảo hành full, hàng hot, ít hàng.</p>
+          </div>
+          <div class="item">
+            <div class="topline">
+              <div class="name"><span class="bullet">5️⃣</span><span>Capcut Pro Cá Nhân tạo sẵn 4 Tháng</span></div>
+              <div class="price">150.000đ</div>
+            </div>
+            <p class="desc">+Acc cấp, bảo hành full, hàng hot, ít hàng.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="section" data-group="expressvpn">
+        <div class="section-header head-expressvpn"><span class="icon">🛡️</span>THƯ MỤC EXPRESSVPN</div>
+        <div class="content">
+          <div class="item">
+            <div class="topline">
+              <div class="name"><span class="bullet">1️⃣</span><span>ExpressVPN 1 tháng <small>[ Acc Cấp ]</small></span></div>
+              <div class="price">38.000đ</div>
+            </div>
+            <p class="desc">+Tối đa 8 thiết bị, acc cấp, hỗ trợ iOS, Android, PC.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="section" data-group="hma">
+        <div class="section-header head-hma"><span class="icon">🔐</span>THƯ MỤC HMA VPN</div>
+        <div class="content">
+          <div class="item">
+            <div class="topline">
+              <div class="name"><span class="bullet">1️⃣</span><span>HMA VPN 1 THÁNG <small>[ ADR - PC ]</small></span></div>
+              <div class="price">29.000đ</div>
+            </div>
+            <p class="desc">+3-5 thiết bị, bảo hành full, hàng ổn định, sale giá rẻ.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="section" data-group="grok">
+        <div class="section-header head-grok"><span class="icon">🚀</span>THƯ MỤC SUPER GROK</div>
+        <div class="content">
+          <div class="item">
+            <div class="topline">
+              <div class="name"><span class="bullet">1️⃣</span><span>Super Grok 1 Tháng <small>[ Bảo hành full ]</small></span></div>
+              <div class="price">250.000đ</div>
+            </div>
+            <p class="desc">+Model Super Grok, bảo hành full 1 tháng, riêng tư.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="section" data-group="tool">
+        <div class="section-header head-tool"><span class="icon">🧰</span>THƯ MỤC TOOL</div>
+        <div class="content">
+          <div class="item">
+            <div class="topline">
+              <div class="name"><span class="bullet">1️⃣</span><span>MaxCare - Nuôi Acc FB Chorme</span></div>
+              <div class="price">349.000đ</div>
+            </div>
+            <p class="desc">+Bản vĩnh viễn, chuyên nuôi acc FB số lượng lớn.</p>
+          </div>
+          <div class="item">
+            <div class="topline">
+              <div class="name"><span class="bullet">2️⃣</span><span>MaxTikTok Chorme</span></div>
+              <div class="price">349.000đ</div>
+            </div>
+            <p class="desc">+Nuôi TikTok số lượng lớn, vĩnh viễn, bao setup.</p>
+          </div>
+          <div class="item">
+            <div class="topline">
+              <div class="name"><span class="bullet">3️⃣</span><span>MaxZalo - Nuôi, Quản Lí Zalo</span></div>
+              <div class="price">349.000đ</div>
+            </div>
+            <p class="desc">+Nuôi Zalo số lượng lớn, vĩnh viễn, bao setup.</p>
+          </div>
+          <div class="item">
+            <div class="topline">
+              <div class="name"><span class="bullet">4️⃣</span><span>MaxHotmail - Nuôi, Quản Lí Hotmail</span></div>
+              <div class="price">349.000đ</div>
+            </div>
+            <p class="desc">+Nuôi, quản lí Hotmail số lượng lớn, vĩnh viễn.</p>
+          </div>
+          <div class="item">
+            <div class="topline">
+              <div class="name"><span class="bullet">5️⃣</span><span>HMC v3.0 - Hỗ Trợ Scan <small>[ Tặng kèo cày xu setup và Config check linked tiktok hotmail ]</small></span></div>
+              <div class="price">449.000đ</div>
+            </div>
+            <p class="desc">+Lọc mail, lọc keyword, hỗ trợ scan, tặng config linked, tặng kèo cày xu, tặng vài nguồn data free bên tây.</p>
+          </div>
+          <div class="item">
+            <div class="topline">
+              <div class="name"><span class="bullet">6️⃣</span><span>Tool Cài Win Dạo Hải Dớ</span></div>
+              <div class="price">99.000đ</div>
+            </div>
+            <p class="desc">+Hỗ trợ cài win dạo, cài phần mềm nhanh, chuyên setup win.</p>
+          </div>
+        </div>
+      </article>
+    </section>
+
+        <section class="section" data-group="purchase">
+      <div class="section-header head-tool"><span class="icon">🛒</span>MỤC MUA HÀNG</div>
+      <div class="content">
+        <div class="item">
+          <div class="topline">
+            <div class="name"><span class="bullet">🛍️</span><span>Chọn sản phẩm cần mua</span></div>
+          </div>
+          <p class="desc">Liên hệ admin để mua sản phẩm trong bảng giá. Sau khi chọn sản phẩm hãy chuyển sang mục nạp tiền bên dưới.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" data-group="topup">
+      <div class="section-header head-expressvpn"><span class="icon">💰</span>MỤC NẠP TIỀN</div>
+      <div class="content">
+        <div class="item" style="background: linear-gradient(180deg, #c92c2c, #8f1d1d); color: white; border: 0;">
+          <div style="background: rgba(255,255,255,.96); color:#20233a; border-radius: 22px; padding: 18px;">
+            <div style="font-size:14px; font-weight:700; color:#b42828; letter-spacing:.4px;">MB BANK</div>
+            <div style="font-size:18px; font-weight:700; margin-top:6px; color:#5b6282;">CHỦ TÀI KHOẢN</div>
+            <div style="font-size:34px; font-weight:800; line-height:1.2; margin-top:4px;">NGUYEN VAN HOA</div>
+            <div style="font-size:18px; font-weight:700; margin-top:14px; color:#5b6282;">SỐ TÀI KHOẢN</div>
+            <div style="font-size:40px; font-weight:800; line-height:1.15; margin-top:4px; word-break:break-word;">9125112008</div>
+            <div style="margin-top:16px; padding:14px 16px; border-radius:18px; background:#fff4f4; border:1px dashed #efb2b2; color:#7b2d2d; font-weight:700;">
+              Nội dung chuyển khoản: <b>Tên + SĐT</b>
+            </div>
+            <p class="desc" style="padding-left:0; margin-top:16px; color:#5d6282;">
+              Khách chỉ cần chuyển khoản đúng số tài khoản phía trên, sau đó gửi ảnh bill để admin xác nhận nhanh.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" data-group="confirm">
+      <div class="section-header head-grok"><span class="icon">✅</span>XÁC NHẬN ĐÃ NẠP</div>
+      <div class="content">
+        <div class="item">
+          <div class="topline">
+            <div class="name"><span class="bullet">📨</span><span>Gửi xác nhận thanh toán</span></div>
+          </div>
+          <p class="desc">Sau khi chuyển khoản hãy gửi ảnh bill + nội dung chuyển khoản cho admin để được kích hoạt dịch vụ nhanh nhất.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">Website bảng giá + mua hàng + nạp tiền hoàn chỉnh.</div>
+  </main>
+
+  <script>
+    const buttons = document.querySelectorAll('.chip');
+    const sections = document.querySelectorAll('.section');
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        buttons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        const filter = button.dataset.filter;
+        sections.forEach(section => {
+          section.style.display = filter === 'all' || section.dataset.group === filter ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>
