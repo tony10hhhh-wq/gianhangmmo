@@ -297,306 +297,306 @@
   </main>
 
   <script>
-    const sectionMeta = {
-      all: { label: "Tất cả", chipClass: "all" },
-      chatgpt: { title: "THƯ MỤC CHAT GPT", icon: "🤖", headClass: "head-chatgpt", chipClass: "chatgpt", chipLabel: "ChatGPT" },
-      gemini: { title: "THƯ MỤC GEMINI", icon: "💎", headClass: "head-gemini", chipClass: "gemini", chipLabel: "Gemini" },
-      canva: { title: "THƯ MỤC CANVA PRO/EDU", icon: "🎨", headClass: "head-canva", chipClass: "canva", chipLabel: "Canva" },
-      capcut: { title: "THƯ MỤC CAPCUT", icon: "🎬", headClass: "head-capcut", chipClass: "capcut", chipLabel: "CapCut" },
-      expressvpn: { title: "THƯ MỤC EXPRESSVPN", icon: "🛡️", headClass: "head-expressvpn", chipClass: "expressvpn", chipLabel: "ExpressVPN" },
-      hma: { title: "THƯ MỤC HMA VPN", icon: "🔐", headClass: "head-hma", chipClass: "hma", chipLabel: "HMA VPN" },
-      grok: { title: "THƯ MỤC SUPER GROK", icon: "🚀", headClass: "head-grok", chipClass: "grok", chipLabel: "Super Grok" },
-      tool: { title: "THƯ MỤC TOOL", icon: "🧰", headClass: "head-tool", chipClass: "tool", chipLabel: "Tool" },
-      kling: { title: "THƯ MỤC KLING AI", icon: "🎞️", headClass: "head-kling", chipClass: "kling", chipLabel: "Kling AI" },
-      netflix: { title: "THƯ MỤC NETFLIX PREMIUM", icon: "📺", headClass: "head-netflix", chipClass: "netflix", chipLabel: "Netflix" },
-      antigravity: { title: "THƯ MỤC ANTIGRAVITY PRO", icon: "🪐", headClass: "head-antigravity", chipClass: "antigravity", chipLabel: "Antigravity" },
-      youtube: { title: "THƯ MỤC YOUTUBE PREMIUM", icon: "▶️", headClass: "head-youtube", chipClass: "youtube", chipLabel: "YouTube" },
-      gdrive: { title: "THƯ MỤC GOOGLE DRIVE", icon: "☁️", headClass: "head-gdrive", chipClass: "gdrive", chipLabel: "Google Drive" },
-      purchase: { title: "MỤC MUA HÀNG", icon: "🛒", headClass: "head-purchase", chipClass: "purchase", chipLabel: "Mua hàng" },
-      topup: { title: "MỤC NẠP TIỀN", icon: "💰", headClass: "head-topup", chipClass: "topup", chipLabel: "Nạp tiền" },
-      confirm: { title: "XÁC NHẬN ĐÃ NẠP", icon: "✅", headClass: "head-confirm", chipClass: "confirm", chipLabel: "Xác nhận" }
-    };
+  const sectionMeta = {
+    all: { label: "Tất cả", chipClass: "all" },
+    chatgpt: { title: "THƯ MỤC CHAT GPT", icon: "🤖", headClass: "head-chatgpt", chipClass: "chatgpt", chipLabel: "ChatGPT" },
+    gemini: { title: "THƯ MỤC GEMINI", icon: "💎", headClass: "head-gemini", chipClass: "gemini", chipLabel: "Gemini" },
+    canva: { title: "THƯ MỤC CANVA PRO/EDU", icon: "🎨", headClass: "head-canva", chipClass: "canva", chipLabel: "Canva" },
+    capcut: { title: "THƯ MỤC CAPCUT", icon: "🎬", headClass: "head-capcut", chipClass: "capcut", chipLabel: "CapCut" },
+    expressvpn: { title: "THƯ MỤC EXPRESSVPN", icon: "🛡️", headClass: "head-expressvpn", chipClass: "expressvpn", chipLabel: "ExpressVPN" },
+    hma: { title: "THƯ MỤC HMA VPN", icon: "🔐", headClass: "head-hma", chipClass: "hma", chipLabel: "HMA VPN" },
+    grok: { title: "THƯ MỤC SUPER GROK", icon: "🚀", headClass: "head-grok", chipClass: "grok", chipLabel: "Super Grok" },
+    tool: { title: "THƯ MỤC TOOL", icon: "🧰", headClass: "head-tool", chipClass: "tool", chipLabel: "Tool" },
+    kling: { title: "THƯ MỤC KLING AI", icon: "🎞️", headClass: "head-kling", chipClass: "kling", chipLabel: "Kling AI" },
+    netflix: { title: "THƯ MỤC NETFLIX PREMIUM", icon: "📺", headClass: "head-netflix", chipClass: "netflix", chipLabel: "Netflix" },
+    antigravity: { title: "THƯ MỤC ANTIGRAVITY PRO", icon: "🪐", headClass: "head-antigravity", chipClass: "antigravity", chipLabel: "Antigravity" },
+    youtube: { title: "THƯ MỤC YOUTUBE PREMIUM", icon: "▶️", headClass: "head-youtube", chipClass: "youtube", chipLabel: "YouTube" },
+    gdrive: { title: "THƯ MỤC GOOGLE DRIVE", icon: "☁️", headClass: "head-gdrive", chipClass: "gdrive", chipLabel: "Google Drive" },
+    purchase: { title: "MỤC MUA HÀNG", icon: "🛒", headClass: "head-purchase", chipClass: "purchase", chipLabel: "Mua hàng" },
+    topup: { title: "MỤC NẠP TIỀN", icon: "💰", headClass: "head-topup", chipClass: "topup", chipLabel: "Nạp tiền" },
+    confirm: { title: "XÁC NHẬN ĐÃ NẠP", icon: "✅", headClass: "head-confirm", chipClass: "confirm", chipLabel: "Xác nhận" }
+  };
 
-    const data = {
-      chatgpt: [
-        { bullet: "🔥", name: "Team ChatGPT Bussiness", note: "(Tut mới, Team trust)", price: "80.000đ" },
-        { bullet: "✨", name: "ChatGPT Plus 1 Tháng", note: "(Chính chủ, Team siêu trâu)", price: "110.000đ" },
-        { bullet: "📩", name: "ChatGPT Plus 1 Tháng", note: "[Acc cấp, Hàng hotmail trust]", price: "50.000đ" }
-      ],
+  const data = {
+    chatgpt: [
+      { bullet: "🔥", name: "Team ChatGPT Bussiness", note: "(Tut mới, Team trust)", price: "80.000đ" },
+      { bullet: "✨", name: "ChatGPT Plus 1 Tháng", note: "(Chính chủ, Team siêu trâu)", price: "110.000đ" },
+      { bullet: "📩", name: "ChatGPT Plus 1 Tháng", note: "[Acc cấp, Hàng hotmail trust]", price: "50.000đ" }
+    ],
 
-      gemini: [
-        { bullet: "💠", name: "LINK NHẬN GEMINI PRO, GG 2TB, NOTEBOOK LM PRO, VEO3 1K CREDIT HẠN 4 THÁNG - CHÍNH CHỦ [KHÔNG ADD FAMILY] - VER 1 - TUT MỚI SIÊU TRÂU", price: "25.500đ" },
-        { bullet: "💠", name: "LINK NHẬN GEMINI PRO, GG 2TB, NOTEBOOK LM PRO, VEO3 1K CREDIT HẠN 4 THÁNG - CHÍNH CHỦ [KHÔNG ADD FAMILY] - VER 38 - TUT MỚI SIÊU TRÂU", price: "25.500đ" },
-        { bullet: "💠", name: "VEO 3 ULTRA 25.000 CREDIT + GEMINI ULTRA - NGON - BẢO HÀNH 24H - TÀI KHOẢN SẴN TRONG ĐƠN GIAO NGAY - ƯU TIÊN MUA - VER 1 - VIP", price: "40.300đ" },
-        { bullet: "💠", name: "VEO3 PRO 25K CREDIT CHỈ BẢO HÀNH LOGIN KH BẢO HÀNH TỤT CREDIT - VER 27", price: "47.000đ" },
-        { bullet: "💠", name: "GEMINI PRO, GG 2TB, NOTEBOOK LM PRO, VEO3 1K CREDIT HẠN 1 NĂM - CHÍNH CHỦ - VER 1 VIP", price: "60.500đ" },
-        { bullet: "💠", name: "GEMINI PRO, GG 2TB, NOTEBOOK LM PRO, VEO3 1K CREDIT HẠN 1 NĂM - CHÍNH CHỦ - VER 38 - TUT MỚI SIÊU TRÂU", price: "60.500đ" },
-        { bullet: "💠", name: "VEO 3 ULTRA - BẢO HÀNH 24H - VER 30", price: "67.200đ" },
-        { bullet: "💠", name: "TÀI KHOẢN GG PIXEL 2TB GEMINI PRO 1 NĂM KHÔNG BẢO HÀNH BỊ QUÉT MẤT PRO VER V27", price: "80.600đ" },
-        { bullet: "💠", name: "GEMINI PRO, GG 2TB, NOTEBOOK LM PRO, VEO3 1K CREDIT HẠN 1 NĂM - CẤP MAIL - VER 38", price: "94.100đ" },
-        { bullet: "💠", name: "GEMINI PRO VÀ VEO 3 1 NĂM (KÈM GOOGLE DRIVE 2TB) ACC CẤP - MAIL CỔ - TRÂU - VER 1 - VIP", price: "94.100đ" },
-        { bullet: "💠", name: "VEO 3 ULTRA 25.000 CREDIT + GEMINI ULTRA - NGON - BẢO HÀNH 3 NGÀY - VER 1 - VIP", price: "107.500đ" },
-        { bullet: "💠", name: "GEMINI PRO - PIXEL 1 NĂM - KHÔNG BẢO HÀNH - VER 30", price: "114.200đ" },
-        { bullet: "💠", name: "VEO 3 VÀ GEMINI PRO 1 NĂM (KÈM GOOGLE DRIVE 2TB) NÂNG CHÍNH CHỦ - PIXEL - NGON - VER 1 - VIP", price: "121.000đ" },
-        { bullet: "💠", name: "GEMINI PRO VÀ VEO 3 1 NĂM (KÈM GOOGLE DRIVE 2TB) CHÍNH CHỦ - HÀNG PIXEL - NGON - VER 1 - VIP", price: "121.000đ" },
-        { bullet: "💠", name: "VEO 3 VÀ GEMINI PRO 1 NĂM (KÈM GOOGLE DRIVE 2TB) CẤP ACC - VER 1 - VIP", price: "121.000đ" },
-        { bullet: "💠", name: "TÀI KHOẢN CẤP GEMINI PRO + GG ONE 2TB CHỦ FAM (GIA ĐÌNH) CÓ THỂ THÊM 5 THÀNH VIÊN 1 NĂM BHF VER 27", price: "201.600đ" },
-        { bullet: "💠", name: "TÀI KHOẢN CẤP GEMINI PRO + GG ONE 2TB CHỦ FAM (GIA ĐÌNH) CÓ THỂ THÊM 5 THÀNH VIÊN 1 NĂM KBH VER 27", price: "201.600đ" },
-        { bullet: "💠", name: "VEO 3 ULTRA 25.000 CREDIT + GEMINI ULTRA - NGON - BẢO HÀNH 7 NGÀY - VER 1 - VIP", price: "201.600đ" },
-        { bullet: "💠", name: "ADMIN FAMILY GEMINI PRO, GG 2TB, NOTEBOOK LM, VEO3 1K HẠN 1 NĂM (ACC CẤP, KHÔNG ADD FAMILY, ADD ĐƯỢC 5 NGƯỜI) - VER 38", price: "267.500đ" },
-        { bullet: "💠", name: "VEO 3 ULTRA 25.000 CREDIT + GEMINI ULTRA - NGON - BẢO HÀNH 31/03/2026 - VER 1 - VIP", price: "268.800đ" },
-        { bullet: "💠", name: "GEMINI PRO VÀ VEO 3 1 NĂM (KÈM GOOGLE DRIVE 2TB) CẤP MAIL - BH 12TH - VER 1 - VIP", price: "470.400đ" },
-        { bullet: "💠", name: "VEO 3 VÀ GEMINI PRO 1 NĂM (KÈM GOOGLE DRIVE 2TB) CẤP MAIL - BH 12TH - VER 1 - VIP", price: "470.400đ" },
-        { bullet: "💠", name: "VEO 3 ULTRA 5K CREDIT + GEMINI ULTRA + 30TB DRIVER + ANTIGRAVITY ULTRA - 1 THÁNG - ADD TEAM - BẢO HÀNH FULL - VER 1 - VIP", price: "537.600đ" },
-        { bullet: "💠", name: "GEMINI ULTRA + VEO 3 ULTRA 5K CREDIT + 30TB DRIVER + ANTIGRAVITY ULTRA - 1 THÁNG - ADD TEAM - BẢO HÀNH FULL - VER 1 - VIP", price: "537.600đ" },
-        { bullet: "💠", name: "GEMINI ULTRA – ADD MAIL CHÍNH CHỦ 1 THÁNG VER 27", price: "537.600đ" },
-        { bullet: "💠", name: "VEO 3 ULTRA 12K CREDIT + GEMINI ULTRA + 30TB DRIVER + ANTIGRAVITY ULTRA - 1 THÁNG - ADD TEAM - BẢO HÀNH FULL - VER 1 - VIP", price: "698.900đ" },
-        { bullet: "💠", name: "VEO 3 ULTRA 25K CREDIT + GEMINI ULTRA + 30TB DRIVER + ANTIGRAVITY ULTRA - 1 THÁNG - ADD TEAM - BẢO HÀNH FULL - VER 1 - VIP", price: "1.075.200đ" }
-      ],
+    gemini: [
+      { bullet: "💠", name: "LINK NHẬN GEMINI PRO, GG 2TB, NOTEBOOK LM PRO, VEO3 1K CREDIT HẠN 4 THÁNG - CHÍNH CHỦ [KHÔNG ADD FAMILY] - VER 1 - TUT MỚI SIÊU TRÂU", price: "25.500đ" },
+      { bullet: "💠", name: "LINK NHẬN GEMINI PRO, GG 2TB, NOTEBOOK LM PRO, VEO3 1K CREDIT HẠN 4 THÁNG - CHÍNH CHỦ [KHÔNG ADD FAMILY] - VER 38 - TUT MỚI SIÊU TRÂU", price: "25.500đ" },
+      { bullet: "💠", name: "VEO 3 ULTRA 25.000 CREDIT + GEMINI ULTRA - NGON - BẢO HÀNH 24H - TÀI KHOẢN SẴN TRONG ĐƠN GIAO NGAY - ƯU TIÊN MUA - VER 1 - VIP", price: "40.300đ" },
+      { bullet: "💠", name: "VEO3 PRO 25K CREDIT CHỈ BẢO HÀNH LOGIN KH BẢO HÀNH TỤT CREDIT - VER 27", price: "47.000đ" },
+      { bullet: "💠", name: "GEMINI PRO, GG 2TB, NOTEBOOK LM PRO, VEO3 1K CREDIT HẠN 1 NĂM - CHÍNH CHỦ - VER 1 VIP", price: "60.500đ" },
+      { bullet: "💠", name: "GEMINI PRO, GG 2TB, NOTEBOOK LM PRO, VEO3 1K CREDIT HẠN 1 NĂM - CHÍNH CHỦ - VER 38 - TUT MỚI SIÊU TRÂU", price: "60.500đ" },
+      { bullet: "💠", name: "VEO 3 ULTRA - BẢO HÀNH 24H - VER 30", price: "67.200đ" },
+      { bullet: "💠", name: "TÀI KHOẢN GG PIXEL 2TB GEMINI PRO 1 NĂM KHÔNG BẢO HÀNH BỊ QUÉT MẤT PRO VER V27", price: "80.600đ" },
+      { bullet: "💠", name: "GEMINI PRO, GG 2TB, NOTEBOOK LM PRO, VEO3 1K CREDIT HẠN 1 NĂM - CẤP MAIL - VER 38", price: "94.100đ" },
+      { bullet: "💠", name: "GEMINI PRO VÀ VEO 3 1 NĂM (KÈM GOOGLE DRIVE 2TB) ACC CẤP - MAIL CỔ - TRÂU - VER 1 - VIP", price: "94.100đ" },
+      { bullet: "💠", name: "VEO 3 ULTRA 25.000 CREDIT + GEMINI ULTRA - NGON - BẢO HÀNH 3 NGÀY - VER 1 - VIP", price: "107.500đ" },
+      { bullet: "💠", name: "GEMINI PRO - PIXEL 1 NĂM - KHÔNG BẢO HÀNH - VER 30", price: "114.200đ" },
+      { bullet: "💠", name: "VEO 3 VÀ GEMINI PRO 1 NĂM (KÈM GOOGLE DRIVE 2TB) NÂNG CHÍNH CHỦ - PIXEL - NGON - VER 1 - VIP", price: "121.000đ" },
+      { bullet: "💠", name: "GEMINI PRO VÀ VEO 3 1 NĂM (KÈM GOOGLE DRIVE 2TB) CHÍNH CHỦ - HÀNG PIXEL - NGON - VER 1 - VIP", price: "121.000đ" },
+      { bullet: "💠", name: "VEO 3 VÀ GEMINI PRO 1 NĂM (KÈM GOOGLE DRIVE 2TB) CẤP ACC - VER 1 - VIP", price: "121.000đ" },
+      { bullet: "💠", name: "TÀI KHOẢN CẤP GEMINI PRO + GG ONE 2TB CHỦ FAM (GIA ĐÌNH) CÓ THỂ THÊM 5 THÀNH VIÊN 1 NĂM BHF VER 27", price: "201.600đ" },
+      { bullet: "💠", name: "TÀI KHOẢN CẤP GEMINI PRO + GG ONE 2TB CHỦ FAM (GIA ĐÌNH) CÓ THỂ THÊM 5 THÀNH VIÊN 1 NĂM KBH VER 27", price: "201.600đ" },
+      { bullet: "💠", name: "VEO 3 ULTRA 25.000 CREDIT + GEMINI ULTRA - NGON - BẢO HÀNH 7 NGÀY - VER 1 - VIP", price: "201.600đ" },
+      { bullet: "💠", name: "ADMIN FAMILY GEMINI PRO, GG 2TB, NOTEBOOK LM, VEO3 1K HẠN 1 NĂM (ACC CẤP, KHÔNG ADD FAMILY, ADD ĐƯỢC 5 NGƯỜI) - VER 38", price: "267.500đ" },
+      { bullet: "💠", name: "VEO 3 ULTRA 25.000 CREDIT + GEMINI ULTRA - NGON - BẢO HÀNH 31/03/2026 - VER 1 - VIP", price: "268.800đ" },
+      { bullet: "💠", name: "GEMINI PRO VÀ VEO 3 1 NĂM (KÈM GOOGLE DRIVE 2TB) CẤP MAIL - BH 12TH - VER 1 - VIP", price: "470.400đ" },
+      { bullet: "💠", name: "VEO 3 VÀ GEMINI PRO 1 NĂM (KÈM GOOGLE DRIVE 2TB) CẤP MAIL - BH 12TH - VER 1 - VIP", price: "470.400đ" },
+      { bullet: "💠", name: "VEO 3 ULTRA 5K CREDIT + GEMINI ULTRA + 30TB DRIVER + ANTIGRAVITY ULTRA - 1 THÁNG - ADD TEAM - BẢO HÀNH FULL - VER 1 - VIP", price: "537.600đ" },
+      { bullet: "💠", name: "GEMINI ULTRA + VEO 3 ULTRA 5K CREDIT + 30TB DRIVER + ANTIGRAVITY ULTRA - 1 THÁNG - ADD TEAM - BẢO HÀNH FULL - VER 1 - VIP", price: "537.600đ" },
+      { bullet: "💠", name: "GEMINI ULTRA – ADD MAIL CHÍNH CHỦ 1 THÁNG VER 27", price: "537.600đ" },
+      { bullet: "💠", name: "VEO 3 ULTRA 12K CREDIT + GEMINI ULTRA + 30TB DRIVER + ANTIGRAVITY ULTRA - 1 THÁNG - ADD TEAM - BẢO HÀNH FULL - VER 1 - VIP", price: "698.900đ" },
+      { bullet: "💠", name: "VEO 3 ULTRA 25K CREDIT + GEMINI ULTRA + 30TB DRIVER + ANTIGRAVITY ULTRA - 1 THÁNG - ADD TEAM - BẢO HÀNH FULL - VER 1 - VIP", price: "1.075.200đ" }
+    ],
 
-      canva: [
-        { bullet: "🎨", name: "CANVA EDU 1 THÁNG NÂNG CHÍNH CHỦ - VER 20", price: "6.700đ" },
-        { bullet: "🎨", name: "CANVA PRO NÂNG CHÍNH CHỦ 1 THÁNG FULL TÍNH NĂNG AI - VER 1 - VIP", price: "6.700đ" },
-        { bullet: "🎨", name: "CANVA EDU - 1 THÁNG - NÂNG MAIL CHÍNH CHỦ - VER 30", price: "9.700đ" },
-        { bullet: "🎨", name: "CANVA PRO NÂNG CHÍNH CHỦ 3 THÁNG FULL TÍNH NĂNG AI - VER 1", price: "13.400đ" },
-        { bullet: "🎨", name: "CANVA PRO NON-PROFITS GÓI CAO CẤP NHẤT CỦA CANVA 1 THÁNG FULL TÍNH NĂNG AI - VER 1", price: "16.100đ" },
-        { bullet: "🎨", name: "CANVA EDU 3 THÁNG NÂNG CHÍNH CHỦ - VER 20", price: "20.200đ" },
-        { bullet: "🎨", name: "CANVA EDU 3 THÁNG - NÂNG MAIL CHÍNH CHỦ - VER 30", price: "24.200đ" },
-        { bullet: "🎨", name: "CANVA PRO NÂNG CHÍNH CHỦ 6 THÁNG FULL TÍNH NĂNG AI - VER 1", price: "26.900đ" },
-        { bullet: "🎨", name: "CANVA PRO NON-PROFITS GÓI CAO CẤP NHẤT CỦA CANVA 3 THÁNG FULL TÍNH NĂNG AI - VER 1", price: "33.600đ" },
-        { bullet: "🎨", name: "CANVA EDU 6 THÁNG NÂNG CHÍNH CHỦ - VER 20", price: "33.600đ" },
-        { bullet: "🎨", name: "CANVA PRO NÂNG CHÍNH CHỦ 2 THÁNG FULL TÍNH NĂNG AI - VER 1", price: "40.300đ" },
-        { bullet: "🎨", name: "CANVA PRO NON-PROFITS GÓI CAO CẤP NHẤT CỦA CANVA 6 THÁNG FULL TÍNH NĂNG AI - VER 1", price: "47.000đ" },
-        { bullet: "🎨", name: "CANVA EDU - 6 THÁNG - FULL TÍNH NĂNG - NÂNG MAIL CHÍNH CHỦ - VER 30", price: "48.400đ" },
-        { bullet: "🎨", name: "CANVA EDU 12 THÁNG NÂNG CHÍNH CHỦ - VER 20", price: "53.800đ" },
-        { bullet: "🎨", name: "CANVA EDU - 12 THÁNG - NÂNG MAIL CHÍNH CHỦ - FULL TÍNH NĂNG - VER 30", price: "64.500đ" },
-        { bullet: "🎨", name: "CANVA PRO NON-PROFITS GÓI CAO CẤP NHẤT CỦA CANVA 12 THÁNG FULL TÍNH NĂNG AI - VER 1", price: "67.200đ" },
-        { bullet: "🎨", name: "CANVA EDUCATION - GÓI ALL PRO TRỌN ĐỜI - 3 NĂM BẢO HÀNH NÂNG VER 27", price: "106.200đ" },
-        { bullet: "🎨", name: "ADMIN CANVA PRO 500 SLOT USER FULL TÍNH NĂNG AI 3 NĂM - DÙNG KINH DOANH - VER 1", price: "161.300đ" },
-        { bullet: "🎨", name: "ADMIN ĐỘI CANVA EDU 500 SLOT - ACC CẤP - VER 38", price: "200.300đ" },
-        { bullet: "🎨", name: "ADMIN ĐỘI CANVA EDU 500 SLOT - CHÍNH CHỦ - VER 38", price: "200.300đ" },
-        { bullet: "🎨", name: "CANVA PRO NÂNG CHÍNH CHỦ VĨNH VIỄN FULL TÍNH NĂNG AI - VER 1", price: "200.300đ" }
-      ],
+    canva: [
+      { bullet: "🎨", name: "CANVA EDU 1 THÁNG NÂNG CHÍNH CHỦ - VER 20", price: "6.700đ" },
+      { bullet: "🎨", name: "CANVA PRO NÂNG CHÍNH CHỦ 1 THÁNG FULL TÍNH NĂNG AI - VER 1 - VIP", price: "6.700đ" },
+      { bullet: "🎨", name: "CANVA EDU - 1 THÁNG - NÂNG MAIL CHÍNH CHỦ - VER 30", price: "9.700đ" },
+      { bullet: "🎨", name: "CANVA PRO NÂNG CHÍNH CHỦ 3 THÁNG FULL TÍNH NĂNG AI - VER 1", price: "13.400đ" },
+      { bullet: "🎨", name: "CANVA PRO NON-PROFITS GÓI CAO CẤP NHẤT CỦA CANVA 1 THÁNG FULL TÍNH NĂNG AI - VER 1", price: "16.100đ" },
+      { bullet: "🎨", name: "CANVA EDU 3 THÁNG NÂNG CHÍNH CHỦ - VER 20", price: "20.200đ" },
+      { bullet: "🎨", name: "CANVA EDU 3 THÁNG - NÂNG MAIL CHÍNH CHỦ - VER 30", price: "24.200đ" },
+      { bullet: "🎨", name: "CANVA PRO NÂNG CHÍNH CHỦ 6 THÁNG FULL TÍNH NĂNG AI - VER 1", price: "26.900đ" },
+      { bullet: "🎨", name: "CANVA PRO NON-PROFITS GÓI CAO CẤP NHẤT CỦA CANVA 3 THÁNG FULL TÍNH NĂNG AI - VER 1", price: "33.600đ" },
+      { bullet: "🎨", name: "CANVA EDU 6 THÁNG NÂNG CHÍNH CHỦ - VER 20", price: "33.600đ" },
+      { bullet: "🎨", name: "CANVA PRO NÂNG CHÍNH CHỦ 2 THÁNG FULL TÍNH NĂNG AI - VER 1", price: "40.300đ" },
+      { bullet: "🎨", name: "CANVA PRO NON-PROFITS GÓI CAO CẤP NHẤT CỦA CANVA 6 THÁNG FULL TÍNH NĂNG AI - VER 1", price: "47.000đ" },
+      { bullet: "🎨", name: "CANVA EDU - 6 THÁNG - FULL TÍNH NĂNG - NÂNG MAIL CHÍNH CHỦ - VER 30", price: "48.400đ" },
+      { bullet: "🎨", name: "CANVA EDU 12 THÁNG NÂNG CHÍNH CHỦ - VER 20", price: "53.800đ" },
+      { bullet: "🎨", name: "CANVA EDU - 12 THÁNG - NÂNG MAIL CHÍNH CHỦ - FULL TÍNH NĂNG - VER 30", price: "64.500đ" },
+      { bullet: "🎨", name: "CANVA PRO NON-PROFITS GÓI CAO CẤP NHẤT CỦA CANVA 12 THÁNG FULL TÍNH NĂNG AI - VER 1", price: "67.200đ" },
+      { bullet: "🎨", name: "CANVA EDUCATION - GÓI ALL PRO TRỌN ĐỜI - 3 NĂM BẢO HÀNH NÂNG VER 27", price: "106.200đ" },
+      { bullet: "🎨", name: "ADMIN CANVA PRO 500 SLOT USER FULL TÍNH NĂNG AI 3 NĂM - DÙNG KINH DOANH - VER 1", price: "161.300đ" },
+      { bullet: "🎨", name: "ADMIN ĐỘI CANVA EDU 500 SLOT - ACC CẤP - VER 38", price: "200.300đ" },
+      { bullet: "🎨", name: "ADMIN ĐỘI CANVA EDU 500 SLOT - CHÍNH CHỦ - VER 38", price: "200.300đ" },
+      { bullet: "🎨", name: "CANVA PRO NÂNG CHÍNH CHỦ VĨNH VIỄN FULL TÍNH NĂNG AI - VER 1", price: "200.300đ" }
+    ],
 
-      capcut: [
-        { bullet: "🎬", name: "Capcut Pro 35 ngày", price: "80.000đ", desc: "Gói ổn định, bảo hành full. Hỗ trợ PC, iOS, Android." },
-        { bullet: "🎬", name: "Capcut Pro 6 tháng cá nhân", price: "220.000đ", desc: "Hàng cá nhân, ổn định, riêng tư, bảo hành full." },
-        { bullet: "🎬", name: "Capcut Pro Hơn 12 Tháng", price: "449.000đ", desc: "Acc cấp, bảo hành full, hàng hot, ít hàng." },
-        { bullet: "🎬", name: "Capcut Pro Cá Nhân tạo sẵn 4 Tháng", price: "150.000đ", desc: "Acc cấp, bảo hành full, hàng hot, ít hàng." }
-      ],
+    capcut: [
+      { bullet: "🎬", name: "Capcut Pro 35 ngày", price: "80.000đ", desc: "Gói ổn định, bảo hành full. Hỗ trợ PC, iOS, Android." },
+      { bullet: "🎬", name: "Capcut Pro 6 tháng cá nhân", price: "220.000đ", desc: "Hàng cá nhân, ổn định, riêng tư, bảo hành full." },
+      { bullet: "🎬", name: "Capcut Pro Hơn 12 Tháng", price: "449.000đ", desc: "Acc cấp, bảo hành full, hàng hot, ít hàng." },
+      { bullet: "🎬", name: "Capcut Pro Cá Nhân tạo sẵn 4 Tháng", price: "150.000đ", desc: "Acc cấp, bảo hành full, hàng hot, ít hàng." }
+    ],
 
-      expressvpn: [
-        { bullet: "🛡️", name: "ExpressVPN 1 tháng [Acc Cấp]", price: "38.000đ", desc: "Tối đa 8 thiết bị, acc cấp, hỗ trợ iOS, Android, PC." },
-        { bullet: "🛡️", name: "EXPRESS VPN - KEY LÀ MẬT KHẨU - DÙNG ANDRODI/ IOS/ PC - HẠN 27-32 NGÀY - DÙNG 8 THIẾT BỊ - GIAO SẴN TÀI KHOẢN - VER 29", price: "Liên hệ" }
-      ],
+    expressvpn: [
+      { bullet: "🛡️", name: "EXPRESS VPN - KEY LÀ MẬT KHẨU - DÙNG ANDROID/ IOS/ PC - HẠN 27-32 NGÀY - DÙNG 8 THIẾT BỊ - GIAO SẴN TÀI KHOẢN - VER 29", price: "8.700đ" },
+      { bullet: "🛡️", name: "EXPRESS VPN FULL 8 THIẾT BỊ PC - ANDROID - IOSS 27 - 32 NGÀY - NGON - DATE MỚI - ƯU TIÊN MUA - VER 93", price: "10.800đ" },
+      { bullet: "🛡️", name: "EXPRESS VPN - KEY LÀ MẬT KHẨU - HẠN 27-32 NGÀY - DÙNG 8 THIẾT BỊ - ANDROID/ IOS/ PC - GIAO SẴN TÀI KHOẢN - VER 29", price: "17.500đ" },
+      { bullet: "🛡️", name: "EXPRESS VPN FULL 8 THIẾT BỊ PC - ANDOID - IOSS 27 - 32 NGÀY - ĐĂNG NHẬP WEB CHÍNH ĐƯỢC MODEM WIFI - ƯU TIÊN MUA - VER 93", price: "26.900đ" },
+      { bullet: "🛡️", name: "EXPRESS VPN 3 THÁNG - VER 93", price: "60.500đ" },
+      { bullet: "🛡️", name: "EXPRESS VPN 6 THÁNG - VER 93", price: "107.500đ" }
+    ],
 
-      hma: [
-        { bullet: "🔐", name: "KEY HMA - RANDOM 15-27 NGÀY - DÙNG 5 THIẾT BỊ - GIAO SẴN KEY", price: "6.100đ" },
-        { bullet: "🔐", name: "HMA 5 THIẾT BỊ MÁY TÍNH - ĐIỆN THOẠI ADROID 28-30 NGÀY - NGON - ƯU TIÊN MUA - VER 93", price: "9.400đ" },
-        { bullet: "🔐", name: "KEY HMAVPN 28-32 NGÀY VER 27", price: "13.400đ" },
-        { bullet: "🔐", name: "KEY HMA - DÙNG ANDROID/PC - HẠN 27-32 NGÀY - GIAO SẴN KEY", price: "17.500đ" },
-        { bullet: "🔐", name: "HMA 5 THIẾT BỊ MÁY TÍNH - ĐIỆN THOẠI ADROID - ĐIỆN THOẠI IPHONE IOS 28-30 NGÀY - NGON - ƯU TIÊN MUA - VER 93", price: "20.200đ" },
-        { bullet: "🔐", name: "HMA - DÙNG CHO IOS/ANDROID/PC - HẠN 27-32 NGÀY", price: "34.900đ" },
-        { bullet: "🔐", name: "HMA 5 THIẾT BỊ MÁY TÍNH - ĐIỆN THOẠI ADROID - ĐIỆN THOẠI IPHONE IOS 12 THÁNG - VER 93", price: "504.000đ" },
-        { bullet: "🔐", name: "HMA 20 THIẾT BỊ MÁY TÍNH - ĐIỆN THOẠI ADROID - ĐIỆN THOẠI IPHONE IOS 12 THÁNG - VER 93", price: "806.400đ" }
-      ],
+    hma: [
+      { bullet: "🔐", name: "KEY HMA - RANDOM 15-27 NGÀY - DÙNG 5 THIẾT BỊ - GIAO SẴN KEY", price: "6.100đ" },
+      { bullet: "🔐", name: "HMA 5 THIẾT BỊ MÁY TÍNH - ĐIỆN THOẠI ADROID 28-30 NGÀY - NGON - ƯU TIÊN MUA - VER 93", price: "9.400đ" },
+      { bullet: "🔐", name: "KEY HMAVPN 28-32 NGÀY VER 27", price: "13.400đ" },
+      { bullet: "🔐", name: "KEY HMA - DÙNG ANDROID/PC - HẠN 27-32 NGÀY - GIAO SẴN KEY", price: "17.500đ" },
+      { bullet: "🔐", name: "HMA 5 THIẾT BỊ MÁY TÍNH - ĐIỆN THOẠI ADROID - ĐIỆN THOẠI IPHONE IOS 28-30 NGÀY - NGON - ƯU TIÊN MUA - VER 93", price: "20.200đ" },
+      { bullet: "🔐", name: "HMA - DÙNG CHO IOS/ANDROID/PC - HẠN 27-32 NGÀY", price: "34.900đ" },
+      { bullet: "🔐", name: "HMA 5 THIẾT BỊ MÁY TÍNH - ĐIỆN THOẠI ADROID - ĐIỆN THOẠI IPHONE IOS 12 THÁNG - VER 93", price: "504.000đ" },
+      { bullet: "🔐", name: "HMA 20 THIẾT BỊ MÁY TÍNH - ĐIỆN THOẠI ADROID - ĐIỆN THOẠI IPHONE IOS 12 THÁNG - VER 93", price: "806.400đ" }
+    ],
 
-      grok: [
-        { bullet: "🚀", name: "SUPER GROK 1 THÁNG - BH FULL - VER 1 - VIP", price: "121.000đ" },
-        { bullet: "🚀", name: "SUPER GROK 1 THÁNG (BẢO HÀNH FULL) - VER 27", price: "228.500đ" }
-      ],
+    grok: [
+      { bullet: "🚀", name: "SUPER GROK 1 THÁNG - BH FULL - VER 1 - VIP", price: "121.000đ" },
+      { bullet: "🚀", name: "SUPER GROK 1 THÁNG (BẢO HÀNH FULL) - VER 27", price: "228.500đ" }
+    ],
 
-      tool: [
-        { bullet: "🧰", name: "MaxCare - Nuôi Acc FB Chorme", price: "349.000đ", desc: "Bản vĩnh viễn, chuyên nuôi acc FB SLL." },
-        { bullet: "🧰", name: "MaxTikTok Chorme", price: "349.000đ", desc: "Nuôi TikTok SLL, vĩnh viễn, bao setup." },
-        { bullet: "🧰", name: "MaxZalo - Nuôi, Quản Lí Zalo", price: "349.000đ", desc: "Nuôi Zalo SLL, vĩnh viễn, bao setup." },
-        { bullet: "🧰", name: "MaxHotmail - Nuôi, Quản Lí Hotmail", price: "349.000đ", desc: "Nuôi, quản lí Hotmail SLL, vĩnh viễn." },
-        { bullet: "🧰", name: "HMC v3.0 - Hỗ Trợ Scan [Tặng kèo cày xu setup và Config check linked tiktok hotmail]", price: "449.000đ", desc: "Lọc mail, lọc keyword, hỗ trợ scan, tặng config linked, tặng kèo cày xu, tặng vài nguồn data free bên tây." },
-        { bullet: "🧰", name: "Tool Cài Win Dạo Hải Dớ", price: "99.000đ", desc: "Hỗ trợ cài win dạo, cài phần mềm nhanh, chuyên setup win." }
-      ],
+    tool: [
+      { bullet: "🧰", name: "MaxCare - Nuôi Acc FB Chorme", price: "349.000đ", desc: "Bản vĩnh viễn, chuyên nuôi acc FB SLL." },
+      { bullet: "🧰", name: "MaxTikTok Chorme", price: "349.000đ", desc: "Nuôi Tiktok SLL, vĩnh viễn, bao setup." },
+      { bullet: "🧰", name: "MaxZalo - Nuôi, Quản Lí Zalo", price: "349.000đ", desc: "Nuôi Zalo SLL, vĩnh viễn, bao setup." },
+      { bullet: "🧰", name: "MaxHotmail - Nuôi, Quản Lí Hotmail", price: "349.000đ", desc: "Nuôi, quản lí Hotmail SLL, vĩnh viễn." },
+      { bullet: "🧰", name: "HMC v3.0 - Hỗ Trợ Scan [Tặng kèo cày xu setup và Config check linked tiktok hotmail]", price: "449.000đ", desc: "Lọc Mail, lọc Keyword, hỗ trợ scan, tặng config linked, tặng kèo cày xu, tặng vài nguồn data free bên tây." },
+      { bullet: "🧰", name: "Tool Cài Win Dạo Hải Dớ", price: "99.000đ", desc: "Hỗ trợ cài win dạo, cài phần mềm nhanh, chuyên setup win." }
+    ],
 
-      kling: [
-        { bullet: "🎞️", name: "KLING STANDARD 1k CREDIT - VER 1", price: "147.800đ" },
-        { bullet: "🎞️", name: "KLING STANDARD 3000 CREDIT - VER 1", price: "295.700đ" },
-        { bullet: "🎞️", name: "KLING STANDARD 4500 CREDIT - VER 1", price: "430.100đ" }
-      ],
+    kling: [
+      { bullet: "🎞️", name: "KLING STANDARD 1k CREDIT - VER 1", price: "147.800đ" },
+      { bullet: "🎞️", name: "KLING STANDARD 3000 CREDIT - VER 1", price: "295.700đ" },
+      { bullet: "🎞️", name: "KLING STANDARD 4500 CREDIT - VER 1", price: "430.100đ" }
+    ],
 
-      netflix: [
-        { bullet: "📺", name: "NETFLIX DÙNG CHUNG CAO CẤP ACC 1 THÁNG VER 27", price: "39.000đ" },
-        { bullet: "📺", name: "TÀI KHOẢN NETFLIX PREMIUM/CAO CẤP – CHẤT LƯỢNG 4K SẮC NÉT – DÙNG CHUNG 2NG/1 USER - 1 THÁNG - VER 94", price: "53.800đ" },
-        { bullet: "📺", name: "NETFLIX SLOT RIÊNG CẤP ACC 1 THÁNG - VER 27", price: "67.200đ" },
-        { bullet: "📺", name: "TÀI KHOẢN NETFLIX PREMIUM/CAO CẤP – CHẤT LƯỢNG 4K SẮC NÉT - SLOT RIÊNG CÓ THỂ ĐỔI TÊN VÀ PIN - 1 THÁNG - VER 94", price: "100.800đ" },
-        { bullet: "📺", name: "TÀI KHOẢN NETFLIX EXTRA - 1 THÁNG TK RIÊNG TỪ 1 NGƯỜI DÙNG - NGON - VER 94", price: "114.200đ" },
-        { bullet: "📺", name: "TÀI KHOẢN NETFLIX PREMIUM/CAO CẤP – CHẤT LƯỢNG 4K SẮC NÉT - DÙNG CHUNG 2NG/1 USER - 3 THÁNG - VER 94", price: "161.300đ" },
-        { bullet: "📺", name: "TÀI KHOẢN NETFLIX PREMIUM/CAO CẤP – CHẤT LƯỢNG 4K SẮC NÉT - SLOT RIÊNG CÓ THỂ ĐỔI TÊN VÀ PIN - 3 THÁNG - VER 94", price: "295.700đ" },
-        { bullet: "📺", name: "NETFLIX PREMIUM/CAO CẤP – CHẤT LƯỢNG 4K SẮC NÉT - DÙNG CHUNG 2NG/1 USER - 6 THÁNG - VER 94", price: "322.600đ" },
-        { bullet: "📺", name: "TÀI KHOẢN NETFLIX PREMIUM/CAO CẤP – CHẤT LƯỢNG 4K SẮC NÉT - SLOT RIÊNG CÓ THỂ ĐỔI TÊN VÀ PIN - 6 THÁNG - VER 94", price: "584.600đ" },
-        { bullet: "📺", name: "NETFLIX PREMIUM/CAO CẤP – CHẤT LƯỢNG 4K SẮC NÉT - DÙNG CHUNG 2NG/1 USER - 12 THÁNG - VER 94", price: "645.100đ" },
-        { bullet: "📺", name: "TÀI KHOẢN NETFLIX PREMIUM/CAO CẤP – CHẤT LƯỢNG 4K SẮC NÉT - SLOT RIÊNG CÓ THỂ ĐỔI TÊN VÀ PIN - 12 THÁNG - VER 94", price: "1.155.800đ" }
-      ],
+    netflix: [
+      { bullet: "📺", name: "NETFLIX DÙNG CHUNG CAO CẤP ACC 1 THÁNG VER 27", price: "39.000đ" },
+      { bullet: "📺", name: "TÀI KHOẢN NETFLIX PREMIUM/CAO CẤP – CHẤT LƯỢNG 4K SẮC NÉT – DÙNG CHUNG 2NG/1 USER - 1 THÁNG - VER 94", price: "53.800đ" },
+      { bullet: "📺", name: "NETFLIX SLOT RIÊNG CẤP ACC 1 THÁNG - VER 27", price: "67.200đ" },
+      { bullet: "📺", name: "TÀI KHOẢN NETFLIX PREMIUM/CAO CẤP – CHẤT LƯỢNG 4K SẮC NÉT - SLOT RIÊNG CÓ THỂ ĐỔI TÊN VÀ PIN - 1 THÁNG - VER 94", price: "100.800đ" },
+      { bullet: "📺", name: "TÀI KHOẢN NETFLIX EXTRA - 1 THÁNG TK RIÊNG TỪ 1 NGƯỜI DÙNG - NGON - VER 94", price: "114.200đ" },
+      { bullet: "📺", name: "TÀI KHOẢN NETFLIX PREMIUM/CAO CẤP – CHẤT LƯỢNG 4K SẮC NÉT - DÙNG CHUNG 2NG/1 USER - 3 THÁNG - VER 94", price: "161.300đ" },
+      { bullet: "📺", name: "TÀI KHOẢN NETFLIX PREMIUM/CAO CẤP – CHẤT LƯỢNG 4K SẮC NÉT - SLOT RIÊNG CÓ THỂ ĐỔI TÊN VÀ PIN - 3 THÁNG - VER 94", price: "295.700đ" },
+      { bullet: "📺", name: "NETFLIX PREMIUM/CAO CẤP – CHẤT LƯỢNG 4K SẮC NÉT - DÙNG CHUNG 2NG/1 USER - 6 THÁNG - VER 94", price: "322.600đ" },
+      { bullet: "📺", name: "TÀI KHOẢN NETFLIX PREMIUM/CAO CẤP – CHẤT LƯỢNG 4K SẮC NÉT - SLOT RIÊNG CÓ THỂ ĐỔI TÊN VÀ PIN - 6 THÁNG - VER 94", price: "584.600đ" },
+      { bullet: "📺", name: "NETFLIX PREMIUM/CAO CẤP – CHẤT LƯỢNG 4K SẮC NÉT - DÙNG CHUNG 2NG/1 USER - 12 THÁNG - VER 94", price: "645.100đ" },
+      { bullet: "📺", name: "TÀI KHOẢN NETFLIX PREMIUM/CAO CẤP – CHẤT LƯỢNG 4K SẮC NÉT - SLOT RIÊNG CÓ THỂ ĐỔI TÊN VÀ PIN - 12 THÁNG - VER 94", price: "1.155.800đ" }
+    ],
 
-      antigravity: [
-        { bullet: "🪐", name: "TÀI KHOẢN ANTIGRAVITY ULTRA - VEO3 ULTRA TẶNG 25K CREDIT HẠN 1 THÁNG (ACC CẤP, BẢO HÀNH 24H) - VER 1 - VIP", price: "60.500đ" },
-        { bullet: "🪐", name: "TÀI KHOẢN ANTIGRAVITY PRO + GG ONE 2TB HẠN 1 NĂM (ACC CẤP, BẢO HÀNH 3 THÁNG) - VER 1 - VIP", price: "107.500đ" },
-        { bullet: "🪐", name: "TÀI KHOẢN ANTIGRAVITY PRO HẠN 1 NĂM (ACC CẤP, BẢO HÀNH 3 THÁNG) - VER 38", price: "134.400đ" }
-      ],
+    antigravity: [
+      { bullet: "🪐", name: "TÀI KHOẢN ANTIGRAVITY ULTRA - VEO3 ULTRA TẶNG 25K CREDIT HẠN 1 THÁNG (ACC CẤP, BẢO HÀNH 24H) - VER 1 - VIP", price: "60.500đ" },
+      { bullet: "🪐", name: "TÀI KHOẢN ANTIGRAVITY PRO + GG ONE 2TB HẠN 1 NĂM (ACC CẤP, BẢO HÀNH 3 THÁNG) - VER 1 - VIP", price: "107.500đ" },
+      { bullet: "🪐", name: "TÀI KHOẢN ANTIGRAVITY PRO HẠN 1 NĂM (ACC CẤP, BẢO HÀNH 3 THÁNG) - VER 38", price: "134.400đ" }
+    ],
 
-      youtube: [
-        { bullet: "▶️", name: "YOUTUBE PREMIUM 1 THÁNG - ƯU TIÊN MUA - VER 1 - VIP", price: "16.100đ" },
-        { bullet: "▶️", name: "YOUTUBE PREMIUM 1 THÁNG - ƯU TIÊN MUA - ĐÃ FIX SẴN ỔN ĐỊNH - CẦN SLL - VER 18 - VIP", price: "16.100đ" },
-        { bullet: "▶️", name: "YOUTUBE PREMIUM + GOOGLE ONE GEMINI 2TB - 1 THÁNG - GỬI MAIL ADD FAM - VER 18", price: "39.000đ" },
-        { bullet: "▶️", name: "YOUTUBE PREMIUM 3 THÁNG - NGON - ỔN ĐỊNH - ƯU TIÊN MUA - VER 1 - VIP", price: "51.100đ" },
-        { bullet: "▶️", name: "YOUTUBE PREMIUM 3 THÁNG (TẶNG GGONE 2TB - KBH) - ĐÃ FIX SẴN ỔN ĐỊNH - ƯU TIÊN MUA - CẦN SLL - VER 18 - VIP", price: "51.100đ" },
-        { bullet: "▶️", name: "YOUTUBE PREMIUM + 2TB GG DRIVER 1 THÁNG ADD ĐƯỢC 5 THÀNH VIÊN - VER 18 - EMAIL LÂU NĂM", price: "87.400đ" },
-        { bullet: "▶️", name: "YOUTUBE PREMIUM + 2TB GG DRIVER 1 THÁNG ADD ĐƯỢC 5 THÀNH VIÊN - MAIL CỔ - VER 1", price: "94.100đ" },
-        { bullet: "▶️", name: "YOUTUBE PREMIUM 6 THÁNG - NGON - ỔN ĐỊNH - ƯU TIÊN MUA - VER 1 - VIP", price: "94.100đ" },
-        { bullet: "▶️", name: "YOUTUBE PREMIUM 6 THÁNG (TẶNG GGONE 2TB - KBH) - ĐÃ FIX SẴN ỔN ĐỊNH - ƯU TIÊN MUA - CẦN SLL - VER 18 - VIP", price: "94.100đ" },
-        { bullet: "▶️", name: "YOUTUBE PREMIUM 12 THÁNG - NGON - ỔN ĐỊNH - ƯU TIÊN MUA - VER 1 - VIP", price: "168.000đ" },
-        { bullet: "▶️", name: "YOUTUBE PREMIUM 12 THÁNG (TẶNG GGONE 2TB - KBH) - ĐÃ FIX SẴN ỔN ĐỊNH - ƯU TIÊN MUA - CẦN SLL - VER 18 - VIP", price: "168.000đ" },
-        { bullet: "▶️", name: "YOUTUBE PREMIUM 3 THÁNG THÔNG - NGON - KHÔNG ĐỔI NHÓM - ƯU TIÊN MUA - VER 1 - VIP", price: "174.700đ" },
-        { bullet: "▶️", name: "YOUTUBE PREMIUM 3 THÁNG - ƯU TIÊN MUA - VER 18 - SIÊU ỔN ĐỊNH - KHÔ ĐỔI", price: "201.600đ" },
-        { bullet: "▶️", name: "YOUTUBE PREMIUM 6 THÁNG + GGONE 2TB - ƯU TIÊN MUA - VER 18 - SIÊU ỔN ĐỊNH - KHÔ ĐỔI", price: "336.000đ" },
-        { bullet: "▶️", name: "YOUTUBE PREMIUM 12 THÁNG + GGONE 2TB - ƯU TIÊN MUA - VER 18 - SIÊU ỔN ĐỊNH - KHÔ ĐỔI", price: "672.000đ" }
-      ],
+    youtube: [
+      { bullet: "▶️", name: "YOUTUBE PREMIUM 1 THÁNG - ƯU TIÊN MUA - VER 1 - VIP", price: "16.100đ" },
+      { bullet: "▶️", name: "YOUTUBE PREMIUM 1 THÁNG - ƯU TIÊN MUA - ĐÃ FIX SẴN ỔN ĐỊNH - CẦN SLL - VER 18 - VIP", price: "16.100đ" },
+      { bullet: "▶️", name: "YOUTUBE PREMIUM + GOOGLE ONE GEMINI 2TB - 1 THÁNG - GỬI MAIL ADD FAM - VER 18", price: "39.000đ" },
+      { bullet: "▶️", name: "YOUTUBE PREMIUM 3 THÁNG - NGON - ỔN ĐỊNH - ƯU TIÊN MUA - VER 1 - VIP", price: "51.100đ" },
+      { bullet: "▶️", name: "YOUTUBE PREMIUM 3 THÁNG (TẶNG GGONE 2TB - KBH) - ĐÃ FIX SẴN ỔN ĐỊNH - ƯU TIÊN MUA - CẦN SLL - VER 18 - VIP", price: "51.100đ" },
+      { bullet: "▶️", name: "YOUTUBE PREMIUM + 2TB GG DRIVER 1 THÁNG ADD ĐƯỢC 5 THÀNH VIÊN - VER 18 - EMAIL LÂU NĂM", price: "87.400đ" },
+      { bullet: "▶️", name: "YOUTUBE PREMIUM + 2TB GG DRIVER 1 THÁNG ADD ĐƯỢC 5 THÀNH VIÊN - MAIL CỔ - VER 1", price: "94.100đ" },
+      { bullet: "▶️", name: "YOUTUBE PREMIUM 6 THÁNG - NGON - ỔN ĐỊNH - ƯU TIÊN MUA - VER 1 - VIP", price: "94.100đ" },
+      { bullet: "▶️", name: "YOUTUBE PREMIUM 6 THÁNG (TẶNG GGONE 2TB - KBH) - ĐÃ FIX SẴN ỔN ĐỊNH - ƯU TIÊN MUA - CẦN SLL - VER 18 - VIP", price: "94.100đ" },
+      { bullet: "▶️", name: "YOUTUBE PREMIUM 12 THÁNG - NGON - ỔN ĐỊNH - ƯU TIÊN MUA - VER 1 - VIP", price: "168.000đ" },
+      { bullet: "▶️", name: "YOUTUBE PREMIUM 12 THÁNG (TẶNG GGONE 2TB - KBH) - ĐÃ FIX SẴN ỔN ĐỊNH - ƯU TIÊN MUA - CẦN SLL - VER 18 - VIP", price: "168.000đ" },
+      { bullet: "▶️", name: "YOUTUBE PREMIUM 3 THÁNG THÔNG - NGON - KHÔNG ĐỔI NHÓM - ƯU TIÊN MUA - VER 1 - VIP", price: "174.700đ" },
+      { bullet: "▶️", name: "YOUTUBE PREMIUM 3 THÁNG - ƯU TIÊN MUA - VER 18 - SIÊU ỔN ĐỊNH - KHÔ ĐỔI", price: "201.600đ" },
+      { bullet: "▶️", name: "YOUTUBE PREMIUM 6 THÁNG + GGONE 2TB - ƯU TIÊN MUA - VER 18 - SIÊU ỔN ĐỊNH - KHÔ ĐỔI", price: "336.000đ" },
+      { bullet: "▶️", name: "YOUTUBE PREMIUM 12 THÁNG + GGONE 2TB - ƯU TIÊN MUA - VER 18 - SIÊU ỔN ĐỊNH - KHÔ ĐỔI", price: "672.000đ" }
+    ],
 
-      gdrive: [
-        { bullet: "☁️", name: "GOOGLE DRIVER 2TB 1 NĂM - VER 1", price: "161.300đ" },
-        { bullet: "☁️", name: "GOOGLE DRIVER 5TB 1 NĂM - VER 1", price: "1.008.000đ" },
-        { bullet: "☁️", name: "GOOGLE DRIVER 30TB 1 NĂM - VER 1", price: "2.016.000đ" }
-      ],
+    gdrive: [
+      { bullet: "☁️", name: "GOOGLE DRIVER 2TB 1 NĂM - VER 1", price: "161.300đ" },
+      { bullet: "☁️", name: "GOOGLE DRIVER 5TB 1 NĂM - VER 1", price: "1.008.000đ" },
+      { bullet: "☁️", name: "GOOGLE DRIVER 30TB 1 NĂM - VER 1", price: "2.016.000đ" }
+    ],
 
-      purchase: [
-        {
-          bullet: "🛍️",
-          name: "Chọn sản phẩm cần mua",
-          price: "",
-          desc: "Liên hệ admin để mua sản phẩm trong bảng giá. Sau khi chọn sản phẩm hãy chuyển sang mục nạp tiền bên dưới."
-        }
-      ],
-
-      topup: [
-        {
-          customBank: true
-        }
-      ],
-
-      confirm: [
-        {
-          bullet: "📨",
-          name: "Gửi xác nhận thanh toán",
-          price: "",
-          desc: "Sau khi chuyển khoản hãy gửi ảnh bill + nội dung chuyển khoản cho admin để được kích hoạt dịch vụ nhanh nhất."
-        }
-      ]
-    };
-
-    const sectionOrder = [
-      "chatgpt", "gemini", "canva", "capcut", "expressvpn", "hma",
-      "grok", "tool", "kling", "netflix", "antigravity", "youtube",
-      "gdrive", "purchase", "topup", "confirm"
-    ];
-
-    const toolbarOrder = [
-      "all", "chatgpt", "gemini", "canva", "capcut", "expressvpn", "hma",
-      "grok", "tool", "kling", "netflix", "antigravity", "youtube",
-      "gdrive", "purchase", "topup", "confirm"
-    ];
-
-    const toolbar = document.getElementById("toolbar");
-    const sectionsEl = document.getElementById("sections");
-
-    function renderToolbar() {
-      toolbarOrder.forEach((key, index) => {
-        const meta = sectionMeta[key];
-        const button = document.createElement("button");
-        button.className = `chip ${meta.chipClass}${index === 0 ? " active" : ""}`;
-        button.dataset.filter = key;
-        button.textContent = meta.label || meta.chipLabel;
-        toolbar.appendChild(button);
-      });
-    }
-
-    function createItem(item) {
-      const article = document.createElement("div");
-      article.className = `item${item.customBank ? " bank-box" : ""}`;
-
-      if (item.customBank) {
-        article.innerHTML = `
-          <div class="bank-inner">
-            <div style="font-size:14px;font-weight:700;color:#b42828;letter-spacing:.4px;">MB BANK</div>
-            <div style="font-size:18px;font-weight:700;margin-top:6px;color:#5b6282;">CHỦ TÀI KHOẢN</div>
-            <div style="font-size:34px;font-weight:800;line-height:1.2;margin-top:4px;">NGUYEN VAN HOA</div>
-            <div style="font-size:18px;font-weight:700;margin-top:14px;color:#5b6282;">SỐ TÀI KHOẢN</div>
-            <div style="font-size:40px;font-weight:800;line-height:1.15;margin-top:4px;word-break:break-word;">9125112008</div>
-            <div style="margin-top:16px;padding:14px 16px;border-radius:18px;background:#fff4f4;border:1px dashed #efb2b2;color:#7b2d2d;font-weight:700;">
-              Nội dung chuyển khoản: <b>Tên + SĐT</b>
-            </div>
-            <p class="desc" style="padding-left:0;margin-top:16px;color:#5d6282;">
-              Khách chỉ cần chuyển khoản đúng số tài khoản phía trên, sau đó gửi ảnh bill để admin xác nhận nhanh.
-            </p>
-          </div>
-        `;
-        return article;
+    purchase: [
+      {
+        bullet: "🛍️",
+        name: "Chọn sản phẩm cần mua",
+        price: "",
+        desc: "Liên hệ admin để mua sản phẩm trong bảng giá. Sau khi chọn sản phẩm hãy chuyển sang mục nạp tiền bên dưới."
       }
+    ],
 
+    topup: [
+      { customBank: true }
+    ],
+
+    confirm: [
+      {
+        bullet: "📨",
+        name: "Gửi xác nhận thanh toán",
+        price: "",
+        desc: "Sau khi chuyển khoản hãy gửi ảnh bill + nội dung chuyển khoản cho admin để được kích hoạt dịch vụ nhanh nhất."
+      }
+    ]
+  };
+
+  const sectionOrder = [
+    "chatgpt", "gemini", "canva", "capcut", "expressvpn", "hma",
+    "grok", "tool", "kling", "netflix", "antigravity", "youtube",
+    "gdrive", "purchase", "topup", "confirm"
+  ];
+
+  const toolbarOrder = [
+    "all", "chatgpt", "gemini", "canva", "capcut", "expressvpn", "hma",
+    "grok", "tool", "kling", "netflix", "antigravity", "youtube",
+    "gdrive", "purchase", "topup", "confirm"
+  ];
+
+  const toolbar = document.getElementById("toolbar");
+  const sectionsEl = document.getElementById("sections");
+
+  function renderToolbar() {
+    toolbarOrder.forEach((key, index) => {
+      const meta = sectionMeta[key];
+      const button = document.createElement("button");
+      button.className = `chip ${meta.chipClass}${index === 0 ? " active" : ""}`;
+      button.dataset.filter = key;
+      button.textContent = meta.label || meta.chipLabel;
+      toolbar.appendChild(button);
+    });
+  }
+
+  function createItem(item) {
+    const article = document.createElement("div");
+    article.className = `item${item.customBank ? " bank-box" : ""}`;
+
+    if (item.customBank) {
       article.innerHTML = `
-        <div class="topline">
-          <div class="name">
-            <span class="bullet">${item.bullet || "•"}</span>
-            <span>${item.name}${item.note ? ` <small>${item.note}</small>` : ""}</span>
+        <div class="bank-inner">
+          <div style="font-size:14px;font-weight:700;color:#b42828;letter-spacing:.4px;">MB BANK</div>
+          <div style="font-size:18px;font-weight:700;margin-top:6px;color:#5b6282;">CHỦ TÀI KHOẢN</div>
+          <div style="font-size:34px;font-weight:800;line-height:1.2;margin-top:4px;">NGUYEN VAN HOA</div>
+          <div style="font-size:18px;font-weight:700;margin-top:14px;color:#5b6282;">SỐ TÀI KHOẢN</div>
+          <div style="font-size:40px;font-weight:800;line-height:1.15;margin-top:4px;word-break:break-word;">9125112008</div>
+          <div style="margin-top:16px;padding:14px 16px;border-radius:18px;background:#fff4f4;border:1px dashed #efb2b2;color:#7b2d2d;font-weight:700;">
+            Nội dung chuyển khoản: <b>Tên + SĐT</b>
           </div>
-          <div class="price">${item.price || ""}</div>
+          <p class="desc" style="padding-left:0;margin-top:16px;color:#5d6282;">
+            Khách chỉ cần chuyển khoản đúng số tài khoản phía trên, sau đó gửi ảnh bill để admin xác nhận nhanh.
+          </p>
         </div>
-        ${item.desc ? `<p class="desc">${item.desc}</p>` : ""}
       `;
       return article;
     }
 
-    function renderSections() {
-      sectionOrder.forEach(key => {
-        const meta = sectionMeta[key];
-        const items = data[key] || [];
+    article.innerHTML = `
+      <div class="topline">
+        <div class="name">
+          <span class="bullet">${item.bullet || "•"}</span>
+          <span>${item.name}${item.note ? ` <small>${item.note}</small>` : ""}</span>
+        </div>
+        <div class="price">${item.price || ""}</div>
+      </div>
+      ${item.desc ? `<p class="desc">${item.desc}</p>` : ""}
+    `;
+    return article;
+  }
 
-        const section = document.createElement("article");
-        section.className = "section";
-        section.dataset.group = key;
+  function renderSections() {
+    sectionOrder.forEach(key => {
+      const meta = sectionMeta[key];
+      const items = data[key] || [];
 
-        const header = document.createElement("div");
-        header.className = `section-header ${meta.headClass}`;
-        header.innerHTML = `<span class="icon">${meta.icon}</span>${meta.title}`;
+      const section = document.createElement("article");
+      section.className = "section";
+      section.dataset.group = key;
 
-        const content = document.createElement("div");
-        content.className = "content";
+      const header = document.createElement("div");
+      header.className = `section-header ${meta.headClass}`;
+      header.innerHTML = `<span class="icon">${meta.icon}</span>${meta.title}`;
 
-        items.forEach(item => content.appendChild(createItem(item)));
+      const content = document.createElement("div");
+      content.className = "content";
 
-        section.appendChild(header);
-        section.appendChild(content);
-        sectionsEl.appendChild(section);
-      });
-    }
+      items.forEach(item => content.appendChild(createItem(item)));
 
-    function setupFilter() {
-      const buttons = document.querySelectorAll(".chip");
-      const sections = document.querySelectorAll(".section");
+      section.appendChild(header);
+      section.appendChild(content);
+      sectionsEl.appendChild(section);
+    });
+  }
 
-      buttons.forEach(button => {
-        button.addEventListener("click", () => {
-          buttons.forEach(btn => btn.classList.remove("active"));
-          button.classList.add("active");
-          const filter = button.dataset.filter;
+  function setupFilter() {
+    const buttons = document.querySelectorAll(".chip");
+    const sections = document.querySelectorAll(".section");
 
-          sections.forEach(section => {
-            section.style.display =
-              filter === "all" || section.dataset.group === filter ? "" : "none";
-          });
+    buttons.forEach(button => {
+      button.addEventListener("click", () => {
+        buttons.forEach(btn => btn.classList.remove("active"));
+        button.classList.add("active");
+        const filter = button.dataset.filter;
+
+        sections.forEach(section => {
+          section.style.display =
+            filter === "all" || section.dataset.group === filter ? "" : "none";
         });
       });
-    }
+    });
+  }
 
-    renderToolbar();
-    renderSections();
-    setupFilter();
-  </script>
-</body>
-</html>
+  renderToolbar();
+  renderSections();
+  setupFilter();
+</script>
