@@ -115,6 +115,7 @@
 
     .all { background: linear-gradient(180deg, #ffe88f, #ffcd42); color: #513300; }
     .chatgpt { background: linear-gradient(180deg, #f28a53, #c25c22); }
+    .claude { background: linear-gradient(180deg, #a66cff, #6a3dd8); }
     .gemini { background: linear-gradient(180deg, #56d0ea, #258fcb); }
     .canva { background: linear-gradient(180deg, #39cde2, #0e99d7); }
     .capcut { background: linear-gradient(180deg, #7ac65f, #4e9a38); }
@@ -171,6 +172,7 @@
     }
 
     .head-chatgpt { background: linear-gradient(90deg, #ef9058, #c75b1e); }
+    .head-claude { background: linear-gradient(90deg, #a66cff, #6a3dd8); }
     .head-gemini { background: linear-gradient(90deg, #4fd5e5, #2090cf); }
     .head-canva { background: linear-gradient(90deg, #37cce4, #0795d8); }
     .head-capcut { background: linear-gradient(90deg, #76c75c, #4d9d36); }
@@ -299,6 +301,7 @@
   <script>
   const sectionMeta = {
     all: { label: "Tất cả", chipClass: "all" },
+    claude: { title: "THƯ MỤC CLAUDE VIP", icon: "🧠", headClass: "head-claude", chipClass: "claude", chipLabel: "Claude VIP" },
     chatgpt: { title: "THƯ MỤC CHAT GPT", icon: "🤖", headClass: "head-chatgpt", chipClass: "chatgpt", chipLabel: "ChatGPT" },
     gemini: { title: "THƯ MỤC GEMINI", icon: "💎", headClass: "head-gemini", chipClass: "gemini", chipLabel: "Gemini" },
     canva: { title: "THƯ MỤC CANVA PRO/EDU", icon: "🎨", headClass: "head-canva", chipClass: "canva", chipLabel: "Canva" },
@@ -318,6 +321,21 @@
   };
 
   const data = {
+    claude: [
+      {
+        bullet: "🧠",
+        name: "Claude 5x Hạn 1 Tháng",
+        note: "[ Nâng chính chủ qua token, Không cần cấp mail + pass, Pay điện thoại sạch, Bảo hành Full ] - HÀNG ĐỘC QUYỀN VIP",
+        price: "2.500.000đ"
+      },
+      {
+        bullet: "🧠",
+        name: "Claude 20x Hạn 1 Tháng",
+        note: "[ Nâng chính chủ qua token, Không cần cấp mail + pass, Pay điện thoại sạch, Bảo hành Full ] - HÀNG ĐỘC QUYỀN VIP",
+        price: "4.300.000đ"
+      }
+    ],
+
     chatgpt: [
       { bullet: "🔥", name: "Team ChatGPT Bussiness", note: "(Tut mới, Team trust)", price: "80.000đ" },
       { bullet: "✨", name: "ChatGPT Plus 1 Tháng", note: "(Chính chủ, NO Team)", price: "170.000đ" },
@@ -409,7 +427,7 @@
     ],
 
     grok: [
-      { bullet: "🚀", name: "SUPER GROK 1 THÁNG (BẢO HÀNH FULL) - VER 27", price: "250.500đ" },
+      { bullet: "🚀", name: "SUPER GROK 1 THÁNG (BẢO HÀNH FULL) - VER 27", price: "250.500đ" }
     ],
 
     tool: [
@@ -495,13 +513,13 @@
   };
 
   const sectionOrder = [
-    "chatgpt", "gemini", "canva", "capcut", "expressvpn", "hma",
+    "claude", "chatgpt", "gemini", "canva", "capcut", "expressvpn", "hma",
     "grok", "tool", "kling", "netflix", "antigravity", "youtube",
     "gdrive", "purchase", "topup", "confirm"
   ];
 
   const toolbarOrder = [
-    "all", "chatgpt", "gemini", "canva", "capcut", "expressvpn", "hma",
+    "all", "claude", "chatgpt", "gemini", "canva", "capcut", "expressvpn", "hma",
     "grok", "tool", "kling", "netflix", "antigravity", "youtube",
     "gdrive", "purchase", "topup", "confirm"
   ];
@@ -601,4 +619,6 @@
   renderToolbar();
   renderSections();
   setupFilter();
-</script>
+  </script>
+</body>
+</html>
