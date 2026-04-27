@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
-  <title>tainguyenmmo · Bảng giá</title>
+  <title>tainguyenmmo · Bảng giá chính thức</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
       background: radial-gradient(ellipse at 20% 30%, #0c0f1e, #03050b);
       font-family: 'Inter', sans-serif;
@@ -18,27 +17,13 @@
       padding: 32px 24px;
       min-height: 100vh;
     }
-
-    .glow-bg {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-    }
+    .glow-bg { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
     .glow-bg::before, .glow-bg::after {
-      content: "";
-      position: absolute;
-      width: 60%;
-      height: 60%;
-      border-radius: 50%;
-      filter: blur(140px);
-      opacity: 0.4;
+      content: ""; position: absolute; width: 60%; height: 60%; border-radius: 50%; filter: blur(140px); opacity: 0.4;
     }
     .glow-bg::before { background: #bd7b2c; top: -20%; left: -20%; }
     .glow-bg::after { background: #1e4b7c; bottom: -20%; right: -20%; }
-
     .container { max-width: 1600px; margin: 0 auto; position: relative; z-index: 2; }
-
     .hero { text-align: center; margin-bottom: 48px; }
     .hero h1 {
       font-size: clamp(44px, 8vw, 88px); font-weight: 800;
@@ -52,11 +37,6 @@
       border: 1px solid rgba(255,180,70,0.4); padding: 12px 32px; border-radius: 80px;
       font-size: 1.7rem; font-weight: 700; color: #FFD966;
     }
-    .admin-badge {
-      background: #ff4757; padding: 4px 12px; border-radius: 40px; font-size: 0.8rem;
-      margin-left: 16px; vertical-align: middle;
-    }
-
     .dashboard { display: flex; gap: 28px; flex-wrap: wrap; }
     .sidebar {
       flex: 1.1; min-width: 270px;
@@ -65,7 +45,6 @@
       padding: 24px 12px; height: fit-content; position: sticky; top: 28px;
     }
     .main { flex: 3.5; min-width: 280px; }
-
     .cat-btn {
       display: flex; align-items: center; gap: 14px; background: transparent;
       border: none; font-family: 'Inter'; font-size: 1rem; font-weight: 600;
@@ -75,196 +54,112 @@
     .cat-btn i { width: 28px; font-size: 1.3rem; }
     .cat-btn:hover { background: rgba(255,190,80,0.12); color: #FFDE9C; transform: translateX(4px); }
     .cat-btn.active { background: linear-gradient(95deg, #e09d3e20, #ffb34720); border-left: 3px solid #FFB347; color: #FFE2A4; }
-
     .section-card {
       background: rgba(10,14,27,0.65); backdrop-filter: blur(16px);
       border-radius: 44px; border: 1px solid rgba(255,200,130,0.25);
       margin-bottom: 32px; overflow: hidden;
     }
     .section-header {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 22px 28px; background: linear-gradient(135deg, rgba(255,185,70,0.18), rgba(220,110,30,0.08));
+      display: flex; align-items: center; padding: 22px 28px;
+      background: linear-gradient(135deg, rgba(255,185,70,0.18), rgba(220,110,30,0.08));
       border-bottom: 1px solid rgba(255,180,70,0.3);
     }
-    .header-left { display: flex; align-items: center; gap: 16px; }
-    .header-left .icon { width: 52px; height: 52px; background: rgba(255,170,70,0.2); border-radius: 30px; display: flex; align-items: center; justify-content: center; font-size: 2rem; }
-    .header-left h2 { font-size: 1.9rem; font-weight: 700; background: linear-gradient(120deg, #fff3cf, #ffcd94); -webkit-background-clip: text; background-clip: text; color: transparent; }
-
+    .section-header .icon { width: 52px; height: 52px; background: rgba(255,170,70,0.2); border-radius: 30px; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin-right: 16px; }
+    .section-header h2 { font-size: 1.9rem; font-weight: 700; background: linear-gradient(120deg, #fff3cf, #ffcd94); -webkit-background-clip: text; background-clip: text; color: transparent; }
     .items-grid { padding: 20px 24px; display: flex; flex-direction: column; gap: 12px; }
     .price-item {
       background: rgba(255,255,255,0.03); border: 1px solid rgba(255,200,120,0.2);
-      border-radius: 28px; padding: 18px 22px; transition: 0.2s;
+      border-radius: 28px; padding: 18px 22px;
     }
-    .price-item.out-of-stock { opacity: 0.65; background: rgba(80,40,40,0.2); border-color: #ff6b6b40; }
+    .price-item.out-of-stock { opacity: 0.65; background: rgba(80,40,40,0.2); }
     .price-item.out-of-stock .item-price { text-decoration: line-through; opacity: 0.6; }
     .item-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; }
     .item-name { font-weight: 600; font-size: 1.05rem; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; flex: 1; }
     .item-price { font-weight: 800; font-size: 1.6rem; background: linear-gradient(125deg, #FFD58C, #FFA041); -webkit-background-clip: text; background-clip: text; color: transparent; white-space: nowrap; }
     .desc-text { margin-top: 12px; font-size: 0.85rem; color: #aab3e6; padding-left: 30px; }
-    
-    /* admin controls */
-    .admin-controls { display: flex; gap: 12px; align-items: center; margin-top: 12px; justify-content: flex-end; border-top: 1px solid rgba(255,200,100,0.2); padding-top: 12px; }
-    .stock-toggle { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; background: #1e243e; padding: 5px 12px; border-radius: 40px; cursor: pointer; }
-    .edit-btn, .delete-btn { background: none; border: none; color: #ffcd94; cursor: pointer; font-size: 0.9rem; padding: 5px 10px; border-radius: 30px; transition: 0.2s; }
-    .edit-btn:hover, .delete-btn:hover { background: #ffb34730; color: #FFB347; }
-    .add-product-btn { background: rgba(255,180,70,0.2); border: 1px dashed #FFB347; color: #FFD966; padding: 12px; border-radius: 28px; text-align: center; cursor: pointer; margin-top: 8px; font-weight: 600; }
-    
     .bank-card { background: linear-gradient(145deg, #2b2218, #1f1910); border: 1px solid #ffbe6e; }
     .bank-inner { background: #fef7e8; border-radius: 28px; padding: 24px; color: #2a2418; }
     .account-number { font-size: 2rem; font-weight: 800; font-family: monospace; background: #eee4d4; display: inline-block; padding: 8px 20px; border-radius: 60px; margin: 12px 0; }
-
-    .login-panel {
-      max-width: 400px; margin: 100px auto; background: rgba(0,0,0,0.7); padding: 32px; border-radius: 40px;
-      text-align: center; border: 1px solid #FFB347;
-    }
-    .login-panel input { width: 100%; padding: 14px; border-radius: 30px; border: none; margin: 12px 0; background: #1e1e2e; color: white; }
-    .login-panel button { background: #FFB347; border: none; padding: 12px 24px; border-radius: 40px; font-weight: bold; cursor: pointer; }
-
+    .zalo-group { display: inline-flex; align-items: center; gap: 10px; background: #1f6b3e20; padding: 8px 18px; border-radius: 40px; margin-top: 12px; text-decoration: none; color: #ffdd99; font-weight: 600; }
     @media (max-width: 900px) {
       .sidebar { position: static; }
       .item-price { white-space: normal; font-size: 1.3rem; }
       .item-row { flex-direction: column; align-items: flex-start; }
     }
-    .zalo-group { display: inline-flex; align-items: center; gap: 10px; background: #1f6b3e20; padding: 8px 18px; border-radius: 40px; margin-top: 12px; text-decoration: none; color: #ffdd99; font-weight: 600; }
   </style>
 </head>
 <body>
 <div class="glow-bg"></div>
-<div id="appRoot"></div>
-
+<div class="container">
+  <div class="hero">
+    <h1>BẢNG GIÁ <span style="color:#FFC107">tainguyenmmo</span></h1>
+    <div class="brand"><i class="fas fa-crown"></i> PREMIUM SERVICE <i class="fas fa-bolt"></i></div>
+  </div>
+  <div class="dashboard">
+    <div class="sidebar"><div id="categoryList"></div><div style="margin-top:32px;text-align:center;"><a href="https://zalo.me/g/sbdbhc672" target="_blank" class="zalo-group"><i class="fab fa-zalo"></i> Nhóm Zalo Cộng Đồng</a></div></div>
+    <div class="main" id="mainContent"></div>
+  </div>
+  <div style="text-align:center; margin-top:32px; color:#aaa;"><i class="fas fa-shield-alt"></i> Bảo hành tận tâm · Hỗ trợ 24/7</div>
+</div>
 <script>
-  // ======================= CẤU HÌNH ADMIN =======================
-  const ADMIN_PASSWORD = "admin123";  // 🔐 ĐỔI MẬT KHẨU NÀY THÀNH CỦA BẠN
-  let isAdmin = false;
-  
-  // ======================= DỮ LIỆU GỐC =======================
-  const rawSections = {
+  // ======================= DỮ LIỆU =======================
+  let appData = {
     claude: { title: "🧠 CLAUDE VIP", icon: "fa-brain", items: [
       { bullet: "🧠", name: "Claude 5x Hạn 1 Tháng", note: "[ Nâng chính chủ qua token ] - VIP", price: "2.500.000đ", inStock: true },
       { bullet: "🧠", name: "Claude 20x Hạn 1 Tháng", note: "[ Nâng chính chủ qua token ] - VIP", price: "4.300.000đ", inStock: true }
     ] },
     chatgpt: { title: "🤖 CHATGPT PLUS/PRO", icon: "fa-robot", items: [
-      { bullet: "🔥", name: "Team ChatGPT Bussiness", note: "(Tut mới, Team trust)", price: "80.000đ", inStock: true },
-      { bullet: "✨", name: "ChatGPT Plus 1 Tháng", note: "(Chính chủ, NO Team)", price: "190.000đ", inStock: true },
-      { bullet: "📱", name: "ChatGPT Go 1 Năm", note: "Acc cấp, pay điện thoại", price: "190.000đ", inStock: true },
-      { bullet: "👑", name: "CHÍNH CHỦ ChatGPT Plus 12 Tháng", price: "1.200.000đ", inStock: true },
-      { bullet: "🚀", name: "CHÍNH CHỦ ChatGPT Pro 1 Tháng", price: "2.700.000đ", inStock: true }
+      { bullet: "🔥", name: "Team ChatGPT Bussiness", note: "(Tut mới)", price: "80.000đ", inStock: true },
+      { bullet: "✨", name: "ChatGPT Plus 1 Tháng", note: "(Chính chủ)", price: "190.000đ", inStock: true },
+      { bullet: "👑", name: "ChatGPT Plus 12 Tháng Chính Chủ", price: "1.200.000đ", inStock: true }
     ] },
     gemini: { title: "💎 GEMINI + VEO3", icon: "fa-gem", items: [
       { bullet: "💠", name: "GEMINI PRO + VEO3 1K CREDIT 4 THÁNG", price: "25.500đ", inStock: true },
-      { bullet: "💠", name: "VEO 3 ULTRA 25K CREDIT + GEMINI ULTRA", price: "40.300đ", inStock: true },
-      { bullet: "💠", name: "GEMINI PRO + VEO3 1K CREDIT HẠN 1 NĂM", price: "60.500đ", inStock: true },
-      { bullet: "💠", name: "GEMINI ULTRA + 30TB DRIVER", price: "537.600đ", inStock: true }
+      { bullet: "💠", name: "VEO 3 ULTRA 25K CREDIT", price: "40.300đ", inStock: true }
     ] },
     canva: { title: "🎨 CANVA PRO/EDU", icon: "fa-palette", items: [
       { bullet: "🎨", name: "CANVA EDU 1 THÁNG", price: "6.700đ", inStock: true },
-      { bullet: "🎨", name: "CANVA PRO NÂNG CHÍNH CHỦ 1 THÁNG", price: "6.700đ", inStock: true },
       { bullet: "🎨", name: "CANVA PRO VĨNH VIỄN", price: "200.300đ", inStock: true }
     ] },
-    capcut: { title: "🎬 CAPCUT PRO", icon: "fa-video", items: [
-      { bullet: "🎬", name: "Capcut Pro 35 ngày", desc: "Hỗ trợ PC, iOS, Android", price: "80.000đ", inStock: true },
-      { bullet: "🎬", name: "Capcut Pro 6 tháng", price: "220.000đ", inStock: true }
-    ] },
-    expressvpn: { title: "🛡️ EXPRESSVPN", icon: "fa-shield-haltered", items: [
-      { bullet: "🛡️", name: "EXPRESS VPN 27-32 ngày", price: "8.700đ", inStock: true },
-      { bullet: "🛡️", name: "EXPRESS VPN 3 tháng", price: "60.500đ", inStock: true }
-    ] },
-    hma: { title: "🔐 HMA VPN", icon: "fa-lock", items: [
-      { bullet: "🔐", name: "KEY HMA 15-27 ngày", price: "6.100đ", inStock: true },
-      { bullet: "🔐", name: "HMA 5 thiết bị 12 tháng", price: "504.000đ", inStock: true }
-    ] },
+    capcut: { title: "🎬 CAPCUT PRO", icon: "fa-video", items: [{ bullet: "🎬", name: "Capcut Pro 35 ngày", desc: "PC, iOS, Android", price: "80.000đ", inStock: true }] },
+    expressvpn: { title: "🛡️ EXPRESSVPN", icon: "fa-shield-haltered", items: [{ bullet: "🛡️", name: "EXPRESS VPN 27-32 ngày", price: "8.700đ", inStock: true }] },
+    hma: { title: "🔐 HMA VPN", icon: "fa-lock", items: [{ bullet: "🔐", name: "KEY HMA 15-27 ngày", price: "6.100đ", inStock: true }] },
     grok: { title: "🚀 SUPER GROK", icon: "fa-rocket", items: [{ bullet: "🚀", name: "SUPER GROK 1 THÁNG", price: "250.500đ", inStock: true }] },
-    tool: { title: "🧰 TOOL", icon: "fa-microchip", items: [
-      { bullet: "🧰", name: "MaxCare - Nuôi Acc FB", price: "349.000đ", inStock: true },
-      { bullet: "🧰", name: "MaxTikTok Chrome", price: "349.000đ", inStock: true }
-    ] },
+    tool: { title: "🧰 TOOL", icon: "fa-microchip", items: [{ bullet: "🧰", name: "MaxCare - Nuôi Acc FB", price: "349.000đ", inStock: true }] },
     kling: { title: "🎞️ KLING AI", icon: "fa-film", items: [{ bullet: "🎞️", name: "KLING STANDARD 1k CREDIT", price: "147.800đ", inStock: true }] },
-    netflix: { title: "📺 NETFLIX", icon: "fa-tv", items: [
-      { bullet: "📺", name: "NETFLIX DÙNG CHUNG 1 THÁNG", price: "39.000đ", inStock: true },
-      { bullet: "📺", name: "NETFLIX SLOT RIÊNG 12 THÁNG", price: "1.155.800đ", inStock: true }
-    ] },
+    netflix: { title: "📺 NETFLIX", icon: "fa-tv", items: [{ bullet: "📺", name: "NETFLIX DÙNG CHUNG 1 THÁNG", price: "39.000đ", inStock: true }] },
     antigravity: { title: "🪐 ANTIGRAVITY", icon: "fa-meteor", items: [{ bullet: "🪐", name: "ANTIGRAVITY ULTRA", price: "60.500đ", inStock: true }] },
-    youtube: { title: "▶️ YOUTUBE", icon: "fa-youtube", items: [
-      { bullet: "▶️", name: "YOUTUBE PREMIUM 1 THÁNG", price: "16.100đ", inStock: true },
-      { bullet: "▶️", name: "YOUTUBE PREMIUM 12 THÁNG", price: "168.000đ", inStock: true }
-    ] },
+    youtube: { title: "▶️ YOUTUBE", icon: "fa-youtube", items: [{ bullet: "▶️", name: "YOUTUBE PREMIUM 1 THÁNG", price: "16.100đ", inStock: true }] },
     gdrive: { title: "☁️ GOOGLE DRIVE", icon: "fa-cloud", items: [{ bullet: "☁️", name: "GOOGLE DRIVE 2TB 1 NĂM", price: "161.300đ", inStock: true }] },
-    purchase: { title: "🛒 HƯỚNG DẪN MUA", icon: "fa-cart-shopping", items: [{ bullet: "🛍️", name: "Chọn sản phẩm cần mua", desc: "Liên hệ admin để mua hàng, sau đó nạp tiền bên dưới.", price: "", inStock: true }] },
+    purchase: { title: "🛒 HƯỚNG DẪN MUA", icon: "fa-cart-shopping", items: [{ bullet: "🛍️", name: "Chọn sản phẩm cần mua", desc: "Liên hệ admin để mua hàng", price: "", inStock: true }] },
     topup: { title: "💰 NẠP TIỀN", icon: "fa-money-bill-wave", items: [{ isBank: true }] },
-    confirm: { title: "✅ XÁC NHẬN", icon: "fa-check-circle", items: [{ bullet: "📨", name: "Gửi xác nhận thanh toán", desc: "Gửi ảnh bill + nội dung CK cho admin", price: "", inStock: true }] }
+    confirm: { title: "✅ XÁC NHẬN", icon: "fa-check-circle", items: [{ bullet: "📨", name: "Gửi xác nhận thanh toán", desc: "Gửi ảnh bill + nội dung CK", price: "", inStock: true }] }
   };
-  
   const order = ["claude","chatgpt","gemini","canva","capcut","expressvpn","hma","grok","tool","kling","netflix","antigravity","youtube","gdrive","purchase","topup","confirm"];
   
   function loadData() {
     const saved = localStorage.getItem("tainguyenmmo_data");
-    if(saved) return JSON.parse(saved);
-    return JSON.parse(JSON.stringify(rawSections));
+    if(saved) appData = JSON.parse(saved);
   }
-  function saveData(data) { localStorage.setItem("tainguyenmmo_data", JSON.stringify(data)); }
+  loadData();
   
-  let appData = loadData();
-  let currentCategory = order[0];
-  let editContext = { categoryKey: null, itemIndex: null };
+  const sidebarDiv = document.getElementById("categoryList");
+  const mainDiv = document.getElementById("mainContent");
   
-  // render toàn bộ app
-  function renderApp() {
-    const root = document.getElementById("appRoot");
-    if(!isAdmin) {
-      // hiển thị giao diện khách hàng thuần túy (không có nút quản trị)
-      root.innerHTML = `
-        <div class="container">
-          <div class="hero">
-            <h1>BẢNG GIÁ <span style="color:#FFC107">tainguyenmmo</span></h1>
-            <div class="brand"><i class="fas fa-crown"></i> PREMIUM SERVICE <i class="fas fa-bolt"></i></div>
-          </div>
-          <div class="dashboard">
-            <div class="sidebar"><div id="categoryListCustomer"></div><div style="margin-top:32px;text-align:center;"><a href="https://zalo.me/g/sbdbhc672" target="_blank" class="zalo-group"><i class="fab fa-zalo"></i> Nhóm Zalo</a></div></div>
-            <div class="main" id="mainContentCustomer"></div>
-          </div>
-          <div style="text-align:center; margin-top:32px; color:#aaa;"><i class="fas fa-shield-alt"></i> Bảo hành tận tâm · Hỗ trợ 24/7</div>
-        </div>
-      `;
-      renderCustomerView();
-    } else {
-      // hiển thị full admin controls
-      root.innerHTML = `
-        <div class="container">
-          <div class="hero">
-            <h1>BẢNG GIÁ <span style="color:#FFC107">tainguyenmmo</span><span class="admin-badge">👑 ADMIN MODE</span></h1>
-            <div class="brand"><i class="fas fa-crown"></i> PREMIUM SERVICE <i class="fas fa-bolt"></i></div>
-          </div>
-          <div class="dashboard">
-            <div class="sidebar"><div id="categoryListAdmin"></div><div style="margin-top:32px;text-align:center;"><a href="https://zalo.me/g/sbdbhc672" target="_blank" class="zalo-group"><i class="fab fa-zalo"></i> Nhóm Zalo</a></div></div>
-            <div class="main" id="mainContentAdmin"></div>
-          </div>
-        </div>
-      `;
-      renderAdminView();
-    }
-  }
+  order.forEach(key => {
+    const btn = document.createElement("button");
+    btn.className = "cat-btn";
+    btn.innerHTML = `<i class="fas ${appData[key].icon}"></i> <span>${appData[key].title}</span>`;
+    btn.onclick = () => {
+      document.querySelectorAll(".cat-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      renderMain(key);
+    };
+    sidebarDiv.appendChild(btn);
+  });
+  if(sidebarDiv.firstChild) sidebarDiv.firstChild.classList.add("active");
   
-  // =============== GIAO DIỆN KHÁCH HÀNG (CHỈ XEM) ===============
-  function renderCustomerView() {
-    const sidebarDiv = document.getElementById("categoryListCustomer");
-    const mainDiv = document.getElementById("mainContentCustomer");
-    sidebarDiv.innerHTML = "";
-    order.forEach(key => {
-      const btn = document.createElement("button");
-      btn.className = "cat-btn";
-      btn.innerHTML = `<i class="fas ${appData[key].icon}"></i> <span>${appData[key].title}</span>`;
-      btn.onclick = () => {
-        document.querySelectorAll("#categoryListCustomer .cat-btn").forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        renderCustomerMain(key, mainDiv);
-      };
-      sidebarDiv.appendChild(btn);
-    });
-    if(sidebarDiv.firstChild) sidebarDiv.firstChild.classList.add("active");
-    renderCustomerMain(order[0], mainDiv);
-  }
-  
-  function renderCustomerMain(catKey, mainDiv) {
+  function renderMain(catKey) {
     const section = appData[catKey];
     let itemsHtml = '';
     section.items.forEach(it => {
@@ -279,135 +174,14 @@
               <div class="item-price">${it.price || ""}</div>
             </div>
             ${it.desc ? `<div class="desc-text">${it.desc}</div>` : ''}
-            ${it.inStock === false ? `<div style="margin-top:8px;color:#ff8888; font-size:0.8rem;"><i class="fas fa-ban"></i> Tạm thời hết hàng</div>` : ''}
+            ${it.inStock === false ? `<div style="margin-top:8px;color:#ff8888;"><i class="fas fa-ban"></i> Tạm thời hết hàng</div>` : ''}
           </div>
         `;
       }
     });
-    mainDiv.innerHTML = `<div class="section-card"><div class="section-header"><div class="header-left"><div class="icon"><i class="fas ${section.icon}"></i></div><h2>${section.title}</h2></div></div><div class="items-grid">${itemsHtml}</div></div>`;
+    mainDiv.innerHTML = `<div class="section-card"><div class="section-header"><div class="icon"><i class="fas ${section.icon}"></i></div><h2>${section.title}</h2></div><div class="items-grid">${itemsHtml}</div></div>`;
   }
-  
-  // =============== GIAO DIỆN ADMIN (CÓ QUẢN TRỊ) ===============
-  function renderAdminView() {
-    const sidebarDiv = document.getElementById("categoryListAdmin");
-    const mainDiv = document.getElementById("mainContentAdmin");
-    sidebarDiv.innerHTML = "";
-    order.forEach(key => {
-      const btn = document.createElement("button");
-      btn.className = "cat-btn";
-      btn.innerHTML = `<i class="fas ${appData[key].icon}"></i> <span>${appData[key].title}</span>`;
-      btn.onclick = () => {
-        document.querySelectorAll("#categoryListAdmin .cat-btn").forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        currentCategory = key;
-        renderAdminMain(currentCategory, mainDiv);
-      };
-      sidebarDiv.appendChild(btn);
-    });
-    if(sidebarDiv.firstChild) sidebarDiv.firstChild.classList.add("active");
-    renderAdminMain(order[0], mainDiv);
-  }
-  
-  function renderAdminMain(catKey, mainDiv) {
-    const section = appData[catKey];
-    let itemsHtml = '';
-    section.items.forEach((it, idx) => {
-      if(it.isBank) {
-        itemsHtml += `<div class="price-item bank-card"><div class="bank-inner"><div style="font-weight:800;">🏦 MB BANK</div><div>CHỦ TK: NGUYEN VAN HOA</div><div class="account-number">9125112008</div><div>Nội dung: <strong>Tên + SĐT</strong></div></div></div>`;
-      } else {
-        const stockClass = (it.inStock === false) ? "out-of-stock" : "";
-        itemsHtml += `
-          <div class="price-item ${stockClass}" data-idx="${idx}">
-            <div class="item-row">
-              <div class="item-name"><span class="bullet">${it.bullet || "•"}</span><span>${it.name}</span>${it.note ? `<span style="font-size:0.75rem;opacity:0.7;">${it.note}</span>` : ''}</div>
-              <div class="item-price">${it.price || ""}</div>
-            </div>
-            ${it.desc ? `<div class="desc-text">${it.desc}</div>` : ''}
-            <div class="admin-controls">
-              <div class="stock-toggle" data-action="toggle" data-idx="${idx}"><i class="fas ${it.inStock !== false ? 'fa-toggle-on' : 'fa-toggle-off'}" style="color:${it.inStock !== false ? '#2ecc71' : '#e67e22'}"></i> ${it.inStock !== false ? 'Còn hàng' : 'Tạm hết'}</div>
-              <button class="edit-btn" data-action="edit" data-idx="${idx}"><i class="fas fa-edit"></i> Sửa</button>
-              <button class="delete-btn" data-action="delete" data-idx="${idx}"><i class="fas fa-trash-alt"></i> Xóa</button>
-            </div>
-          </div>
-        `;
-      }
-    });
-    itemsHtml += `<div class="add-product-btn" id="adminAddProductBtn"><i class="fas fa-plus-circle"></i> + Thêm sản phẩm mới</div>`;
-    mainDiv.innerHTML = `<div class="section-card"><div class="section-header"><div class="header-left"><div class="icon"><i class="fas ${section.icon}"></i></div><h2>${section.title}</h2></div></div><div class="items-grid">${itemsHtml}</div></div>`;
-    
-    // attach admin events
-    document.querySelectorAll(".stock-toggle").forEach(el => {
-      el.addEventListener("click", (e) => { const idx = parseInt(el.dataset.idx); if(!isNaN(idx)) toggleStock(catKey, idx); });
-    });
-    document.querySelectorAll(".edit-btn").forEach(btn => {
-      btn.addEventListener("click", (e) => { const idx = parseInt(btn.dataset.idx); if(!isNaN(idx)) openEditModal(catKey, idx); });
-    });
-    document.querySelectorAll(".delete-btn").forEach(btn => {
-      btn.addEventListener("click", (e) => { if(confirm("Xóa sản phẩm?")) { const idx = parseInt(btn.dataset.idx); if(!isNaN(idx)) deleteProduct(catKey, idx); } });
-    });
-    const addBtn = document.getElementById("adminAddProductBtn");
-    if(addBtn) addBtn.onclick = () => openAddProductModal(catKey);
-  }
-  
-  function toggleStock(catKey, idx) {
-    const item = appData[catKey].items[idx];
-    if(item && !item.isBank) { item.inStock = item.inStock === false ? true : false; saveData(appData); renderApp(); }
-  }
-  function deleteProduct(catKey, idx) { appData[catKey].items.splice(idx,1); saveData(appData); renderApp(); }
-  function openEditModal(catKey, idx) {
-    editContext = { categoryKey: catKey, itemIndex: idx };
-    const item = appData[catKey].items[idx];
-    const newName = prompt("Sửa tên sản phẩm:", item.name);
-    if(newName && newName.trim()) item.name = newName.trim();
-    const newPrice = prompt("Sửa giá:", item.price);
-    if(newPrice) item.price = newPrice;
-    const newDesc = prompt("Mô tả (nếu có):", item.desc || "");
-    if(newDesc !== null) item.desc = newDesc;
-    const newNote = prompt("Ghi chú nhỏ:", item.note || "");
-    if(newNote !== null) item.note = newNote;
-    saveData(appData);
-    renderApp();
-  }
-  function openAddProductModal(catKey) {
-    const name = prompt("Tên sản phẩm mới:");
-    if(!name) return;
-    const price = prompt("Giá:");
-    const desc = prompt("Mô tả (không bắt buộc):");
-    const newItem = { bullet: "✨", name: name, price: price || "", inStock: true };
-    if(desc) newItem.desc = desc;
-    appData[catKey].items.push(newItem);
-    saveData(appData);
-    renderApp();
-  }
-  
-  // =============== LOGIN ADMIN ===============
-  function showLogin() {
-    document.getElementById("appRoot").innerHTML = `
-      <div class="login-panel">
-        <i class="fas fa-lock" style="font-size:48px; color:#FFB347"></i>
-        <h2 style="color:#FFD966">🔐 Admin Login</h2>
-        <input type="password" id="adminPass" placeholder="Nhập mật khẩu admin">
-        <button id="loginBtn">Đăng nhập</button>
-      </div>
-    `;
-    document.getElementById("loginBtn").onclick = () => {
-      const pass = document.getElementById("adminPass").value;
-      if(pass === ADMIN_PASSWORD) {
-        isAdmin = true;
-        renderApp();
-      } else { alert("Sai mật khẩu!"); }
-    };
-  }
-  
-  // Kiểm tra nếu đã từng đăng nhập (có thể lưu session trong localStorage)
-  const savedAdmin = localStorage.getItem("tainguyenmmo_admin");
-  if(savedAdmin === "true") isAdmin = true;
-  
-  if(!isAdmin) showLogin();
-  else renderApp();
-  
-  // optional: nút logout (bạn có thể thêm vào góc trên)
-  window.logoutAdmin = function() { localStorage.removeItem("tainguyenmmo_admin"); isAdmin = false; showLogin(); };
+  renderMain(order[0]);
 </script>
 </body>
 </html>
