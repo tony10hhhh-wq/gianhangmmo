@@ -98,8 +98,8 @@
     .item-price { font-weight: 800; font-size: 1.6rem; background: linear-gradient(125deg, #FFD58C, #FFA041); -webkit-background-clip: text; background-clip: text; color: transparent; white-space: nowrap; }
     .desc-text { margin-top: 12px; font-size: 0.85rem; color: #aab3e6; padding-left: 30px; }
     
-    /* Admin controls - chỉ hiện khi đã đăng nhập */
-    .admin-controls { display: flex; gap: 12px; align-items: center; margin-top: 12px; justify-content: flex-end; border-top: 1px solid rgba(255,200,100,0.2); padding-top: 12px; }
+    /* Admin controls */
+    .admin-controls { display: flex; gap: 12px; align-items: center; margin-top: 12px; justify-content: flex-end; border-top: 1px solid rgba(255,200,100,0.2); padding-top: 12px; flex-wrap: wrap; }
     .stock-toggle { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; background: #1e243e; padding: 5px 12px; border-radius: 40px; cursor: pointer; }
     .edit-btn, .delete-btn { background: none; border: none; color: #ffcd94; cursor: pointer; font-size: 0.9rem; padding: 5px 10px; border-radius: 30px; transition: 0.2s; }
     .edit-btn:hover, .delete-btn:hover { background: #ffb34730; color: #FFB347; }
@@ -119,22 +119,26 @@
     }
     .admin-float-btn:hover { transform: scale(1.05); background: #ffcc66; }
     
-    /* Modal login */
-    .login-modal {
+    /* Modal login & edit */
+    .modal {
       display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       background: rgba(0,0,0,0.8); backdrop-filter: blur(8px); z-index: 1100;
       align-items: center; justify-content: center;
     }
-    .login-modal.active { display: flex; }
-    .login-box {
-      background: #151e2c; border-radius: 40px; padding: 32px; width: 90%; max-width: 380px;
-      border: 1px solid #FFB347; text-align: center;
+    .modal.active { display: flex; }
+    .modal-content {
+      background: #151e2c; border-radius: 40px; padding: 32px; width: 90%; max-width: 450px;
+      border: 1px solid #FFB347;
     }
-    .login-box input { width: 100%; padding: 14px; border-radius: 30px; border: none; margin: 16px 0; background: #0b1020; color: white; font-size: 1rem; }
-    .login-box button { background: #FFB347; border: none; padding: 12px 28px; border-radius: 40px; font-weight: bold; cursor: pointer; font-size: 1rem; }
-    .admin-badge { background: #ff4757; padding: 4px 12px; border-radius: 40px; font-size: 0.7rem; margin-left: 12px; vertical-align: middle; }
+    .modal-content input, .modal-content select, .modal-content textarea {
+      width: 100%; padding: 12px; margin: 8px 0; border-radius: 20px; border: none;
+      background: #0b1020; color: white; font-family: inherit;
+    }
+    .modal-content button { background: #FFB347; border: none; padding: 12px 24px; border-radius: 30px; font-weight: bold; cursor: pointer; margin-right: 12px; margin-top: 12px; }
+    .suggest-icons { display: flex; gap: 12px; flex-wrap: wrap; margin: 12px 0; }
+    .suggest-icon { font-size: 1.8rem; cursor: pointer; padding: 6px 12px; border-radius: 50px; background: #2a2f45; transition: 0.1s; }
+    .suggest-icon:hover { background: #ffb347; transform: scale(1.1); }
 
-    /* Contact section */
     .contact-section {
       margin-top: 28px;
       border-top: 1px solid rgba(255,200,100,0.3);
@@ -163,10 +167,7 @@
       font-weight: 600;
       transition: 0.2s;
     }
-    .zalo-btn:hover {
-      background: #0066ff40;
-      transform: scale(1.02);
-    }
+    .zalo-btn:hover { background: #0066ff40; transform: scale(1.02); }
     .zalo-btn i { font-size: 1.5rem; color: #0066ff; }
     .group-btn {
       display: flex;
@@ -182,10 +183,7 @@
       font-weight: 600;
       transition: 0.2s;
     }
-    .group-btn:hover {
-      background: #2a9d8f30;
-      transform: scale(1.02);
-    }
+    .group-btn:hover { background: #2a9d8f30; transform: scale(1.02); }
     .group-btn i { font-size: 1.5rem; color: #2d9b5e; }
 
     @media (max-width: 900px) {
@@ -199,30 +197,61 @@
 <div class="glow-bg"></div>
 <div id="appRoot"></div>
 
-<!-- Nút admin floating -->
 <button class="admin-float-btn" id="adminFloatBtn"><i class="fas fa-user-lock"></i></button>
 
-<!-- Modal nhập mật khẩu -->
-<div id="loginModal" class="login-modal">
-  <div class="login-box">
+<!-- Modal Login -->
+<div id="loginModal" class="modal">
+  <div class="modal-content">
     <i class="fas fa-crown" style="font-size: 48px; color: #FFB347;"></i>
     <h3 style="color:#FFD966; margin-top: 12px;">🔐 Quản trị viên</h3>
-    <input type="password" id="adminPasswordInput" placeholder="Nhập mật khẩu admin" autocomplete="off">
+    <input type="password" id="adminPasswordInput" placeholder="Nhập mật khẩu admin">
     <button id="submitLoginBtn"><i class="fas fa-key"></i> Đăng nhập</button>
-    <div style="margin-top: 16px; font-size: 0.75rem; color: #888;">Chỉ admin mới có quyền chỉnh sửa</div>
+  </div>
+</div>
+
+<!-- Modal Edit Product -->
+<div id="editModal" class="modal">
+  <div class="modal-content">
+    <h3 style="color:#FFD966">✏️ Chỉnh sửa sản phẩm</h3>
+    <div class="suggest-icons">
+      <span class="suggest-icon" onclick="setBullet('✨')">✨</span>
+      <span class="suggest-icon" onclick="setBullet('🔥')">🔥</span>
+      <span class="suggest-icon" onclick="setBullet('💎')">💎</span>
+      <span class="suggest-icon" onclick="setBullet('🚀')">🚀</span>
+      <span class="suggest-icon" onclick="setBullet('⭐')">⭐</span>
+      <span class="suggest-icon" onclick="setBullet('💠')">💠</span>
+      <span class="suggest-icon" onclick="setBullet('🎨')">🎨</span>
+      <span class="suggest-icon" onclick="setBullet('🎬')">🎬</span>
+      <span class="suggest-icon" onclick="setBullet('🛡️')">🛡️</span>
+      <span class="suggest-icon" onclick="setBullet('🔐')">🔐</span>
+      <span class="suggest-icon" onclick="setBullet('🧰')">🧰</span>
+      <span class="suggest-icon" onclick="setBullet('📺')">📺</span>
+      <span class="suggest-icon" onclick="setBullet('▶️')">▶️</span>
+      <span class="suggest-icon" onclick="setBullet('☁️')">☁️</span>
+    </div>
+    <input type="text" id="editBullet" placeholder="Biểu tượng (ví dụ: ✨, 🔥, 💎)">
+    <input type="text" id="editName" placeholder="Tên sản phẩm">
+    <textarea id="editDesc" rows="2" placeholder="Mô tả (không bắt buộc)"></textarea>
+    <input type="text" id="editPrice" placeholder="Giá (vd: 80.000đ)">
+    <input type="text" id="editNote" placeholder="Ghi chú nhỏ (note)">
+    <div>
+      <button id="saveEditBtn">💾 Lưu thay đổi</button>
+      <button id="cancelEditBtn">❌ Hủy</button>
+    </div>
   </div>
 </div>
 
 <script>
   // ======================= CẤU HÌNH =======================
-  const ADMIN_PASSWORD = "vanhoa2008.,@hhh";              // 🔐 ĐỔI MẬT KHẨU CỦA BẠN Ở ĐÂY
-  const ZALO_PERSONAL = "0349936321";             // 📞 SỐ ZALO CÁ NHÂN
-  const ZALO_GROUP = "https://zalo.me/g/sbdbhc672"; // 👥 LINK NHÓM ZALO
+  const ADMIN_PASSWORD = "admin123";
+  const ZALO_PERSONAL = "0349936321";
+  const ZALO_GROUP = "https://zalo.me/g/sbdbhc672";
   
   let isAdmin = false;
   let currentCategory = "claude";
+  let editContext = { categoryKey: null, itemIndex: null };
   
-  // ======================= DỮ LIỆU GỐC =======================
+  // Dữ liệu gốc
   const rawSections = {
     claude: { title: "🧠 CLAUDE VIP", icon: "fa-brain", items: [
       { bullet: "🧠", name: "Claude 5x Hạn 1 Tháng", note: "[ Nâng chính chủ qua token ] - VIP", price: "2.500.000đ", inStock: true },
@@ -290,7 +319,11 @@
   
   let appData = loadData();
   
-  // =============== RENDER GIAO DIỆN CHÍNH ===============
+  // Helper set bullet
+  window.setBullet = function(bullet) {
+    document.getElementById("editBullet").value = bullet;
+  };
+  
   function renderApp() {
     const root = document.getElementById("appRoot");
     root.innerHTML = `
@@ -302,29 +335,18 @@
         <div class="dashboard">
           <div class="sidebar">
             <div id="categorySidebar"></div>
-            
-            <!-- KHU VỰC LIÊN HỆ -->
             <div class="contact-section">
               <div class="contact-title"><i class="fas fa-headset"></i> LIÊN HỆ ADMIN</div>
-              
-              <a href="https://zalo.me/${ZALO_PERSONAL}" target="_blank" class="zalo-btn">
-                <i class="fab fa-zalo"></i> Zalo: ${ZALO_PERSONAL}
-              </a>
-              
-              <a href="${ZALO_GROUP}" target="_blank" class="group-btn">
-                <i class="fas fa-users"></i> Tham gia nhóm Zalo
-              </a>
+              <a href="https://zalo.me/${ZALO_PERSONAL}" target="_blank" class="zalo-btn"><i class="fab fa-zalo"></i> Zalo: ${ZALO_PERSONAL}</a>
+              <a href="${ZALO_GROUP}" target="_blank" class="group-btn"><i class="fas fa-users"></i> Tham gia nhóm Zalo</a>
             </div>
           </div>
           <div class="main" id="mainContentArea"></div>
         </div>
-        <div style="text-align:center; margin-top:32px; color:#aaa; font-size:0.8rem;">
-          <i class="fas fa-shield-alt"></i> Bảo hành tận tâm · Hỗ trợ 24/7
-        </div>
+        <div style="text-align:center; margin-top:32px; color:#aaa; font-size:0.8rem;"><i class="fas fa-shield-alt"></i> Bảo hành tận tâm · Hỗ trợ 24/7</div>
       </div>
     `;
     
-    // render sidebar
     const sidebarDiv = document.getElementById("categorySidebar");
     sidebarDiv.innerHTML = "";
     order.forEach(key => {
@@ -350,146 +372,106 @@
     
     section.items.forEach((it, idx) => {
       if(it.isBank) {
-        itemsHtml += `
-          <div class="price-item bank-card">
-            <div class="bank-inner">
-              <div style="font-weight:800; font-size:1.4rem;">🏦 MB BANK</div>
-              <div style="margin:12px 0 4px; font-weight:600;">CHỦ TÀI KHOẢN</div>
-              <div style="font-size:1.8rem; font-weight:800;">NGUYEN VAN HOA</div>
-              <div style="margin-top:12px; font-weight:600;">SỐ TÀI KHOẢN</div>
-              <div class="account-number">9125112008</div>
-              <div style="background:#ffefe2; padding:12px; border-radius:20px; margin-top:12px;">📌 Nội dung: <strong>Tên + SĐT</strong></div>
-            </div>
-          </div>
-        `;
+        itemsHtml += `<div class="price-item bank-card"><div class="bank-inner"><div style="font-weight:800;">🏦 MB BANK</div><div>CHỦ TK: NGUYEN VAN HOA</div><div class="account-number">9125112008</div><div>📌 Nội dung: <strong>Tên + SĐT</strong></div></div></div>`;
       } else {
         const stockClass = (it.inStock === false) ? "out-of-stock" : "";
         itemsHtml += `
           <div class="price-item ${stockClass}" data-idx="${idx}">
             <div class="item-row">
-              <div class="item-name">
-                <span class="bullet">${it.bullet || "•"}</span>
-                <span>${it.name}</span>
-                ${it.note ? `<span style="font-size:0.75rem; opacity:0.7;">${it.note}</span>` : ''}
-              </div>
+              <div class="item-name"><span class="bullet">${it.bullet || "✨"}</span><span>${it.name}</span>${it.note ? `<span style="font-size:0.75rem; opacity:0.7;">${it.note}</span>` : ''}</div>
               <div class="item-price">${it.price || ""}</div>
             </div>
             ${it.desc ? `<div class="desc-text">${it.desc}</div>` : ''}
             ${isAdmin ? `
               <div class="admin-controls">
-                <div class="stock-toggle" data-action="toggle" data-idx="${idx}">
-                  <i class="fas ${it.inStock !== false ? 'fa-toggle-on' : 'fa-toggle-off'}" style="color:${it.inStock !== false ? '#2ecc71' : '#e67e22'}"></i>
-                  ${it.inStock !== false ? 'Còn hàng' : 'Tạm hết'}
-                </div>
+                <div class="stock-toggle" data-action="toggle" data-idx="${idx}"><i class="fas ${it.inStock !== false ? 'fa-toggle-on' : 'fa-toggle-off'}"></i> ${it.inStock !== false ? 'Còn hàng' : 'Tạm hết'}</div>
                 <button class="edit-btn" data-action="edit" data-idx="${idx}"><i class="fas fa-edit"></i> Sửa</button>
                 <button class="delete-btn" data-action="delete" data-idx="${idx}"><i class="fas fa-trash-alt"></i> Xóa</button>
               </div>
-            ` : (it.inStock === false ? `<div style="margin-top:8px; color:#ff8888; font-size:0.8rem;"><i class="fas fa-ban"></i> Tạm thời hết hàng</div>` : '')}
+            ` : (it.inStock === false ? `<div style="margin-top:8px; color:#ff8888;"><i class="fas fa-ban"></i> Tạm thời hết hàng</div>` : '')}
           </div>
         `;
       }
     });
     
-    if(isAdmin) {
-      itemsHtml += `<div class="add-product-btn" id="adminAddBtn"><i class="fas fa-plus-circle"></i> + Thêm sản phẩm mới</div>`;
-    }
+    if(isAdmin) itemsHtml += `<div class="add-product-btn" id="adminAddBtn"><i class="fas fa-plus-circle"></i> + Thêm sản phẩm mới</div>`;
     
-    mainDiv.innerHTML = `
-      <div class="section-card">
-        <div class="section-header">
-          <div class="header-left">
-            <div class="icon"><i class="fas ${section.icon}"></i></div>
-            <h2>${section.title}</h2>
-          </div>
-        </div>
-        <div class="items-grid">${itemsHtml}</div>
-      </div>
-    `;
+    mainDiv.innerHTML = `<div class="section-card"><div class="section-header"><div class="header-left"><div class="icon"><i class="fas ${section.icon}"></i></div><h2>${section.title}</h2></div></div><div class="items-grid">${itemsHtml}</div></div>`;
     
     if(isAdmin) {
-      document.querySelectorAll(".stock-toggle").forEach(el => {
-        el.addEventListener("click", () => { const idx = parseInt(el.dataset.idx); if(!isNaN(idx)) toggleStock(catKey, idx); });
-      });
-      document.querySelectorAll(".edit-btn").forEach(btn => {
-        btn.addEventListener("click", () => { const idx = parseInt(btn.dataset.idx); if(!isNaN(idx)) openEditModal(catKey, idx); });
-      });
-      document.querySelectorAll(".delete-btn").forEach(btn => {
-        btn.addEventListener("click", () => { if(confirm("Xóa sản phẩm này?")) { const idx = parseInt(btn.dataset.idx); if(!isNaN(idx)) deleteProduct(catKey, idx); } });
-      });
+      document.querySelectorAll(".stock-toggle").forEach(el => el.addEventListener("click", () => toggleStock(catKey, parseInt(el.dataset.idx))));
+      document.querySelectorAll(".edit-btn").forEach(btn => btn.addEventListener("click", () => openEditModal(catKey, parseInt(btn.dataset.idx))));
+      document.querySelectorAll(".delete-btn").forEach(btn => btn.addEventListener("click", () => { if(confirm("Xóa?")) deleteProduct(catKey, parseInt(btn.dataset.idx)); }));
       const addBtn = document.getElementById("adminAddBtn");
-      if(addBtn) addBtn.onclick = () => openAddProductModal(catKey);
+      if(addBtn) addBtn.onclick = () => openAddModal(catKey);
     }
   }
   
   function toggleStock(catKey, idx) {
     const item = appData[catKey].items[idx];
-    if(item && !item.isBank) { item.inStock = item.inStock === false ? true : false; saveData(appData); renderMainContent(currentCategory); }
+    if(item && !item.isBank) { item.inStock = !item.inStock; saveData(appData); renderMainContent(currentCategory); }
   }
   function deleteProduct(catKey, idx) { appData[catKey].items.splice(idx,1); saveData(appData); renderMainContent(currentCategory); }
   
   function openEditModal(catKey, idx) {
+    editContext = { categoryKey: catKey, itemIndex: idx };
     const item = appData[catKey].items[idx];
-    const newName = prompt("✏️ Sửa tên sản phẩm:", item.name);
-    if(newName && newName.trim()) item.name = newName.trim();
-    const newPrice = prompt("💰 Sửa giá:", item.price);
-    if(newPrice !== null) item.price = newPrice;
-    const newDesc = prompt("📝 Mô tả (nếu có):", item.desc || "");
-    if(newDesc !== null) item.desc = newDesc;
-    const newNote = prompt("📌 Ghi chú nhỏ:", item.note || "");
-    if(newNote !== null) item.note = newNote;
+    document.getElementById("editBullet").value = item.bullet || "✨";
+    document.getElementById("editName").value = item.name;
+    document.getElementById("editDesc").value = item.desc || "";
+    document.getElementById("editPrice").value = item.price;
+    document.getElementById("editNote").value = item.note || "";
+    document.getElementById("editModal").classList.add("active");
+  }
+  
+  function openAddModal(catKey) {
+    editContext = { categoryKey: catKey, itemIndex: null };
+    document.getElementById("editBullet").value = "✨";
+    document.getElementById("editName").value = "";
+    document.getElementById("editDesc").value = "";
+    document.getElementById("editPrice").value = "";
+    document.getElementById("editNote").value = "";
+    document.getElementById("editModal").classList.add("active");
+  }
+  
+  document.getElementById("saveEditBtn").onclick = () => {
+    const bullet = document.getElementById("editBullet").value.trim() || "✨";
+    const name = document.getElementById("editName").value.trim();
+    if(!name) { alert("Vui lòng nhập tên sản phẩm"); return; }
+    const desc = document.getElementById("editDesc").value;
+    const price = document.getElementById("editPrice").value;
+    const note = document.getElementById("editNote").value;
+    
+    if(editContext.itemIndex !== null) {
+      const item = appData[editContext.categoryKey].items[editContext.itemIndex];
+      item.bullet = bullet;
+      item.name = name;
+      if(desc) item.desc = desc; else delete item.desc;
+      item.price = price;
+      if(note) item.note = note; else delete item.note;
+    } else {
+      appData[editContext.categoryKey].items.push({ bullet, name, desc: desc || undefined, price, note: note || undefined, inStock: true });
+    }
     saveData(appData);
+    document.getElementById("editModal").classList.remove("active");
     renderMainContent(currentCategory);
-  }
+  };
+  document.getElementById("cancelEditBtn").onclick = () => document.getElementById("editModal").classList.remove("active");
   
-  function openAddProductModal(catKey) {
-    const name = prompt("➕ Tên sản phẩm mới:");
-    if(!name) return;
-    const price = prompt("💰 Giá:");
-    const desc = prompt("📝 Mô tả (không bắt buộc):");
-    const newItem = { bullet: "✨", name: name, price: price || "", inStock: true };
-    if(desc) newItem.desc = desc;
-    appData[catKey].items.push(newItem);
-    saveData(appData);
-    renderMainContent(currentCategory);
-  }
-  
-  function logoutAdmin() {
-    isAdmin = false;
-    localStorage.removeItem("tainguyenmmo_admin");
-    renderApp();
-  }
-  
-  // Xử lý login
+  // Login logic
   const floatBtn = document.getElementById("adminFloatBtn");
   const loginModal = document.getElementById("loginModal");
-  
-  floatBtn.addEventListener("click", () => {
-    if(isAdmin) {
-      if(confirm("Đăng xuất khỏi chế độ admin?")) logoutAdmin();
-    } else {
-      loginModal.classList.add("active");
-      document.getElementById("adminPasswordInput").focus();
-    }
-  });
-  
-  document.getElementById("submitLoginBtn").addEventListener("click", () => {
+  floatBtn.onclick = () => {
+    if(isAdmin) { if(confirm("Đăng xuất?")) { isAdmin=false; localStorage.removeItem("tainguyenmmo_admin"); renderApp(); } }
+    else loginModal.classList.add("active");
+  };
+  document.getElementById("submitLoginBtn").onclick = () => {
     const pass = document.getElementById("adminPasswordInput").value;
-    if(pass === ADMIN_PASSWORD) {
-      isAdmin = true;
-      localStorage.setItem("tainguyenmmo_admin", "true");
-      loginModal.classList.remove("active");
-      document.getElementById("adminPasswordInput").value = "";
-      renderApp();
-    } else {
-      alert("❌ Sai mật khẩu!");
-    }
-  });
+    if(pass === ADMIN_PASSWORD) { isAdmin=true; localStorage.setItem("tainguyenmmo_admin","true"); loginModal.classList.remove("active"); renderApp(); }
+    else alert("Sai mật khẩu!");
+  };
+  loginModal.onclick = (e) => { if(e.target === loginModal) loginModal.classList.remove("active"); };
   
-  loginModal.addEventListener("click", (e) => {
-    if(e.target === loginModal) loginModal.classList.remove("active");
-  });
-  
-  // Khởi chạy
   renderApp();
 </script>
 </body>
