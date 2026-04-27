@@ -134,12 +134,65 @@
     .login-box button { background: #FFB347; border: none; padding: 12px 28px; border-radius: 40px; font-weight: bold; cursor: pointer; font-size: 1rem; }
     .admin-badge { background: #ff4757; padding: 4px 12px; border-radius: 40px; font-size: 0.7rem; margin-left: 12px; vertical-align: middle; }
 
+    /* Contact section */
+    .contact-section {
+      margin-top: 28px;
+      border-top: 1px solid rgba(255,200,100,0.3);
+      padding-top: 20px;
+    }
+    .contact-title {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #FFB347;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+    .zalo-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: #0066ff20;
+      border: 1px solid #0066ff;
+      border-radius: 60px;
+      padding: 12px 16px;
+      margin-bottom: 12px;
+      text-decoration: none;
+      color: #ffdd99;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+    .zalo-btn:hover {
+      background: #0066ff40;
+      transform: scale(1.02);
+    }
+    .zalo-btn i { font-size: 1.5rem; color: #0066ff; }
+    .group-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: #1f6b3e20;
+      border: 1px solid #2d9b5e;
+      border-radius: 60px;
+      padding: 12px 16px;
+      text-decoration: none;
+      color: #ffdd99;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+    .group-btn:hover {
+      background: #2a9d8f30;
+      transform: scale(1.02);
+    }
+    .group-btn i { font-size: 1.5rem; color: #2d9b5e; }
+
     @media (max-width: 900px) {
       .sidebar { position: static; }
       .item-price { white-space: normal; font-size: 1.3rem; }
       .item-row { flex-direction: column; align-items: flex-start; }
     }
-    .zalo-group { display: inline-flex; align-items: center; gap: 10px; background: #1f6b3e20; padding: 8px 18px; border-radius: 40px; margin-top: 12px; text-decoration: none; color: #ffdd99; font-weight: 600; }
   </style>
 </head>
 <body>
@@ -162,7 +215,9 @@
 
 <script>
   // ======================= CẤU HÌNH =======================
-  const ADMIN_PASSWORD = "admin123";  // 🔐 ĐỔI MẬT KHẨU CỦA BẠN Ở ĐÂY
+  const ADMIN_PASSWORD = "admin123";              // 🔐 ĐỔI MẬT KHẨU CỦA BẠN Ở ĐÂY
+  const ZALO_PERSONAL = "0349936321";             // 📞 SỐ ZALO CÁ NHÂN
+  const ZALO_GROUP = "https://zalo.me/g/sbdbhc672"; // 👥 LINK NHÓM ZALO
   
   let isAdmin = false;
   let currentCategory = "claude";
@@ -245,10 +300,27 @@
           <div class="brand"><i class="fas fa-crown"></i> PREMIUM SERVICE <i class="fas fa-bolt"></i></div>
         </div>
         <div class="dashboard">
-          <div class="sidebar"><div id="categorySidebar"></div><div style="margin-top:32px;text-align:center;"><a href="https://zalo.me/g/sbdbhc672" target="_blank" class="zalo-group"><i class="fab fa-zalo"></i> Nhóm Zalo Cộng Đồng</a></div></div>
+          <div class="sidebar">
+            <div id="categorySidebar"></div>
+            
+            <!-- KHU VỰC LIÊN HỆ -->
+            <div class="contact-section">
+              <div class="contact-title"><i class="fas fa-headset"></i> LIÊN HỆ ADMIN</div>
+              
+              <a href="https://zalo.me/${ZALO_PERSONAL}" target="_blank" class="zalo-btn">
+                <i class="fab fa-zalo"></i> Zalo: ${ZALO_PERSONAL}
+              </a>
+              
+              <a href="${ZALO_GROUP}" target="_blank" class="group-btn">
+                <i class="fas fa-users"></i> Tham gia nhóm Zalo
+              </a>
+            </div>
+          </div>
           <div class="main" id="mainContentArea"></div>
         </div>
-        <div style="text-align:center; margin-top:32px; color:#aaa; font-size:0.8rem;"><i class="fas fa-shield-alt"></i> Bảo hành tận tâm · Hỗ trợ 24/7</div>
+        <div style="text-align:center; margin-top:32px; color:#aaa; font-size:0.8rem;">
+          <i class="fas fa-shield-alt"></i> Bảo hành tận tâm · Hỗ trợ 24/7
+        </div>
       </div>
     `;
     
@@ -335,22 +407,20 @@
     `;
     
     if(isAdmin) {
-      // attach admin events
       document.querySelectorAll(".stock-toggle").forEach(el => {
-        el.addEventListener("click", (e) => { const idx = parseInt(el.dataset.idx); if(!isNaN(idx)) toggleStock(catKey, idx); });
+        el.addEventListener("click", () => { const idx = parseInt(el.dataset.idx); if(!isNaN(idx)) toggleStock(catKey, idx); });
       });
       document.querySelectorAll(".edit-btn").forEach(btn => {
-        btn.addEventListener("click", (e) => { const idx = parseInt(btn.dataset.idx); if(!isNaN(idx)) openEditModal(catKey, idx); });
+        btn.addEventListener("click", () => { const idx = parseInt(btn.dataset.idx); if(!isNaN(idx)) openEditModal(catKey, idx); });
       });
       document.querySelectorAll(".delete-btn").forEach(btn => {
-        btn.addEventListener("click", (e) => { if(confirm("Xóa sản phẩm này?")) { const idx = parseInt(btn.dataset.idx); if(!isNaN(idx)) deleteProduct(catKey, idx); } });
+        btn.addEventListener("click", () => { if(confirm("Xóa sản phẩm này?")) { const idx = parseInt(btn.dataset.idx); if(!isNaN(idx)) deleteProduct(catKey, idx); } });
       });
       const addBtn = document.getElementById("adminAddBtn");
       if(addBtn) addBtn.onclick = () => openAddProductModal(catKey);
     }
   }
   
-  // Admin functions
   function toggleStock(catKey, idx) {
     const item = appData[catKey].items[idx];
     if(item && !item.isBank) { item.inStock = item.inStock === false ? true : false; saveData(appData); renderMainContent(currentCategory); }
