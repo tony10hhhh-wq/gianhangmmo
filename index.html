@@ -2,623 +2,412 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bảng giá tainguyenmmo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+  <title>tainguyenmmo · Bảng giá</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    :root {
-      --bg1: #87c7ff;
-      --bg2: #d8efff;
-      --card: rgba(255,255,255,.88);
-      --text: #20233a;
-      --muted: #5d6282;
-      --accent: #ff6b35;
-      --shadow: 0 18px 40px rgba(56, 72, 140, .18);
-      --radius: 26px;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
     body {
-      margin: 0;
-      font-family: 'Be Vietnam Pro', system-ui, sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,.8), transparent 20%),
-        radial-gradient(circle at 80% 10%, rgba(255,255,255,.7), transparent 18%),
-        radial-gradient(circle at 75% 40%, rgba(255,255,255,.55), transparent 16%),
-        linear-gradient(180deg, var(--bg1), var(--bg2));
+      background: radial-gradient(ellipse at 20% 30%, #0c0f1e, #03050b);
+      font-family: 'Inter', sans-serif;
+      color: #eceff8;
+      padding: 32px 24px;
       min-height: 100vh;
     }
 
-    .clouds {
+    .glow-bg {
       position: fixed;
       inset: 0;
       pointer-events: none;
-      overflow: hidden;
-      opacity: .55;
+      z-index: 0;
     }
-    .cloud {
+    .glow-bg::before, .glow-bg::after {
+      content: "";
       position: absolute;
-      background: rgba(255,255,255,.78);
-      filter: blur(1px);
-      border-radius: 999px;
-      box-shadow:
-        40px 10px 0 10px rgba(255,255,255,.74),
-        -35px 8px 0 8px rgba(255,255,255,.7),
-        5px -12px 0 12px rgba(255,255,255,.78);
+      width: 60%;
+      height: 60%;
+      border-radius: 50%;
+      filter: blur(140px);
+      opacity: 0.4;
     }
-    .cloud.c1 { width: 120px; height: 42px; top: 90px; left: 6%; }
-    .cloud.c2 { width: 160px; height: 50px; top: 140px; right: 10%; }
-    .cloud.c3 { width: 140px; height: 44px; top: 360px; left: 68%; }
-    .cloud.c4 { width: 180px; height: 54px; top: 760px; left: 12%; }
+    .glow-bg::before { background: #bd7b2c; top: -20%; left: -20%; }
+    .glow-bg::after { background: #1e4b7c; bottom: -20%; right: -20%; }
 
-    .wrap {
-      width: min(1450px, calc(100% - 32px));
-      margin: 0 auto;
-      padding: 34px 0 60px;
-      position: relative;
-      z-index: 1;
-    }
+    .container { max-width: 1600px; margin: 0 auto; position: relative; z-index: 2; }
 
-    .hero {
-      text-align: center;
-      margin-bottom: 28px;
-    }
+    .hero { text-align: center; margin-bottom: 48px; }
     .hero h1 {
-      margin: 0;
-      font-size: clamp(42px, 7vw, 84px);
-      font-weight: 800;
-      letter-spacing: 1px;
-      color: #ffd978;
-      text-shadow:
-        0 3px 0 #8d2d11,
-        0 6px 0 #b73b15,
-        0 10px 28px rgba(120, 40, 10, .38);
-      -webkit-text-stroke: 2px #b03a16;
+      font-size: clamp(44px, 8vw, 88px); font-weight: 800;
+      background: linear-gradient(135deg, #FFE6B0 0%, #FFB347 60%, #FF8C42 100%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      margin-bottom: 12px;
     }
     .brand {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 14px;
-      padding: 14px 34px;
-      border-radius: 999px;
-      background: linear-gradient(180deg, #ff8b5f, #ef5b2a);
-      color: white;
-      font-size: clamp(24px, 3vw, 38px);
-      font-weight: 800;
-      box-shadow: var(--shadow);
+      display: inline-flex; align-items: center; gap: 12px;
+      background: rgba(255,255,255,0.06); backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,180,70,0.4); padding: 12px 32px; border-radius: 80px;
+      font-size: 1.7rem; font-weight: 700; color: #FFD966;
+    }
+    .admin-badge {
+      background: #ff4757; padding: 4px 12px; border-radius: 40px; font-size: 0.8rem;
+      margin-left: 16px; vertical-align: middle;
     }
 
-    .toolbar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      justify-content: center;
-      margin: 28px 0 34px;
+    .dashboard { display: flex; gap: 28px; flex-wrap: wrap; }
+    .sidebar {
+      flex: 1.1; min-width: 270px;
+      background: rgba(12,18,32,0.55); backdrop-filter: blur(14px);
+      border-radius: 44px; border: 1px solid rgba(255,200,100,0.25);
+      padding: 24px 12px; height: fit-content; position: sticky; top: 28px;
     }
-    .chip {
-      border: 0;
-      border-radius: 16px;
-      padding: 14px 22px;
-      font: inherit;
-      font-weight: 700;
-      cursor: pointer;
-      box-shadow: 0 10px 18px rgba(0,0,0,.1);
-      color: #fff;
-      transition: transform .18s ease, filter .18s ease;
+    .main { flex: 3.5; min-width: 280px; }
+
+    .cat-btn {
+      display: flex; align-items: center; gap: 14px; background: transparent;
+      border: none; font-family: 'Inter'; font-size: 1rem; font-weight: 600;
+      padding: 14px 20px; border-radius: 24px; color: #cdd9ff; cursor: pointer;
+      width: 100%; text-align: left; transition: 0.2s;
     }
-    .chip:hover, .chip.active { transform: translateY(-2px); filter: saturate(1.08); }
+    .cat-btn i { width: 28px; font-size: 1.3rem; }
+    .cat-btn:hover { background: rgba(255,190,80,0.12); color: #FFDE9C; transform: translateX(4px); }
+    .cat-btn.active { background: linear-gradient(95deg, #e09d3e20, #ffb34720); border-left: 3px solid #FFB347; color: #FFE2A4; }
 
-    .all { background: linear-gradient(180deg, #ffe88f, #ffcd42); color: #513300; }
-    .chatgpt { background: linear-gradient(180deg, #f28a53, #c25c22); }
-    .claude { background: linear-gradient(180deg, #a66cff, #6a3dd8); }
-    .gemini { background: linear-gradient(180deg, #56d0ea, #258fcb); }
-    .canva { background: linear-gradient(180deg, #39cde2, #0e99d7); }
-    .capcut { background: linear-gradient(180deg, #7ac65f, #4e9a38); }
-    .expressvpn { background: linear-gradient(180deg, #ff7b78, #de3b31); }
-    .hma { background: linear-gradient(180deg, #ffcc68, #d98c18); color: #4c2b00; }
-    .grok { background: linear-gradient(180deg, #7c7cff, #4f53db); }
-    .tool { background: linear-gradient(180deg, #c080ff, #8649db); }
-    .kling { background: linear-gradient(180deg, #68d8a7, #249b6c); }
-    .netflix { background: linear-gradient(180deg, #ff5b5b, #c91d1d); }
-    .antigravity { background: linear-gradient(180deg, #7cc8ff, #3368d8); }
-    .youtube { background: linear-gradient(180deg, #ff7c9a, #db2f5c); }
-    .gdrive { background: linear-gradient(180deg, #6db7ff, #2d73e0); }
-    .purchase { background: linear-gradient(180deg, #ffb15c, #e57b21); }
-    .topup { background: linear-gradient(180deg, #ff6b6b, #b72b2b); }
-    .confirm { background: linear-gradient(180deg, #8c7bff, #5a47dc); }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 24px;
-      align-items: start;
+    .section-card {
+      background: rgba(10,14,27,0.65); backdrop-filter: blur(16px);
+      border-radius: 44px; border: 1px solid rgba(255,200,130,0.25);
+      margin-bottom: 32px; overflow: hidden;
     }
-
-    .section {
-      background: var(--card);
-      border: 1px solid rgba(255,255,255,.65);
-      box-shadow: var(--shadow);
-      border-radius: var(--radius);
-      overflow: hidden;
-      backdrop-filter: blur(10px);
-    }
-
     .section-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 18px 22px;
-      color: white;
-      font-weight: 800;
-      font-size: clamp(20px, 2vw, 30px);
-      text-transform: uppercase;
-      letter-spacing: .5px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 22px 28px; background: linear-gradient(135deg, rgba(255,185,70,0.18), rgba(220,110,30,0.08));
+      border-bottom: 1px solid rgba(255,180,70,0.3);
     }
-    .section-header .icon {
-      width: 44px;
-      height: 44px;
-      display: grid;
-      place-items: center;
-      border-radius: 14px;
-      background: rgba(255,255,255,.22);
-      font-size: 22px;
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,.22);
-      flex: 0 0 auto;
-    }
+    .header-left { display: flex; align-items: center; gap: 16px; }
+    .header-left .icon { width: 52px; height: 52px; background: rgba(255,170,70,0.2); border-radius: 30px; display: flex; align-items: center; justify-content: center; font-size: 2rem; }
+    .header-left h2 { font-size: 1.9rem; font-weight: 700; background: linear-gradient(120deg, #fff3cf, #ffcd94); -webkit-background-clip: text; background-clip: text; color: transparent; }
 
-    .head-chatgpt { background: linear-gradient(90deg, #ef9058, #c75b1e); }
-    .head-claude { background: linear-gradient(90deg, #a66cff, #6a3dd8); }
-    .head-gemini { background: linear-gradient(90deg, #4fd5e5, #2090cf); }
-    .head-canva { background: linear-gradient(90deg, #37cce4, #0795d8); }
-    .head-capcut { background: linear-gradient(90deg, #76c75c, #4d9d36); }
-    .head-expressvpn { background: linear-gradient(90deg, #ff7e7c, #dd3f33); }
-    .head-hma { background: linear-gradient(90deg, #ffc95d, #da8c1a); color: #4c2b00; }
-    .head-grok { background: linear-gradient(90deg, #7e7bff, #4f56df); }
-    .head-tool { background: linear-gradient(90deg, #b883ff, #854dd8); }
-    .head-kling { background: linear-gradient(90deg, #62d4a2, #249b6c); }
-    .head-netflix { background: linear-gradient(90deg, #ff6868, #c81d1d); }
-    .head-antigravity { background: linear-gradient(90deg, #79caff, #335fd8); }
-    .head-youtube { background: linear-gradient(90deg, #ff839f, #d92f59); }
-    .head-gdrive { background: linear-gradient(90deg, #71baff, #2d73e0); }
-    .head-purchase { background: linear-gradient(90deg, #ffb15c, #e57b21); }
-    .head-topup { background: linear-gradient(90deg, #ff6b6b, #b72b2b); }
-    .head-confirm { background: linear-gradient(90deg, #8c7bff, #5a47dc); }
+    .items-grid { padding: 20px 24px; display: flex; flex-direction: column; gap: 12px; }
+    .price-item {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,200,120,0.2);
+      border-radius: 28px; padding: 18px 22px; transition: 0.2s;
+    }
+    .price-item.out-of-stock { opacity: 0.65; background: rgba(80,40,40,0.2); border-color: #ff6b6b40; }
+    .price-item.out-of-stock .item-price { text-decoration: line-through; opacity: 0.6; }
+    .item-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; }
+    .item-name { font-weight: 600; font-size: 1.05rem; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; flex: 1; }
+    .item-price { font-weight: 800; font-size: 1.6rem; background: linear-gradient(125deg, #FFD58C, #FFA041); -webkit-background-clip: text; background-clip: text; color: transparent; white-space: nowrap; }
+    .desc-text { margin-top: 12px; font-size: 0.85rem; color: #aab3e6; padding-left: 30px; }
+    
+    /* admin controls */
+    .admin-controls { display: flex; gap: 12px; align-items: center; margin-top: 12px; justify-content: flex-end; border-top: 1px solid rgba(255,200,100,0.2); padding-top: 12px; }
+    .stock-toggle { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; background: #1e243e; padding: 5px 12px; border-radius: 40px; cursor: pointer; }
+    .edit-btn, .delete-btn { background: none; border: none; color: #ffcd94; cursor: pointer; font-size: 0.9rem; padding: 5px 10px; border-radius: 30px; transition: 0.2s; }
+    .edit-btn:hover, .delete-btn:hover { background: #ffb34730; color: #FFB347; }
+    .add-product-btn { background: rgba(255,180,70,0.2); border: 1px dashed #FFB347; color: #FFD966; padding: 12px; border-radius: 28px; text-align: center; cursor: pointer; margin-top: 8px; font-weight: 600; }
+    
+    .bank-card { background: linear-gradient(145deg, #2b2218, #1f1910); border: 1px solid #ffbe6e; }
+    .bank-inner { background: #fef7e8; border-radius: 28px; padding: 24px; color: #2a2418; }
+    .account-number { font-size: 2rem; font-weight: 800; font-family: monospace; background: #eee4d4; display: inline-block; padding: 8px 20px; border-radius: 60px; margin: 12px 0; }
 
-    .content {
-      padding: 18px;
-      display: grid;
-      gap: 16px;
+    .login-panel {
+      max-width: 400px; margin: 100px auto; background: rgba(0,0,0,0.7); padding: 32px; border-radius: 40px;
+      text-align: center; border: 1px solid #FFB347;
     }
+    .login-panel input { width: 100%; padding: 14px; border-radius: 30px; border: none; margin: 12px 0; background: #1e1e2e; color: white; }
+    .login-panel button { background: #FFB347; border: none; padding: 12px 24px; border-radius: 40px; font-weight: bold; cursor: pointer; }
 
-    .item {
-      background: rgba(255,255,255,.78);
-      border: 1px solid rgba(216, 222, 255, .8);
-      border-radius: 22px;
-      padding: 18px 20px;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.8);
+    @media (max-width: 900px) {
+      .sidebar { position: static; }
+      .item-price { white-space: normal; font-size: 1.3rem; }
+      .item-row { flex-direction: column; align-items: flex-start; }
     }
-
-    .topline {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 10px;
-    }
-    .name {
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-      font-size: clamp(18px, 1.35vw, 23px);
-      line-height: 1.45;
-      font-weight: 700;
-      flex: 1;
-    }
-    .bullet { font-size: 18px; margin-top: 4px; }
-    .price {
-      flex: 0 0 auto;
-      color: var(--accent);
-      font-size: clamp(22px, 1.7vw, 34px);
-      line-height: 1.1;
-      font-weight: 800;
-      white-space: nowrap;
-      text-align: right;
-    }
-    .desc {
-      margin: 0;
-      padding-left: 31px;
-      color: var(--muted);
-      font-size: clamp(15px, 1.05vw, 19px);
-      line-height: 1.7;
-    }
-
-    .footer {
-      margin-top: 30px;
-      text-align: center;
-      color: #415178;
-      font-size: 15px;
-      font-weight: 600;
-      opacity: .9;
-    }
-
-    .bank-box {
-      background: linear-gradient(180deg, #c92c2c, #8f1d1d);
-      color: white;
-      border: 0;
-    }
-    .bank-inner {
-      background: rgba(255,255,255,.96);
-      color:#20233a;
-      border-radius: 22px;
-      padding: 18px;
-    }
-
-    @media (max-width: 1100px) {
-      .grid { grid-template-columns: 1fr; }
-      .price { white-space: normal; }
-    }
-
-    @media (max-width: 720px) {
-      .wrap { width: min(100% - 16px, 100%); padding-top: 20px; }
-      .toolbar { justify-content: flex-start; }
-      .chip { padding: 12px 16px; border-radius: 14px; }
-      .section-header { padding: 16px 18px; }
-      .content { padding: 14px; }
-      .item { padding: 16px; border-radius: 18px; }
-      .topline { flex-direction: column; }
-      .price { text-align: left; }
-      .name { font-size: 17px; }
-      .desc { padding-left: 28px; font-size: 14px; }
-    }
+    .zalo-group { display: inline-flex; align-items: center; gap: 10px; background: #1f6b3e20; padding: 8px 18px; border-radius: 40px; margin-top: 12px; text-decoration: none; color: #ffdd99; font-weight: 600; }
   </style>
 </head>
 <body>
-  <div class="clouds">
-    <div class="cloud c1"></div>
-    <div class="cloud c2"></div>
-    <div class="cloud c3"></div>
-    <div class="cloud c4"></div>
-  </div>
+<div class="glow-bg"></div>
+<div id="appRoot"></div>
 
-  <main class="wrap">
-    <header class="hero">
-      <h1>BẢNG GIÁ</h1>
-      <div class="brand">tainguyenmmo</div>
-    </header>
-
-    <nav class="toolbar" aria-label="Danh mục nhanh" id="toolbar"></nav>
-
-    <section class="grid" id="sections"></section>
-
-    <div class="footer">Website bảng giá + mua hàng + nạp tiền hoàn chỉnh.</div>
-  </main>
-
-  <script>
-  const sectionMeta = {
-    all: { label: "Tất cả", chipClass: "all" },
-    claude: { title: "THƯ MỤC CLAUDE VIP", icon: "🧠", headClass: "head-claude", chipClass: "claude", chipLabel: "Claude VIP" },
-    chatgpt: { title: "THƯ MỤC CHAT GPT", icon: "🤖", headClass: "head-chatgpt", chipClass: "chatgpt", chipLabel: "ChatGPT" },
-    gemini: { title: "THƯ MỤC GEMINI", icon: "💎", headClass: "head-gemini", chipClass: "gemini", chipLabel: "Gemini" },
-    canva: { title: "THƯ MỤC CANVA PRO/EDU", icon: "🎨", headClass: "head-canva", chipClass: "canva", chipLabel: "Canva" },
-    capcut: { title: "THƯ MỤC CAPCUT", icon: "🎬", headClass: "head-capcut", chipClass: "capcut", chipLabel: "CapCut" },
-    expressvpn: { title: "THƯ MỤC EXPRESSVPN", icon: "🛡️", headClass: "head-expressvpn", chipClass: "expressvpn", chipLabel: "ExpressVPN" },
-    hma: { title: "THƯ MỤC HMA VPN", icon: "🔐", headClass: "head-hma", chipClass: "hma", chipLabel: "HMA VPN" },
-    grok: { title: "THƯ MỤC SUPER GROK", icon: "🚀", headClass: "head-grok", chipClass: "grok", chipLabel: "Super Grok" },
-    tool: { title: "THƯ MỤC TOOL", icon: "🧰", headClass: "head-tool", chipClass: "tool", chipLabel: "Tool" },
-    kling: { title: "THƯ MỤC KLING AI", icon: "🎞️", headClass: "head-kling", chipClass: "kling", chipLabel: "Kling AI" },
-    netflix: { title: "THƯ MỤC NETFLIX PREMIUM", icon: "📺", headClass: "head-netflix", chipClass: "netflix", chipLabel: "Netflix" },
-    antigravity: { title: "THƯ MỤC ANTIGRAVITY PRO", icon: "🪐", headClass: "head-antigravity", chipClass: "antigravity", chipLabel: "Antigravity" },
-    youtube: { title: "THƯ MỤC YOUTUBE PREMIUM", icon: "▶️", headClass: "head-youtube", chipClass: "youtube", chipLabel: "YouTube" },
-    gdrive: { title: "THƯ MỤC GOOGLE DRIVE", icon: "☁️", headClass: "head-gdrive", chipClass: "gdrive", chipLabel: "Google Drive" },
-    purchase: { title: "MỤC MUA HÀNG", icon: "🛒", headClass: "head-purchase", chipClass: "purchase", chipLabel: "Mua hàng" },
-    topup: { title: "MỤC NẠP TIỀN", icon: "💰", headClass: "head-topup", chipClass: "topup", chipLabel: "Nạp tiền" },
-    confirm: { title: "XÁC NHẬN ĐÃ NẠP", icon: "✅", headClass: "head-confirm", chipClass: "confirm", chipLabel: "Xác nhận" }
+<script>
+  // ======================= CẤU HÌNH ADMIN =======================
+  const ADMIN_PASSWORD = "admin123";  // 🔐 ĐỔI MẬT KHẨU NÀY THÀNH CỦA BẠN
+  let isAdmin = false;
+  
+  // ======================= DỮ LIỆU GỐC =======================
+  const rawSections = {
+    claude: { title: "🧠 CLAUDE VIP", icon: "fa-brain", items: [
+      { bullet: "🧠", name: "Claude 5x Hạn 1 Tháng", note: "[ Nâng chính chủ qua token ] - VIP", price: "2.500.000đ", inStock: true },
+      { bullet: "🧠", name: "Claude 20x Hạn 1 Tháng", note: "[ Nâng chính chủ qua token ] - VIP", price: "4.300.000đ", inStock: true }
+    ] },
+    chatgpt: { title: "🤖 CHATGPT PLUS/PRO", icon: "fa-robot", items: [
+      { bullet: "🔥", name: "Team ChatGPT Bussiness", note: "(Tut mới, Team trust)", price: "80.000đ", inStock: true },
+      { bullet: "✨", name: "ChatGPT Plus 1 Tháng", note: "(Chính chủ, NO Team)", price: "190.000đ", inStock: true },
+      { bullet: "📱", name: "ChatGPT Go 1 Năm", note: "Acc cấp, pay điện thoại", price: "190.000đ", inStock: true },
+      { bullet: "👑", name: "CHÍNH CHỦ ChatGPT Plus 12 Tháng", price: "1.200.000đ", inStock: true },
+      { bullet: "🚀", name: "CHÍNH CHỦ ChatGPT Pro 1 Tháng", price: "2.700.000đ", inStock: true }
+    ] },
+    gemini: { title: "💎 GEMINI + VEO3", icon: "fa-gem", items: [
+      { bullet: "💠", name: "GEMINI PRO + VEO3 1K CREDIT 4 THÁNG", price: "25.500đ", inStock: true },
+      { bullet: "💠", name: "VEO 3 ULTRA 25K CREDIT + GEMINI ULTRA", price: "40.300đ", inStock: true },
+      { bullet: "💠", name: "GEMINI PRO + VEO3 1K CREDIT HẠN 1 NĂM", price: "60.500đ", inStock: true },
+      { bullet: "💠", name: "GEMINI ULTRA + 30TB DRIVER", price: "537.600đ", inStock: true }
+    ] },
+    canva: { title: "🎨 CANVA PRO/EDU", icon: "fa-palette", items: [
+      { bullet: "🎨", name: "CANVA EDU 1 THÁNG", price: "6.700đ", inStock: true },
+      { bullet: "🎨", name: "CANVA PRO NÂNG CHÍNH CHỦ 1 THÁNG", price: "6.700đ", inStock: true },
+      { bullet: "🎨", name: "CANVA PRO VĨNH VIỄN", price: "200.300đ", inStock: true }
+    ] },
+    capcut: { title: "🎬 CAPCUT PRO", icon: "fa-video", items: [
+      { bullet: "🎬", name: "Capcut Pro 35 ngày", desc: "Hỗ trợ PC, iOS, Android", price: "80.000đ", inStock: true },
+      { bullet: "🎬", name: "Capcut Pro 6 tháng", price: "220.000đ", inStock: true }
+    ] },
+    expressvpn: { title: "🛡️ EXPRESSVPN", icon: "fa-shield-haltered", items: [
+      { bullet: "🛡️", name: "EXPRESS VPN 27-32 ngày", price: "8.700đ", inStock: true },
+      { bullet: "🛡️", name: "EXPRESS VPN 3 tháng", price: "60.500đ", inStock: true }
+    ] },
+    hma: { title: "🔐 HMA VPN", icon: "fa-lock", items: [
+      { bullet: "🔐", name: "KEY HMA 15-27 ngày", price: "6.100đ", inStock: true },
+      { bullet: "🔐", name: "HMA 5 thiết bị 12 tháng", price: "504.000đ", inStock: true }
+    ] },
+    grok: { title: "🚀 SUPER GROK", icon: "fa-rocket", items: [{ bullet: "🚀", name: "SUPER GROK 1 THÁNG", price: "250.500đ", inStock: true }] },
+    tool: { title: "🧰 TOOL", icon: "fa-microchip", items: [
+      { bullet: "🧰", name: "MaxCare - Nuôi Acc FB", price: "349.000đ", inStock: true },
+      { bullet: "🧰", name: "MaxTikTok Chrome", price: "349.000đ", inStock: true }
+    ] },
+    kling: { title: "🎞️ KLING AI", icon: "fa-film", items: [{ bullet: "🎞️", name: "KLING STANDARD 1k CREDIT", price: "147.800đ", inStock: true }] },
+    netflix: { title: "📺 NETFLIX", icon: "fa-tv", items: [
+      { bullet: "📺", name: "NETFLIX DÙNG CHUNG 1 THÁNG", price: "39.000đ", inStock: true },
+      { bullet: "📺", name: "NETFLIX SLOT RIÊNG 12 THÁNG", price: "1.155.800đ", inStock: true }
+    ] },
+    antigravity: { title: "🪐 ANTIGRAVITY", icon: "fa-meteor", items: [{ bullet: "🪐", name: "ANTIGRAVITY ULTRA", price: "60.500đ", inStock: true }] },
+    youtube: { title: "▶️ YOUTUBE", icon: "fa-youtube", items: [
+      { bullet: "▶️", name: "YOUTUBE PREMIUM 1 THÁNG", price: "16.100đ", inStock: true },
+      { bullet: "▶️", name: "YOUTUBE PREMIUM 12 THÁNG", price: "168.000đ", inStock: true }
+    ] },
+    gdrive: { title: "☁️ GOOGLE DRIVE", icon: "fa-cloud", items: [{ bullet: "☁️", name: "GOOGLE DRIVE 2TB 1 NĂM", price: "161.300đ", inStock: true }] },
+    purchase: { title: "🛒 HƯỚNG DẪN MUA", icon: "fa-cart-shopping", items: [{ bullet: "🛍️", name: "Chọn sản phẩm cần mua", desc: "Liên hệ admin để mua hàng, sau đó nạp tiền bên dưới.", price: "", inStock: true }] },
+    topup: { title: "💰 NẠP TIỀN", icon: "fa-money-bill-wave", items: [{ isBank: true }] },
+    confirm: { title: "✅ XÁC NHẬN", icon: "fa-check-circle", items: [{ bullet: "📨", name: "Gửi xác nhận thanh toán", desc: "Gửi ảnh bill + nội dung CK cho admin", price: "", inStock: true }] }
   };
-
-  const data = {
-    claude: [
-      {
-        bullet: "🧠",
-        name: "Claude 5x Hạn 1 Tháng",
-        note: "[ Nâng chính chủ qua token, Không cần cấp mail + pass, Pay điện thoại sạch, Bảo hành Full ] - HÀNG ĐỘC QUYỀN VIP",
-        price: "2.500.000đ"
-      },
-      {
-        bullet: "🧠",
-        name: "Claude 20x Hạn 1 Tháng",
-        note: "[ Nâng chính chủ qua token, Không cần cấp mail + pass, Pay điện thoại sạch, Bảo hành Full ] - HÀNG ĐỘC QUYỀN VIP",
-        price: "4.300.000đ"
-      }
-    ],
-
-    chatgpt: [
-      { bullet: "🔥", name: "Team ChatGPT Bussiness", note: "(Tut mới, Team trust)", price: "80.000đ" },
-      { bullet: "✨", name: "ChatGPT Plus 1 Tháng", note: "(Chính chủ, NO Team)", price: "190.000đ" },
-      { bullet: "📱", name: "ChatGPT Go 1 Năm", note: "[Acc cấp, pay điện thoại ổn định, hàng hotmail]", price: "190.000đ" },
-      { bullet: "📱", name: "CHÍNH CHỦ ChatGPT Go 1 Năm", note: "(Pay điện thoại ổn định, không cần cấp mail + pass)", price: "190.000đ" },
-      { bullet: "👑", name: "CHÍNH CHỦ ChatGPT Plus 12 Tháng", note: "(Pay điện thoại ổn định, không cần cấp mail + pass)", price: "1.200.000đ" },
-      { bullet: "🚀", name: "CHÍNH CHỦ ChatGPT Pro 1 Tháng", note: "(Pay điện thoại ổn định, không cần cấp mail + pass)", price: "2.700.000đ" }
-    ],
-
-    gemini: [
-      { bullet: "💠", name: "LINK NHẬN GEMINI PRO, GG 2TB, NOTEBOOK LM PRO, VEO3 1K CREDIT HẠN 4 THÁNG - CHÍNH CHỦ [KHÔNG ADD FAMILY] - VER 1 - TUT MỚI SIÊU TRÂU", price: "25.500đ" },
-      { bullet: "💠", name: "LINK NHẬN GEMINI PRO, GG 2TB, NOTEBOOK LM PRO, VEO3 1K CREDIT HẠN 4 THÁNG - CHÍNH CHỦ [KHÔNG ADD FAMILY] - VER 38 - TUT MỚI SIÊU TRÂU", price: "25.500đ" },
-      { bullet: "💠", name: "VEO 3 ULTRA 25.000 CREDIT + GEMINI ULTRA - NGON - BẢO HÀNH 24H - TÀI KHOẢN SẴN TRONG ĐƠN GIAO NGAY - ƯU TIÊN MUA - VER 1 - VIP", price: "40.300đ" },
-      { bullet: "💠", name: "VEO3 PRO 25K CREDIT CHỈ BẢO HÀNH LOGIN KH BẢO HÀNH TỤT CREDIT - VER 27", price: "47.000đ" },
-      { bullet: "💠", name: "GEMINI PRO, GG 2TB, NOTEBOOK LM PRO, VEO3 1K CREDIT HẠN 1 NĂM - CHÍNH CHỦ - VER 1 VIP", price: "60.500đ" },
-      { bullet: "💠", name: "GEMINI PRO, GG 2TB, NOTEBOOK LM PRO, VEO3 1K CREDIT HẠN 1 NĂM - CHÍNH CHỦ - VER 38 - TUT MỚI SIÊU TRÂU", price: "60.500đ" },
-      { bullet: "💠", name: "VEO 3 ULTRA - BẢO HÀNH 24H - VER 30", price: "67.200đ" },
-      { bullet: "💠", name: "TÀI KHOẢN GG PIXEL 2TB GEMINI PRO 1 NĂM KHÔNG BẢO HÀNH BỊ QUÉT MẤT PRO VER V27", price: "80.600đ" },
-      { bullet: "💠", name: "GEMINI PRO, GG 2TB, NOTEBOOK LM PRO, VEO3 1K CREDIT HẠN 1 NĂM - CẤP MAIL - VER 38", price: "94.100đ" },
-      { bullet: "💠", name: "GEMINI PRO VÀ VEO 3 1 NĂM (KÈM GOOGLE DRIVE 2TB) ACC CẤP - MAIL CỔ - TRÂU - VER 1 - VIP", price: "94.100đ" },
-      { bullet: "💠", name: "VEO 3 ULTRA 25.000 CREDIT + GEMINI ULTRA - NGON - BẢO HÀNH 3 NGÀY - VER 1 - VIP", price: "107.500đ" },
-      { bullet: "💠", name: "GEMINI PRO - PIXEL 1 NĂM - KHÔNG BẢO HÀNH - VER 30", price: "114.200đ" },
-      { bullet: "💠", name: "VEO 3 VÀ GEMINI PRO 1 NĂM (KÈM GOOGLE DRIVE 2TB) NÂNG CHÍNH CHỦ - PIXEL - NGON - VER 1 - VIP", price: "121.000đ" },
-      { bullet: "💠", name: "GEMINI PRO VÀ VEO 3 1 NĂM (KÈM GOOGLE DRIVE 2TB) CHÍNH CHỦ - HÀNG PIXEL - NGON - VER 1 - VIP", price: "121.000đ" },
-      { bullet: "💠", name: "VEO 3 VÀ GEMINI PRO 1 NĂM (KÈM GOOGLE DRIVE 2TB) CẤP ACC - VER 1 - VIP", price: "121.000đ" },
-      { bullet: "💠", name: "TÀI KHOẢN CẤP GEMINI PRO + GG ONE 2TB CHỦ FAM (GIA ĐÌNH) CÓ THỂ THÊM 5 THÀNH VIÊN 1 NĂM BHF VER 27", price: "201.600đ" },
-      { bullet: "💠", name: "TÀI KHOẢN CẤP GEMINI PRO + GG ONE 2TB CHỦ FAM (GIA ĐÌNH) CÓ THỂ THÊM 5 THÀNH VIÊN 1 NĂM KBH VER 27", price: "201.600đ" },
-      { bullet: "💠", name: "VEO 3 ULTRA 25.000 CREDIT + GEMINI ULTRA - NGON - BẢO HÀNH 7 NGÀY - VER 1 - VIP", price: "201.600đ" },
-      { bullet: "💠", name: "ADMIN FAMILY GEMINI PRO, GG 2TB, NOTEBOOK LM, VEO3 1K HẠN 1 NĂM (ACC CẤP, KHÔNG ADD FAMILY, ADD ĐƯỢC 5 NGƯỜI) - VER 38", price: "267.500đ" },
-      { bullet: "💠", name: "VEO 3 ULTRA 25.000 CREDIT + GEMINI ULTRA - NGON - BẢO HÀNH 31/03/2026 - VER 1 - VIP", price: "268.800đ" },
-      { bullet: "💠", name: "GEMINI PRO VÀ VEO 3 1 NĂM (KÈM GOOGLE DRIVE 2TB) CẤP MAIL - BH 12TH - VER 1 - VIP", price: "470.400đ" },
-      { bullet: "💠", name: "VEO 3 VÀ GEMINI PRO 1 NĂM (KÈM GOOGLE DRIVE 2TB) CẤP MAIL - BH 12TH - VER 1 - VIP", price: "470.400đ" },
-      { bullet: "💠", name: "VEO 3 ULTRA 5K CREDIT + GEMINI ULTRA + 30TB DRIVER + ANTIGRAVITY ULTRA - 1 THÁNG - ADD TEAM - BẢO HÀNH FULL - VER 1 - VIP", price: "537.600đ" },
-      { bullet: "💠", name: "GEMINI ULTRA + VEO 3 ULTRA 5K CREDIT + 30TB DRIVER + ANTIGRAVITY ULTRA - 1 THÁNG - ADD TEAM - BẢO HÀNH FULL - VER 1 - VIP", price: "537.600đ" },
-      { bullet: "💠", name: "GEMINI ULTRA – ADD MAIL CHÍNH CHỦ 1 THÁNG VER 27", price: "537.600đ" },
-      { bullet: "💠", name: "VEO 3 ULTRA 12K CREDIT + GEMINI ULTRA + 30TB DRIVER + ANTIGRAVITY ULTRA - 1 THÁNG - ADD TEAM - BẢO HÀNH FULL - VER 1 - VIP", price: "698.900đ" },
-      { bullet: "💠", name: "VEO 3 ULTRA 25K CREDIT + GEMINI ULTRA + 30TB DRIVER + ANTIGRAVITY ULTRA - 1 THÁNG - ADD TEAM - BẢO HÀNH FULL - VER 1 - VIP", price: "1.075.200đ" }
-    ],
-
-    canva: [
-      { bullet: "🎨", name: "CANVA EDU 1 THÁNG NÂNG CHÍNH CHỦ - VER 20", price: "6.700đ" },
-      { bullet: "🎨", name: "CANVA PRO NÂNG CHÍNH CHỦ 1 THÁNG FULL TÍNH NĂNG AI - VER 1 - VIP", price: "6.700đ" },
-      { bullet: "🎨", name: "CANVA EDU - 1 THÁNG - NÂNG MAIL CHÍNH CHỦ - VER 30", price: "9.700đ" },
-      { bullet: "🎨", name: "CANVA PRO NÂNG CHÍNH CHỦ 3 THÁNG FULL TÍNH NĂNG AI - VER 1", price: "13.400đ" },
-      { bullet: "🎨", name: "CANVA PRO NON-PROFITS GÓI CAO CẤP NHẤT CỦA CANVA 1 THÁNG FULL TÍNH NĂNG AI - VER 1", price: "16.100đ" },
-      { bullet: "🎨", name: "CANVA EDU 3 THÁNG NÂNG CHÍNH CHỦ - VER 20", price: "20.200đ" },
-      { bullet: "🎨", name: "CANVA EDU 3 THÁNG - NÂNG MAIL CHÍNH CHỦ - VER 30", price: "24.200đ" },
-      { bullet: "🎨", name: "CANVA PRO NÂNG CHÍNH CHỦ 6 THÁNG FULL TÍNH NĂNG AI - VER 1", price: "26.900đ" },
-      { bullet: "🎨", name: "CANVA PRO NON-PROFITS GÓI CAO CẤP NHẤT CỦA CANVA 3 THÁNG FULL TÍNH NĂNG AI - VER 1", price: "33.600đ" },
-      { bullet: "🎨", name: "CANVA EDU 6 THÁNG NÂNG CHÍNH CHỦ - VER 20", price: "33.600đ" },
-      { bullet: "🎨", name: "CANVA PRO NÂNG CHÍNH CHỦ 2 THÁNG FULL TÍNH NĂNG AI - VER 1", price: "40.300đ" },
-      { bullet: "🎨", name: "CANVA PRO NON-PROFITS GÓI CAO CẤP NHẤT CỦA CANVA 6 THÁNG FULL TÍNH NĂNG AI - VER 1", price: "47.000đ" },
-      { bullet: "🎨", name: "CANVA EDU - 6 THÁNG - FULL TÍNH NĂNG - NÂNG MAIL CHÍNH CHỦ - VER 30", price: "48.400đ" },
-      { bullet: "🎨", name: "CANVA EDU 12 THÁNG NÂNG CHÍNH CHỦ - VER 20", price: "53.800đ" },
-      { bullet: "🎨", name: "CANVA EDU - 12 THÁNG - NÂNG MAIL CHÍNH CHỦ - FULL TÍNH NĂNG - VER 30", price: "64.500đ" },
-      { bullet: "🎨", name: "CANVA PRO NON-PROFITS GÓI CAO CẤP NHẤT CỦA CANVA 12 THÁNG FULL TÍNH NĂNG AI - VER 1", price: "67.200đ" },
-      { bullet: "🎨", name: "CANVA EDUCATION - GÓI ALL PRO TRỌN ĐỜI - 3 NĂM BẢO HÀNH NÂNG VER 27", price: "106.200đ" },
-      { bullet: "🎨", name: "ADMIN CANVA PRO 500 SLOT USER FULL TÍNH NĂNG AI 3 NĂM - DÙNG KINH DOANH - VER 1", price: "161.300đ" },
-      { bullet: "🎨", name: "ADMIN ĐỘI CANVA EDU 500 SLOT - ACC CẤP - VER 38", price: "200.300đ" },
-      { bullet: "🎨", name: "ADMIN ĐỘI CANVA EDU 500 SLOT - CHÍNH CHỦ - VER 38", price: "200.300đ" },
-      { bullet: "🎨", name: "CANVA PRO NÂNG CHÍNH CHỦ VĨNH VIỄN FULL TÍNH NĂNG AI - VER 1", price: "200.300đ" }
-    ],
-
-    capcut: [
-      { bullet: "🎬", name: "Capcut Pro 35 ngày", price: "80.000đ", desc: "Gói ổn định, bảo hành full. Hỗ trợ PC, iOS, Android." },
-      { bullet: "🎬", name: "Capcut Pro 6 tháng cá nhân", price: "220.000đ", desc: "Hàng cá nhân, ổn định, riêng tư, bảo hành full." },
-      { bullet: "🎬", name: "Capcut Pro Hơn 12 Tháng", price: "449.000đ", desc: "Acc cấp, bảo hành full, hàng hot, ít hàng." },
-      { bullet: "🎬", name: "Capcut Pro Cá Nhân tạo sẵn 4 Tháng", price: "150.000đ", desc: "Acc cấp, bảo hành full, hàng hot, ít hàng." }
-    ],
-
-    expressvpn: [
-      { bullet: "🛡️", name: "EXPRESS VPN - KEY LÀ MẬT KHẨU - DÙNG ANDROID/ IOS/ PC - HẠN 27-32 NGÀY - DÙNG 8 THIẾT BỊ - GIAO SẴN TÀI KHOẢN - VER 29", price: "8.700đ" },
-      { bullet: "🛡️", name: "EXPRESS VPN FULL 8 THIẾT BỊ PC - ANDROID - IOSS 27 - 32 NGÀY - NGON - DATE MỚI - ƯU TIÊN MUA - VER 93", price: "10.800đ" },
-      { bullet: "🛡️", name: "EXPRESS VPN - KEY LÀ MẬT KHẨU - HẠN 27-32 NGÀY - DÙNG 8 THIẾT BỊ - ANDROID/ IOS/ PC - GIAO SẴN TÀI KHOẢN - VER 29", price: "17.500đ" },
-      { bullet: "🛡️", name: "EXPRESS VPN FULL 8 THIẾT BỊ PC - ANDOID - IOSS 27 - 32 NGÀY - ĐĂNG NHẬP WEB CHÍNH ĐƯỢC MODEM WIFI - ƯU TIÊN MUA - VER 93", price: "26.900đ" },
-      { bullet: "🛡️", name: "EXPRESS VPN 3 THÁNG - VER 93", price: "60.500đ" },
-      { bullet: "🛡️", name: "EXPRESS VPN 6 THÁNG - VER 93", price: "107.500đ" }
-    ],
-
-    hma: [
-      { bullet: "🔐", name: "KEY HMA - RANDOM 15-27 NGÀY - DÙNG 5 THIẾT BỊ - GIAO SẴN KEY", price: "6.100đ" },
-      { bullet: "🔐", name: "HMA 5 THIẾT BỊ MÁY TÍNH - ĐIỆN THOẠI ADROID 28-30 NGÀY - NGON - ƯU TIÊN MUA - VER 93", price: "9.400đ" },
-      { bullet: "🔐", name: "KEY HMAVPN 28-32 NGÀY VER 27", price: "13.400đ" },
-      { bullet: "🔐", name: "KEY HMA - DÙNG ANDROID/PC - HẠN 27-32 NGÀY - GIAO SẴN KEY", price: "17.500đ" },
-      { bullet: "🔐", name: "HMA 5 THIẾT BỊ MÁY TÍNH - ĐIỆN THOẠI ADROID - ĐIỆN THOẠI IPHONE IOS 28-30 NGÀY - NGON - ƯU TIÊN MUA - VER 93", price: "20.200đ" },
-      { bullet: "🔐", name: "HMA - DÙNG CHO IOS/ANDROID/PC - HẠN 27-32 NGÀY", price: "34.900đ" },
-      { bullet: "🔐", name: "HMA 5 THIẾT BỊ MÁY TÍNH - ĐIỆN THOẠI ADROID - ĐIỆN THOẠI IPHONE IOS 12 THÁNG - VER 93", price: "504.000đ" },
-      { bullet: "🔐", name: "HMA 20 THIẾT BỊ MÁY TÍNH - ĐIỆN THOẠI ADROID - ĐIỆN THOẠI IPHONE IOS 12 THÁNG - VER 93", price: "806.400đ" }
-    ],
-
-    grok: [
-      { bullet: "🚀", name: "SUPER GROK 1 THÁNG (BẢO HÀNH FULL) - VER 27", price: "250.500đ" }
-    ],
-
-    tool: [
-      { bullet: "🧰", name: "MaxCare - Nuôi Acc FB Chorme", price: "349.000đ", desc: "Bản vĩnh viễn, chuyên nuôi acc FB SLL." },
-      { bullet: "🧰", name: "MaxTikTok Chorme", price: "349.000đ", desc: "Nuôi Tiktok SLL, vĩnh viễn, bao setup." },
-      { bullet: "🧰", name: "MaxZalo - Nuôi, Quản Lí Zalo", price: "349.000đ", desc: "Nuôi Zalo SLL, vĩnh viễn, bao setup." },
-      { bullet: "🧰", name: "MaxHotmail - Nuôi, Quản Lí Hotmail", price: "349.000đ", desc: "Nuôi, quản lí Hotmail SLL, vĩnh viễn." },
-      { bullet: "🧰", name: "HMC v3.0 - Hỗ Trợ Scan [Tặng kèo cày xu setup và Config check linked tiktok hotmail]", price: "449.000đ", desc: "Lọc Mail, lọc Keyword, hỗ trợ scan, tặng config linked, tặng kèo cày xu, tặng vài nguồn data free bên tây." },
-      { bullet: "🧰", name: "Tool Cài Win Dạo Hải Dớ", price: "99.000đ", desc: "Hỗ trợ cài win dạo, cài phần mềm nhanh, chuyên setup win." }
-    ],
-
-    kling: [
-      { bullet: "🎞️", name: "KLING STANDARD 1k CREDIT - VER 1", price: "147.800đ" },
-      { bullet: "🎞️", name: "KLING STANDARD 3000 CREDIT - VER 1", price: "295.700đ" },
-      { bullet: "🎞️", name: "KLING STANDARD 4500 CREDIT - VER 1", price: "430.100đ" }
-    ],
-
-    netflix: [
-      { bullet: "📺", name: "NETFLIX DÙNG CHUNG CAO CẤP ACC 1 THÁNG VER 27", price: "39.000đ" },
-      { bullet: "📺", name: "TÀI KHOẢN NETFLIX PREMIUM/CAO CẤP – CHẤT LƯỢNG 4K SẮC NÉT – DÙNG CHUNG 2NG/1 USER - 1 THÁNG - VER 94", price: "53.800đ" },
-      { bullet: "📺", name: "NETFLIX SLOT RIÊNG CẤP ACC 1 THÁNG - VER 27", price: "67.200đ" },
-      { bullet: "📺", name: "TÀI KHOẢN NETFLIX PREMIUM/CAO CẤP – CHẤT LƯỢNG 4K SẮC NÉT - SLOT RIÊNG CÓ THỂ ĐỔI TÊN VÀ PIN - 1 THÁNG - VER 94", price: "100.800đ" },
-      { bullet: "📺", name: "TÀI KHOẢN NETFLIX EXTRA - 1 THÁNG TK RIÊNG TỪ 1 NGƯỜI DÙNG - NGON - VER 94", price: "114.200đ" },
-      { bullet: "📺", name: "TÀI KHOẢN NETFLIX PREMIUM/CAO CẤP – CHẤT LƯỢNG 4K SẮC NÉT - DÙNG CHUNG 2NG/1 USER - 3 THÁNG - VER 94", price: "161.300đ" },
-      { bullet: "📺", name: "TÀI KHOẢN NETFLIX PREMIUM/CAO CẤP – CHẤT LƯỢNG 4K SẮC NÉT - SLOT RIÊNG CÓ THỂ ĐỔI TÊN VÀ PIN - 3 THÁNG - VER 94", price: "295.700đ" },
-      { bullet: "📺", name: "NETFLIX PREMIUM/CAO CẤP – CHẤT LƯỢNG 4K SẮC NÉT - DÙNG CHUNG 2NG/1 USER - 6 THÁNG - VER 94", price: "322.600đ" },
-      { bullet: "📺", name: "TÀI KHOẢN NETFLIX PREMIUM/CAO CẤP – CHẤT LƯỢNG 4K SẮC NÉT - SLOT RIÊNG CÓ THỂ ĐỔI TÊN VÀ PIN - 6 THÁNG - VER 94", price: "584.600đ" },
-      { bullet: "📺", name: "NETFLIX PREMIUM/CAO CẤP – CHẤT LƯỢNG 4K SẮC NÉT - DÙNG CHUNG 2NG/1 USER - 12 THÁNG - VER 94", price: "645.100đ" },
-      { bullet: "📺", name: "TÀI KHOẢN NETFLIX PREMIUM/CAO CẤP – CHẤT LƯỢNG 4K SẮC NÉT - SLOT RIÊNG CÓ THỂ ĐỔI TÊN VÀ PIN - 12 THÁNG - VER 94", price: "1.155.800đ" }
-    ],
-
-    antigravity: [
-      { bullet: "🪐", name: "TÀI KHOẢN ANTIGRAVITY ULTRA - VEO3 ULTRA TẶNG 25K CREDIT HẠN 1 THÁNG (ACC CẤP, BẢO HÀNH 24H) - VER 1 - VIP", price: "60.500đ" },
-      { bullet: "🪐", name: "TÀI KHOẢN ANTIGRAVITY PRO + GG ONE 2TB HẠN 1 NĂM (ACC CẤP, BẢO HÀNH 3 THÁNG) - VER 1 - VIP", price: "107.500đ" },
-      { bullet: "🪐", name: "TÀI KHOẢN ANTIGRAVITY PRO HẠN 1 NĂM (ACC CẤP, BẢO HÀNH 3 THÁNG) - VER 38", price: "134.400đ" }
-    ],
-
-    youtube: [
-      { bullet: "▶️", name: "YOUTUBE PREMIUM 1 THÁNG - ƯU TIÊN MUA - VER 1 - VIP", price: "16.100đ" },
-      { bullet: "▶️", name: "YOUTUBE PREMIUM 1 THÁNG - ƯU TIÊN MUA - ĐÃ FIX SẴN ỔN ĐỊNH - CẦN SLL - VER 18 - VIP", price: "16.100đ" },
-      { bullet: "▶️", name: "YOUTUBE PREMIUM + GOOGLE ONE GEMINI 2TB - 1 THÁNG - GỬI MAIL ADD FAM - VER 18", price: "39.000đ" },
-      { bullet: "▶️", name: "YOUTUBE PREMIUM 3 THÁNG - NGON - ỔN ĐỊNH - ƯU TIÊN MUA - VER 1 - VIP", price: "51.100đ" },
-      { bullet: "▶️", name: "YOUTUBE PREMIUM 3 THÁNG (TẶNG GGONE 2TB - KBH) - ĐÃ FIX SẴN ỔN ĐỊNH - ƯU TIÊN MUA - CẦN SLL - VER 18 - VIP", price: "51.100đ" },
-      { bullet: "▶️", name: "YOUTUBE PREMIUM + 2TB GG DRIVER 1 THÁNG ADD ĐƯỢC 5 THÀNH VIÊN - VER 18 - EMAIL LÂU NĂM", price: "87.400đ" },
-      { bullet: "▶️", name: "YOUTUBE PREMIUM + 2TB GG DRIVER 1 THÁNG ADD ĐƯỢC 5 THÀNH VIÊN - MAIL CỔ - VER 1", price: "94.100đ" },
-      { bullet: "▶️", name: "YOUTUBE PREMIUM 6 THÁNG - NGON - ỔN ĐỊNH - ƯU TIÊN MUA - VER 1 - VIP", price: "94.100đ" },
-      { bullet: "▶️", name: "YOUTUBE PREMIUM 6 THÁNG (TẶNG GGONE 2TB - KBH) - ĐÃ FIX SẴN ỔN ĐỊNH - ƯU TIÊN MUA - CẦN SLL - VER 18 - VIP", price: "94.100đ" },
-      { bullet: "▶️", name: "YOUTUBE PREMIUM 12 THÁNG - NGON - ỔN ĐỊNH - ƯU TIÊN MUA - VER 1 - VIP", price: "168.000đ" },
-      { bullet: "▶️", name: "YOUTUBE PREMIUM 12 THÁNG (TẶNG GGONE 2TB - KBH) - ĐÃ FIX SẴN ỔN ĐỊNH - ƯU TIÊN MUA - CẦN SLL - VER 18 - VIP", price: "168.000đ" },
-      { bullet: "▶️", name: "YOUTUBE PREMIUM 3 THÁNG THÔNG - NGON - KHÔNG ĐỔI NHÓM - ƯU TIÊN MUA - VER 1 - VIP", price: "174.700đ" },
-      { bullet: "▶️", name: "YOUTUBE PREMIUM 3 THÁNG - ƯU TIÊN MUA - VER 18 - SIÊU ỔN ĐỊNH - KHÔ ĐỔI", price: "201.600đ" },
-      { bullet: "▶️", name: "YOUTUBE PREMIUM 6 THÁNG + GGONE 2TB - ƯU TIÊN MUA - VER 18 - SIÊU ỔN ĐỊNH - KHÔ ĐỔI", price: "336.000đ" },
-      { bullet: "▶️", name: "YOUTUBE PREMIUM 12 THÁNG + GGONE 2TB - ƯU TIÊN MUA - VER 18 - SIÊU ỔN ĐỊNH - KHÔ ĐỔI", price: "672.000đ" }
-    ],
-
-    gdrive: [
-      { bullet: "☁️", name: "GOOGLE DRIVER 2TB 1 NĂM - VER 1", price: "161.300đ" },
-      { bullet: "☁️", name: "GOOGLE DRIVER 5TB 1 NĂM - VER 1", price: "1.008.000đ" },
-      { bullet: "☁️", name: "GOOGLE DRIVER 30TB 1 NĂM - VER 1", price: "2.016.000đ" }
-    ],
-
-    purchase: [
-      {
-        bullet: "🛍️",
-        name: "Chọn sản phẩm cần mua",
-        price: "",
-        desc: "Liên hệ admin để mua sản phẩm trong bảng giá. Sau khi chọn sản phẩm hãy chuyển sang mục nạp tiền bên dưới."
-      }
-    ],
-
-    topup: [
-      { customBank: true }
-    ],
-
-    confirm: [
-      {
-        bullet: "📨",
-        name: "Gửi xác nhận thanh toán",
-        price: "",
-        desc: "Sau khi chuyển khoản hãy gửi ảnh bill + nội dung chuyển khoản cho admin để được kích hoạt dịch vụ nhanh nhất."
-      }
-    ]
-  };
-
-  const sectionOrder = [
-    "claude", "chatgpt", "gemini", "canva", "capcut", "expressvpn", "hma",
-    "grok", "tool", "kling", "netflix", "antigravity", "youtube",
-    "gdrive", "purchase", "topup", "confirm"
-  ];
-
-  const toolbarOrder = [
-    "all", "claude", "chatgpt", "gemini", "canva", "capcut", "expressvpn", "hma",
-    "grok", "tool", "kling", "netflix", "antigravity", "youtube",
-    "gdrive", "purchase", "topup", "confirm"
-  ];
-
-  const toolbar = document.getElementById("toolbar");
-  const sectionsEl = document.getElementById("sections");
-
-  function renderToolbar() {
-    toolbarOrder.forEach((key, index) => {
-      const meta = sectionMeta[key];
-      const button = document.createElement("button");
-      button.className = `chip ${meta.chipClass}${index === 0 ? " active" : ""}`;
-      button.dataset.filter = key;
-      button.textContent = meta.label || meta.chipLabel;
-      toolbar.appendChild(button);
-    });
+  
+  const order = ["claude","chatgpt","gemini","canva","capcut","expressvpn","hma","grok","tool","kling","netflix","antigravity","youtube","gdrive","purchase","topup","confirm"];
+  
+  function loadData() {
+    const saved = localStorage.getItem("tainguyenmmo_data");
+    if(saved) return JSON.parse(saved);
+    return JSON.parse(JSON.stringify(rawSections));
   }
-
-  function createItem(item) {
-    const article = document.createElement("div");
-    article.className = `item${item.customBank ? " bank-box" : ""}`;
-
-    if (item.customBank) {
-      article.innerHTML = `
-        <div class="bank-inner">
-          <div style="font-size:14px;font-weight:700;color:#b42828;letter-spacing:.4px;">MB BANK</div>
-          <div style="font-size:18px;font-weight:700;margin-top:6px;color:#5b6282;">CHỦ TÀI KHOẢN</div>
-          <div style="font-size:34px;font-weight:800;line-height:1.2;margin-top:4px;">NGUYEN VAN HOA</div>
-          <div style="font-size:18px;font-weight:700;margin-top:14px;color:#5b6282;">SỐ TÀI KHOẢN</div>
-          <div style="font-size:40px;font-weight:800;line-height:1.15;margin-top:4px;word-break:break-word;">9125112008</div>
-          <div style="margin-top:16px;padding:14px 16px;border-radius:18px;background:#fff4f4;border:1px dashed #efb2b2;color:#7b2d2d;font-weight:700;">
-            Nội dung chuyển khoản: <b>Tên + SĐT</b>
+  function saveData(data) { localStorage.setItem("tainguyenmmo_data", JSON.stringify(data)); }
+  
+  let appData = loadData();
+  let currentCategory = order[0];
+  let editContext = { categoryKey: null, itemIndex: null };
+  
+  // render toàn bộ app
+  function renderApp() {
+    const root = document.getElementById("appRoot");
+    if(!isAdmin) {
+      // hiển thị giao diện khách hàng thuần túy (không có nút quản trị)
+      root.innerHTML = `
+        <div class="container">
+          <div class="hero">
+            <h1>BẢNG GIÁ <span style="color:#FFC107">tainguyenmmo</span></h1>
+            <div class="brand"><i class="fas fa-crown"></i> PREMIUM SERVICE <i class="fas fa-bolt"></i></div>
           </div>
-          <p class="desc" style="padding-left:0;margin-top:16px;color:#5d6282;">
-            Khách chỉ cần chuyển khoản đúng số tài khoản phía trên, sau đó gửi ảnh bill để admin xác nhận nhanh.
-          </p>
+          <div class="dashboard">
+            <div class="sidebar"><div id="categoryListCustomer"></div><div style="margin-top:32px;text-align:center;"><a href="https://zalo.me/g/sbdbhc672" target="_blank" class="zalo-group"><i class="fab fa-zalo"></i> Nhóm Zalo</a></div></div>
+            <div class="main" id="mainContentCustomer"></div>
+          </div>
+          <div style="text-align:center; margin-top:32px; color:#aaa;"><i class="fas fa-shield-alt"></i> Bảo hành tận tâm · Hỗ trợ 24/7</div>
         </div>
       `;
-      return article;
-    }
-
-    article.innerHTML = `
-      <div class="topline">
-        <div class="name">
-          <span class="bullet">${item.bullet || "•"}</span>
-          <span>${item.name}${item.note ? ` <small>${item.note}</small>` : ""}</span>
+      renderCustomerView();
+    } else {
+      // hiển thị full admin controls
+      root.innerHTML = `
+        <div class="container">
+          <div class="hero">
+            <h1>BẢNG GIÁ <span style="color:#FFC107">tainguyenmmo</span><span class="admin-badge">👑 ADMIN MODE</span></h1>
+            <div class="brand"><i class="fas fa-crown"></i> PREMIUM SERVICE <i class="fas fa-bolt"></i></div>
+          </div>
+          <div class="dashboard">
+            <div class="sidebar"><div id="categoryListAdmin"></div><div style="margin-top:32px;text-align:center;"><a href="https://zalo.me/g/sbdbhc672" target="_blank" class="zalo-group"><i class="fab fa-zalo"></i> Nhóm Zalo</a></div></div>
+            <div class="main" id="mainContentAdmin"></div>
+          </div>
         </div>
-        <div class="price">${item.price || ""}</div>
+      `;
+      renderAdminView();
+    }
+  }
+  
+  // =============== GIAO DIỆN KHÁCH HÀNG (CHỈ XEM) ===============
+  function renderCustomerView() {
+    const sidebarDiv = document.getElementById("categoryListCustomer");
+    const mainDiv = document.getElementById("mainContentCustomer");
+    sidebarDiv.innerHTML = "";
+    order.forEach(key => {
+      const btn = document.createElement("button");
+      btn.className = "cat-btn";
+      btn.innerHTML = `<i class="fas ${appData[key].icon}"></i> <span>${appData[key].title}</span>`;
+      btn.onclick = () => {
+        document.querySelectorAll("#categoryListCustomer .cat-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        renderCustomerMain(key, mainDiv);
+      };
+      sidebarDiv.appendChild(btn);
+    });
+    if(sidebarDiv.firstChild) sidebarDiv.firstChild.classList.add("active");
+    renderCustomerMain(order[0], mainDiv);
+  }
+  
+  function renderCustomerMain(catKey, mainDiv) {
+    const section = appData[catKey];
+    let itemsHtml = '';
+    section.items.forEach(it => {
+      if(it.isBank) {
+        itemsHtml += `<div class="price-item bank-card"><div class="bank-inner"><div style="font-weight:800;">🏦 MB BANK</div><div>CHỦ TK: NGUYEN VAN HOA</div><div class="account-number">9125112008</div><div>Nội dung: <strong>Tên + SĐT</strong></div></div></div>`;
+      } else {
+        const stockClass = (it.inStock === false) ? "out-of-stock" : "";
+        itemsHtml += `
+          <div class="price-item ${stockClass}">
+            <div class="item-row">
+              <div class="item-name"><span class="bullet">${it.bullet || "•"}</span><span>${it.name}</span>${it.note ? `<span style="font-size:0.75rem;opacity:0.7;">${it.note}</span>` : ''}</div>
+              <div class="item-price">${it.price || ""}</div>
+            </div>
+            ${it.desc ? `<div class="desc-text">${it.desc}</div>` : ''}
+            ${it.inStock === false ? `<div style="margin-top:8px;color:#ff8888; font-size:0.8rem;"><i class="fas fa-ban"></i> Tạm thời hết hàng</div>` : ''}
+          </div>
+        `;
+      }
+    });
+    mainDiv.innerHTML = `<div class="section-card"><div class="section-header"><div class="header-left"><div class="icon"><i class="fas ${section.icon}"></i></div><h2>${section.title}</h2></div></div><div class="items-grid">${itemsHtml}</div></div>`;
+  }
+  
+  // =============== GIAO DIỆN ADMIN (CÓ QUẢN TRỊ) ===============
+  function renderAdminView() {
+    const sidebarDiv = document.getElementById("categoryListAdmin");
+    const mainDiv = document.getElementById("mainContentAdmin");
+    sidebarDiv.innerHTML = "";
+    order.forEach(key => {
+      const btn = document.createElement("button");
+      btn.className = "cat-btn";
+      btn.innerHTML = `<i class="fas ${appData[key].icon}"></i> <span>${appData[key].title}</span>`;
+      btn.onclick = () => {
+        document.querySelectorAll("#categoryListAdmin .cat-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        currentCategory = key;
+        renderAdminMain(currentCategory, mainDiv);
+      };
+      sidebarDiv.appendChild(btn);
+    });
+    if(sidebarDiv.firstChild) sidebarDiv.firstChild.classList.add("active");
+    renderAdminMain(order[0], mainDiv);
+  }
+  
+  function renderAdminMain(catKey, mainDiv) {
+    const section = appData[catKey];
+    let itemsHtml = '';
+    section.items.forEach((it, idx) => {
+      if(it.isBank) {
+        itemsHtml += `<div class="price-item bank-card"><div class="bank-inner"><div style="font-weight:800;">🏦 MB BANK</div><div>CHỦ TK: NGUYEN VAN HOA</div><div class="account-number">9125112008</div><div>Nội dung: <strong>Tên + SĐT</strong></div></div></div>`;
+      } else {
+        const stockClass = (it.inStock === false) ? "out-of-stock" : "";
+        itemsHtml += `
+          <div class="price-item ${stockClass}" data-idx="${idx}">
+            <div class="item-row">
+              <div class="item-name"><span class="bullet">${it.bullet || "•"}</span><span>${it.name}</span>${it.note ? `<span style="font-size:0.75rem;opacity:0.7;">${it.note}</span>` : ''}</div>
+              <div class="item-price">${it.price || ""}</div>
+            </div>
+            ${it.desc ? `<div class="desc-text">${it.desc}</div>` : ''}
+            <div class="admin-controls">
+              <div class="stock-toggle" data-action="toggle" data-idx="${idx}"><i class="fas ${it.inStock !== false ? 'fa-toggle-on' : 'fa-toggle-off'}" style="color:${it.inStock !== false ? '#2ecc71' : '#e67e22'}"></i> ${it.inStock !== false ? 'Còn hàng' : 'Tạm hết'}</div>
+              <button class="edit-btn" data-action="edit" data-idx="${idx}"><i class="fas fa-edit"></i> Sửa</button>
+              <button class="delete-btn" data-action="delete" data-idx="${idx}"><i class="fas fa-trash-alt"></i> Xóa</button>
+            </div>
+          </div>
+        `;
+      }
+    });
+    itemsHtml += `<div class="add-product-btn" id="adminAddProductBtn"><i class="fas fa-plus-circle"></i> + Thêm sản phẩm mới</div>`;
+    mainDiv.innerHTML = `<div class="section-card"><div class="section-header"><div class="header-left"><div class="icon"><i class="fas ${section.icon}"></i></div><h2>${section.title}</h2></div></div><div class="items-grid">${itemsHtml}</div></div>`;
+    
+    // attach admin events
+    document.querySelectorAll(".stock-toggle").forEach(el => {
+      el.addEventListener("click", (e) => { const idx = parseInt(el.dataset.idx); if(!isNaN(idx)) toggleStock(catKey, idx); });
+    });
+    document.querySelectorAll(".edit-btn").forEach(btn => {
+      btn.addEventListener("click", (e) => { const idx = parseInt(btn.dataset.idx); if(!isNaN(idx)) openEditModal(catKey, idx); });
+    });
+    document.querySelectorAll(".delete-btn").forEach(btn => {
+      btn.addEventListener("click", (e) => { if(confirm("Xóa sản phẩm?")) { const idx = parseInt(btn.dataset.idx); if(!isNaN(idx)) deleteProduct(catKey, idx); } });
+    });
+    const addBtn = document.getElementById("adminAddProductBtn");
+    if(addBtn) addBtn.onclick = () => openAddProductModal(catKey);
+  }
+  
+  function toggleStock(catKey, idx) {
+    const item = appData[catKey].items[idx];
+    if(item && !item.isBank) { item.inStock = item.inStock === false ? true : false; saveData(appData); renderApp(); }
+  }
+  function deleteProduct(catKey, idx) { appData[catKey].items.splice(idx,1); saveData(appData); renderApp(); }
+  function openEditModal(catKey, idx) {
+    editContext = { categoryKey: catKey, itemIndex: idx };
+    const item = appData[catKey].items[idx];
+    const newName = prompt("Sửa tên sản phẩm:", item.name);
+    if(newName && newName.trim()) item.name = newName.trim();
+    const newPrice = prompt("Sửa giá:", item.price);
+    if(newPrice) item.price = newPrice;
+    const newDesc = prompt("Mô tả (nếu có):", item.desc || "");
+    if(newDesc !== null) item.desc = newDesc;
+    const newNote = prompt("Ghi chú nhỏ:", item.note || "");
+    if(newNote !== null) item.note = newNote;
+    saveData(appData);
+    renderApp();
+  }
+  function openAddProductModal(catKey) {
+    const name = prompt("Tên sản phẩm mới:");
+    if(!name) return;
+    const price = prompt("Giá:");
+    const desc = prompt("Mô tả (không bắt buộc):");
+    const newItem = { bullet: "✨", name: name, price: price || "", inStock: true };
+    if(desc) newItem.desc = desc;
+    appData[catKey].items.push(newItem);
+    saveData(appData);
+    renderApp();
+  }
+  
+  // =============== LOGIN ADMIN ===============
+  function showLogin() {
+    document.getElementById("appRoot").innerHTML = `
+      <div class="login-panel">
+        <i class="fas fa-lock" style="font-size:48px; color:#FFB347"></i>
+        <h2 style="color:#FFD966">🔐 Admin Login</h2>
+        <input type="password" id="adminPass" placeholder="Nhập mật khẩu admin">
+        <button id="loginBtn">Đăng nhập</button>
       </div>
-      ${item.desc ? `<p class="desc">${item.desc}</p>` : ""}
     `;
-    return article;
+    document.getElementById("loginBtn").onclick = () => {
+      const pass = document.getElementById("adminPass").value;
+      if(pass === ADMIN_PASSWORD) {
+        isAdmin = true;
+        renderApp();
+      } else { alert("Sai mật khẩu!"); }
+    };
   }
-
-  function renderSections() {
-    sectionOrder.forEach(key => {
-      const meta = sectionMeta[key];
-      const items = data[key] || [];
-
-      const section = document.createElement("article");
-      section.className = "section";
-      section.dataset.group = key;
-
-      const header = document.createElement("div");
-      header.className = `section-header ${meta.headClass}`;
-      header.innerHTML = `<span class="icon">${meta.icon}</span>${meta.title}`;
-
-      const content = document.createElement("div");
-      content.className = "content";
-
-      items.forEach(item => content.appendChild(createItem(item)));
-
-      section.appendChild(header);
-      section.appendChild(content);
-      sectionsEl.appendChild(section);
-    });
-  }
-
-  function setupFilter() {
-    const buttons = document.querySelectorAll(".chip");
-    const sections = document.querySelectorAll(".section");
-
-    buttons.forEach(button => {
-      button.addEventListener("click", () => {
-        buttons.forEach(btn => btn.classList.remove("active"));
-        button.classList.add("active");
-        const filter = button.dataset.filter;
-
-        sections.forEach(section => {
-          section.style.display =
-            filter === "all" || section.dataset.group === filter ? "" : "none";
-        });
-      });
-    });
-  }
-
-  renderToolbar();
-  renderSections();
-  setupFilter();
-  </script>
+  
+  // Kiểm tra nếu đã từng đăng nhập (có thể lưu session trong localStorage)
+  const savedAdmin = localStorage.getItem("tainguyenmmo_admin");
+  if(savedAdmin === "true") isAdmin = true;
+  
+  if(!isAdmin) showLogin();
+  else renderApp();
+  
+  // optional: nút logout (bạn có thể thêm vào góc trên)
+  window.logoutAdmin = function() { localStorage.removeItem("tainguyenmmo_admin"); isAdmin = false; showLogin(); };
+</script>
 </body>
 </html>
