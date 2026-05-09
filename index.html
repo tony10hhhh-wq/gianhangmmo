@@ -2,20 +2,20 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
-  <title>tainguyenmmo · Bảng giá</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover" />
+  <title>tainguyenmmo · Bảng giá Premium</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
     body {
       background: radial-gradient(ellipse at 20% 30%, #0c0f1e, #03050b);
       font-family: 'Inter', sans-serif;
       color: #eceff8;
-      padding: 32px 24px;
+      padding: 20px 16px 70px 16px;
       min-height: 100vh;
     }
 
@@ -39,157 +39,134 @@
 
     .container { max-width: 1600px; margin: 0 auto; position: relative; z-index: 2; }
 
-    .hero { text-align: center; margin-bottom: 48px; }
+    .hero { text-align: center; margin-bottom: 32px; }
     .hero h1 {
-      font-size: clamp(44px, 8vw, 88px); font-weight: 800;
+      font-size: clamp(38px, 7vw, 78px); font-weight: 800;
       background: linear-gradient(135deg, #FFE6B0 0%, #FFB347 60%, #FF8C42 100%);
       -webkit-background-clip: text; background-clip: text; color: transparent;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
     .brand {
-      display: inline-flex; align-items: center; gap: 12px;
+      display: inline-flex; align-items: center; gap: 10px;
       background: rgba(255,255,255,0.06); backdrop-filter: blur(16px);
-      border: 1px solid rgba(255,180,70,0.4); padding: 12px 32px; border-radius: 80px;
-      font-size: 1.7rem; font-weight: 700; color: #FFD966;
+      border: 1px solid rgba(255,180,70,0.4); padding: 8px 22px; border-radius: 60px;
+      font-size: 1.2rem; font-weight: 700; color: #FFD966;
+    }
+    .admin-badge {
+      background: #FFB347; color: #0c0f1e; font-size: 0.7rem;
+      padding: 4px 12px; border-radius: 40px; margin-left: 12px; font-weight: bold;
+      vertical-align: middle;
     }
 
-    .dashboard { display: flex; gap: 28px; flex-wrap: wrap; }
+    .dashboard { display: flex; gap: 20px; flex-wrap: wrap; }
     .sidebar {
-      flex: 1.1; min-width: 270px;
-      background: rgba(12,18,32,0.55); backdrop-filter: blur(14px);
-      border-radius: 44px; border: 1px solid rgba(255,200,100,0.25);
-      padding: 24px 12px; height: fit-content; position: sticky; top: 28px;
+      flex: 1.2; min-width: 250px;
+      background: rgba(12,18,32,0.65); backdrop-filter: blur(14px);
+      border-radius: 36px; border: 1px solid rgba(255,200,100,0.25);
+      padding: 20px 12px; height: fit-content; position: sticky; top: 12px;
     }
-    .main { flex: 3.5; min-width: 280px; }
+    .main { flex: 3.5; min-width: 260px; }
 
     .cat-btn {
       display: flex; align-items: center; gap: 14px; background: transparent;
-      border: none; font-family: 'Inter'; font-size: 1rem; font-weight: 600;
-      padding: 14px 20px; border-radius: 24px; color: #cdd9ff; cursor: pointer;
+      border: none; font-family: 'Inter'; font-size: 0.95rem; font-weight: 600;
+      padding: 12px 16px; border-radius: 28px; color: #cdd9ff; cursor: pointer;
       width: 100%; text-align: left; transition: 0.2s;
     }
-    .cat-btn i { width: 28px; font-size: 1.3rem; }
-    .cat-btn:hover { background: rgba(255,190,80,0.12); color: #FFDE9C; transform: translateX(4px); }
+    .cat-btn i { width: 28px; font-size: 1.2rem; }
+    .cat-btn:hover, .cat-btn:active { background: rgba(255,190,80,0.12); color: #FFDE9C; transform: translateX(4px); }
     .cat-btn.active { background: linear-gradient(95deg, #e09d3e20, #ffb34720); border-left: 3px solid #FFB347; color: #FFE2A4; }
 
     .section-card {
-      background: rgba(10,14,27,0.65); backdrop-filter: blur(16px);
-      border-radius: 44px; border: 1px solid rgba(255,200,130,0.25);
-      margin-bottom: 32px; overflow: hidden;
+      background: rgba(10,14,27,0.7); backdrop-filter: blur(16px);
+      border-radius: 40px; border: 1px solid rgba(255,200,130,0.25);
+      margin-bottom: 28px; overflow: hidden;
     }
     .section-header {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 22px 28px; background: linear-gradient(135deg, rgba(255,185,70,0.18), rgba(220,110,30,0.08));
+      padding: 18px 20px; background: linear-gradient(135deg, rgba(255,185,70,0.15), rgba(220,110,30,0.05));
       border-bottom: 1px solid rgba(255,180,70,0.3);
     }
-    .header-left { display: flex; align-items: center; gap: 16px; }
-    .header-left .icon { width: 52px; height: 52px; background: rgba(255,170,70,0.2); border-radius: 30px; display: flex; align-items: center; justify-content: center; font-size: 2rem; }
-    .header-left h2 { font-size: 1.9rem; font-weight: 700; background: linear-gradient(120deg, #fff3cf, #ffcd94); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .header-left { display: flex; align-items: center; gap: 14px; }
+    .header-left .icon { width: 48px; height: 48px; background: rgba(255,170,70,0.2); border-radius: 30px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; }
+    .header-left h2 { font-size: 1.5rem; font-weight: 700; background: linear-gradient(120deg, #fff3cf, #ffcd94); -webkit-background-clip: text; background-clip: text; color: transparent; }
 
-    .items-grid { padding: 20px 24px; display: flex; flex-direction: column; gap: 12px; }
+    .items-grid { padding: 16px 18px; display: flex; flex-direction: column; gap: 12px; }
     .price-item {
       background: rgba(255,255,255,0.03); border: 1px solid rgba(255,200,120,0.2);
-      border-radius: 28px; padding: 18px 22px; transition: 0.2s;
+      border-radius: 24px; padding: 14px 18px; transition: 0.2s;
     }
-    .price-item.out-of-stock { opacity: 0.65; background: rgba(80,40,40,0.2); border-color: #ff6b6b40; }
+    .price-item.out-of-stock { opacity: 0.7; background: rgba(80,40,40,0.2); border-color: #ff6b6b40; }
     .price-item.out-of-stock .item-price { text-decoration: line-through; opacity: 0.6; }
-    .item-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; }
-    .item-name { font-weight: 600; font-size: 1.05rem; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; flex: 1; }
-    .item-price { font-weight: 800; font-size: 1.6rem; background: linear-gradient(125deg, #FFD58C, #FFA041); -webkit-background-clip: text; background-clip: text; color: transparent; white-space: nowrap; }
-    .desc-text { margin-top: 12px; font-size: 0.85rem; color: #aab3e6; padding-left: 30px; }
+    .item-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; }
+    .item-name { font-weight: 600; font-size: 1rem; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; flex: 1; }
+    .item-price { font-weight: 800; font-size: 1.4rem; background: linear-gradient(125deg, #FFD58C, #FFA041); -webkit-background-clip: text; background-clip: text; color: transparent; white-space: nowrap; }
+    .desc-text { margin-top: 10px; font-size: 0.8rem; color: #aab3e6; padding-left: 28px; }
     
-    /* Admin controls */
     .admin-controls { display: flex; gap: 12px; align-items: center; margin-top: 12px; justify-content: flex-end; border-top: 1px solid rgba(255,200,100,0.2); padding-top: 12px; flex-wrap: wrap; }
-    .stock-toggle { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; background: #1e243e; padding: 5px 12px; border-radius: 40px; cursor: pointer; }
-    .edit-btn, .delete-btn { background: none; border: none; color: #ffcd94; cursor: pointer; font-size: 0.9rem; padding: 5px 10px; border-radius: 30px; transition: 0.2s; }
+    .stock-toggle { display: flex; align-items: center; gap: 6px; font-size: 0.75rem; background: #1e243e; padding: 5px 12px; border-radius: 40px; cursor: pointer; }
+    .edit-btn, .delete-btn { background: none; border: none; color: #ffcd94; cursor: pointer; font-size: 0.85rem; padding: 5px 12px; border-radius: 30px; transition: 0.2s; }
     .edit-btn:hover, .delete-btn:hover { background: #ffb34730; color: #FFB347; }
-    .add-product-btn { background: rgba(255,180,70,0.2); border: 1px dashed #FFB347; color: #FFD966; padding: 12px; border-radius: 28px; text-align: center; cursor: pointer; margin-top: 8px; font-weight: 600; }
+    .add-product-btn { background: rgba(255,180,70,0.15); border: 1px dashed #FFB347; color: #FFD966; padding: 12px; border-radius: 28px; text-align: center; cursor: pointer; margin-top: 10px; font-weight: 600; }
     
-    .bank-card { background: linear-gradient(145deg, #2b2218, #1f1910); border: 1px solid #ffbe6e; }
-    .bank-inner { background: #fef7e8; border-radius: 28px; padding: 24px; color: #2a2418; }
-    .account-number { font-size: 2rem; font-weight: 800; font-family: monospace; background: #eee4d4; display: inline-block; padding: 8px 20px; border-radius: 60px; margin: 12px 0; }
+    .bank-card { background: linear-gradient(145deg, #2b2218, #1f1910); border: 1px solid #ffbe6e; border-radius: 24px; }
+    .bank-inner { background: #fef7e8; border-radius: 24px; padding: 20px; color: #2a2418; }
+    .account-number { font-size: 1.8rem; font-weight: 800; font-family: monospace; background: #eee4d4; display: inline-block; padding: 6px 18px; border-radius: 50px; margin: 10px 0; letter-spacing: 1px; }
 
-    /* Nút admin floating */
-    .admin-float-btn {
-      position: fixed; bottom: 24px; right: 24px;
-      background: #ffb347; color: #1a1a2e; width: 56px; height: 56px;
-      border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      font-size: 1.8rem; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      z-index: 1000; transition: 0.2s; border: none;
+    .contact-section { margin-top: 24px; border-top: 1px solid rgba(255,200,100,0.3); padding-top: 18px; }
+    .contact-title { font-size: 0.85rem; letter-spacing: 2px; color: #FFB347; margin-bottom: 14px; text-align: center; }
+    .zalo-btn, .group-btn {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      border-radius: 60px; padding: 10px 12px; margin-bottom: 10px;
+      text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: 0.2s;
     }
-    .admin-float-btn:hover { transform: scale(1.05); background: #ffcc66; }
-    
-    /* Modal login & edit */
+    .zalo-btn { background: #0066ff20; border: 1px solid #0066ff; color: #ffdd99; }
+    .zalo-btn:hover { background: #0066ff40; }
+    .group-btn { background: #1f6b3e20; border: 1px solid #2d9b5e; color: #ffdd99; }
+    .group-btn:hover { background: #2a9d8f30; }
+
+    /* Floating scroll top + settings */
+    .float-tools {
+      position: fixed; bottom: 20px; right: 20px;
+      display: flex; flex-direction: column; gap: 12px; z-index: 1000;
+    }
+    .admin-float-btn, .scroll-top-btn {
+      width: 52px; height: 52px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      transition: 0.2s; border: none;
+    }
+    .admin-float-btn { background: #ffb347; color: #1a1a2e; }
+    .scroll-top-btn { background: #2a2f45; color: #FFD966; border: 1px solid #ffb34780; }
+    .admin-float-btn:hover, .scroll-top-btn:hover { transform: scale(1.05); }
+
+    /* Modals */
     .modal {
       display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.8); backdrop-filter: blur(8px); z-index: 1100;
+      background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); z-index: 1200;
       align-items: center; justify-content: center;
     }
     .modal.active { display: flex; }
     .modal-content {
-      background: #151e2c; border-radius: 40px; padding: 32px; width: 90%; max-width: 450px;
-      border: 1px solid #FFB347;
+      background: #151e2c; border-radius: 40px; padding: 28px; width: 90%; max-width: 480px;
+      border: 1px solid #FFB347; max-height: 85vh; overflow-y: auto;
     }
     .modal-content input, .modal-content select, .modal-content textarea {
-      width: 100%; padding: 12px; margin: 8px 0; border-radius: 20px; border: none;
+      width: 100%; padding: 12px; margin: 8px 0; border-radius: 24px; border: none;
       background: #0b1020; color: white; font-family: inherit;
     }
-    .modal-content button { background: #FFB347; border: none; padding: 12px 24px; border-radius: 30px; font-weight: bold; cursor: pointer; margin-right: 12px; margin-top: 12px; }
-    .suggest-icons { display: flex; gap: 12px; flex-wrap: wrap; margin: 12px 0; }
-    .suggest-icon { font-size: 1.8rem; cursor: pointer; padding: 6px 12px; border-radius: 50px; background: #2a2f45; transition: 0.1s; }
-    .suggest-icon:hover { background: #ffb347; transform: scale(1.1); }
+    .modal-content button { background: #FFB347; border: none; padding: 12px 20px; border-radius: 40px; font-weight: bold; cursor: pointer; margin-right: 12px; margin-top: 12px; }
+    .suggest-icons { display: flex; gap: 10px; flex-wrap: wrap; margin: 12px 0; }
+    .suggest-icon { font-size: 1.6rem; cursor: pointer; padding: 6px 12px; border-radius: 50px; background: #2a2f45; transition: 0.1s; }
+    .suggest-icon:active { background: #ffb347; transform: scale(1.05); }
+    .admin-settings { background: #1f253e; border-radius: 24px; padding: 16px; margin-top: 16px; }
 
-    .contact-section {
-      margin-top: 28px;
-      border-top: 1px solid rgba(255,200,100,0.3);
-      padding-top: 20px;
-    }
-    .contact-title {
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: #FFB347;
-      margin-bottom: 16px;
-      text-align: center;
-    }
-    .zalo-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      background: #0066ff20;
-      border: 1px solid #0066ff;
-      border-radius: 60px;
-      padding: 12px 16px;
-      margin-bottom: 12px;
-      text-decoration: none;
-      color: #ffdd99;
-      font-weight: 600;
-      transition: 0.2s;
-    }
-    .zalo-btn:hover { background: #0066ff40; transform: scale(1.02); }
-    .zalo-btn i { font-size: 1.5rem; color: #0066ff; }
-    .group-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      background: #1f6b3e20;
-      border: 1px solid #2d9b5e;
-      border-radius: 60px;
-      padding: 12px 16px;
-      text-decoration: none;
-      color: #ffdd99;
-      font-weight: 600;
-      transition: 0.2s;
-    }
-    .group-btn:hover { background: #2a9d8f30; transform: scale(1.02); }
-    .group-btn i { font-size: 1.5rem; color: #2d9b5e; }
-
-    @media (max-width: 900px) {
-      .sidebar { position: static; }
-      .item-price { white-space: normal; font-size: 1.3rem; }
+    @media (max-width: 760px) {
+      body { padding: 16px 12px 70px 12px; }
+      .sidebar { position: static; margin-bottom: 10px; }
+      .item-price { white-space: normal; font-size: 1.2rem; }
       .item-row { flex-direction: column; align-items: flex-start; }
+      .section-header h2 { font-size: 1.3rem; }
     }
   </style>
 </head>
@@ -197,9 +174,12 @@
 <div class="glow-bg"></div>
 <div id="appRoot"></div>
 
-<button class="admin-float-btn" id="adminFloatBtn"><i class="fas fa-user-lock"></i></button>
+<div class="float-tools">
+  <button class="scroll-top-btn" id="scrollTopBtn"><i class="fas fa-arrow-up"></i></button>
+  <button class="admin-float-btn" id="adminFloatBtn"><i class="fas fa-user-lock"></i></button>
+</div>
 
-<!-- Modal Login -->
+<!-- Login Modal -->
 <div id="loginModal" class="modal">
   <div class="modal-content">
     <i class="fas fa-crown" style="font-size: 48px; color: #FFB347;"></i>
@@ -209,28 +189,41 @@
   </div>
 </div>
 
-<!-- Modal Edit Product -->
+<!-- Admin Settings Modal (Change Password + Backup) -->
+<div id="adminSettingsModal" class="modal">
+  <div class="modal-content">
+    <h3 style="color:#FFD966">⚙️ Cài đặt Admin</h3>
+    <div class="admin-settings">
+      <label>🔑 Đổi mật khẩu admin mới</label>
+      <input type="password" id="newAdminPass" placeholder="Mật khẩu mới">
+      <button id="changePassBtn">Cập nhật mật khẩu</button>
+    </div>
+    <div class="admin-settings" style="margin-top:16px;">
+      <label>💾 Sao lưu & Khôi phục</label>
+      <button id="backupDataBtn"><i class="fas fa-download"></i> Tải sao lưu JSON</button>
+      <input type="file" id="restoreFileInput" accept=".json" style="display:none;">
+      <button id="restoreDataBtn"><i class="fas fa-upload"></i> Khôi phục từ file</button>
+      <button id="resetDataBtn" style="background:#aa2e2e;"><i class="fas fa-trash-alt"></i> Reset dữ liệu gốc</button>
+    </div>
+    <button id="closeSettingsBtn" style="background:#4a5568;">Đóng</button>
+  </div>
+</div>
+
+<!-- Edit/Add Product Modal -->
 <div id="editModal" class="modal">
   <div class="modal-content">
-    <h3 style="color:#FFD966">✏️ Chỉnh sửa sản phẩm</h3>
+    <h3 style="color:#FFD966" id="editModalTitle">✏️ Chỉnh sửa sản phẩm</h3>
     <div class="suggest-icons">
-      <span class="suggest-icon" onclick="setBullet('✨')">✨</span>
-      <span class="suggest-icon" onclick="setBullet('🔥')">🔥</span>
-      <span class="suggest-icon" onclick="setBullet('💎')">💎</span>
-      <span class="suggest-icon" onclick="setBullet('🚀')">🚀</span>
-      <span class="suggest-icon" onclick="setBullet('⭐')">⭐</span>
-      <span class="suggest-icon" onclick="setBullet('💠')">💠</span>
-      <span class="suggest-icon" onclick="setBullet('🎨')">🎨</span>
-      <span class="suggest-icon" onclick="setBullet('🎬')">🎬</span>
-      <span class="suggest-icon" onclick="setBullet('🛡️')">🛡️</span>
-      <span class="suggest-icon" onclick="setBullet('🔐')">🔐</span>
-      <span class="suggest-icon" onclick="setBullet('🧰')">🧰</span>
-      <span class="suggest-icon" onclick="setBullet('📺')">📺</span>
-      <span class="suggest-icon" onclick="setBullet('▶️')">▶️</span>
-      <span class="suggest-icon" onclick="setBullet('☁️')">☁️</span>
+      <span class="suggest-icon" onclick="setBullet('✨')">✨</span><span class="suggest-icon" onclick="setBullet('🔥')">🔥</span>
+      <span class="suggest-icon" onclick="setBullet('💎')">💎</span><span class="suggest-icon" onclick="setBullet('🚀')">🚀</span>
+      <span class="suggest-icon" onclick="setBullet('⭐')">⭐</span><span class="suggest-icon" onclick="setBullet('💠')">💠</span>
+      <span class="suggest-icon" onclick="setBullet('🎨')">🎨</span><span class="suggest-icon" onclick="setBullet('🎬')">🎬</span>
+      <span class="suggest-icon" onclick="setBullet('🛡️')">🛡️</span><span class="suggest-icon" onclick="setBullet('🔐')">🔐</span>
+      <span class="suggest-icon" onclick="setBullet('🧰')">🧰</span><span class="suggest-icon" onclick="setBullet('📺')">📺</span>
+      <span class="suggest-icon" onclick="setBullet('▶️')">▶️</span><span class="suggest-icon" onclick="setBullet('☁️')">☁️</span>
     </div>
-    <input type="text" id="editBullet" placeholder="Biểu tượng (ví dụ: ✨, 🔥, 💎)">
-    <input type="text" id="editName" placeholder="Tên sản phẩm">
+    <input type="text" id="editBullet" placeholder="Biểu tượng (ví dụ: ✨)">
+    <input type="text" id="editName" placeholder="Tên sản phẩm *">
     <textarea id="editDesc" rows="2" placeholder="Mô tả (không bắt buộc)"></textarea>
     <input type="text" id="editPrice" placeholder="Giá (vd: 80.000đ)">
     <input type="text" id="editNote" placeholder="Ghi chú nhỏ (note)">
@@ -242,10 +235,10 @@
 </div>
 
 <script>
-  // ======================= CẤU HÌNH =======================
-  const ADMIN_PASSWORD = "vanhoa2008.,@hhh";
-  const ZALO_PERSONAL = "0349936321";
-  const ZALO_GROUP = "https://zalo.me/g/sbdbhc672";
+  // ========== CẤU HÌNH MẶC ĐỊNH ==========
+  let ADMIN_PASSWORD = "vanhoa2008.,@hhh";
+  let ZALO_PERSONAL = "0349936321";
+  let ZALO_GROUP = "https://zalo.me/g/sbdbhc672";
   
   let isAdmin = false;
   let currentCategory = "claude";
@@ -253,76 +246,41 @@
   
   // Dữ liệu gốc
   const rawSections = {
-    claude: { title: "🧠 CLAUDE VIP", icon: "fa-brain", items: [
-      { bullet: "🧠", name: "Claude 5x Hạn 1 Tháng", note: "[ Nâng chính chủ qua token ] - VIP", price: "2.500.000đ", inStock: true },
-      { bullet: "🧠", name: "Claude 20x Hạn 1 Tháng", note: "[ Nâng chính chủ qua token ] - VIP", price: "4.300.000đ", inStock: true }
-    ] },
-    chatgpt: { title: "🤖 CHATGPT PLUS/PRO", icon: "fa-robot", items: [
-      { bullet: "🔥", name: "Team ChatGPT Bussiness", note: "(Tut mới, Team trust)", price: "80.000đ", inStock: true },
-      { bullet: "✨", name: "ChatGPT Plus 1 Tháng", note: "(Chính chủ, NO Team)", price: "190.000đ", inStock: true },
-      { bullet: "📱", name: "ChatGPT Go 1 Năm", note: "Acc cấp, pay điện thoại", price: "190.000đ", inStock: true },
-      { bullet: "👑", name: "CHÍNH CHỦ ChatGPT Plus 12 Tháng", price: "1.200.000đ", inStock: true },
-      { bullet: "🚀", name: "CHÍNH CHỦ ChatGPT Pro 1 Tháng", price: "2.700.000đ", inStock: true }
-    ] },
-    gemini: { title: "💎 GEMINI + VEO3", icon: "fa-gem", items: [
-      { bullet: "💠", name: "GEMINI PRO + VEO3 1K CREDIT 4 THÁNG", price: "25.500đ", inStock: true },
-      { bullet: "💠", name: "VEO 3 ULTRA 25K CREDIT + GEMINI ULTRA", price: "40.300đ", inStock: true },
-      { bullet: "💠", name: "GEMINI PRO + VEO3 1K CREDIT HẠN 1 NĂM", price: "60.500đ", inStock: true },
-      { bullet: "💠", name: "GEMINI ULTRA + 30TB DRIVER", price: "537.600đ", inStock: true }
-    ] },
-    canva: { title: "🎨 CANVA PRO/EDU", icon: "fa-palette", items: [
-      { bullet: "🎨", name: "CANVA EDU 1 THÁNG", price: "6.700đ", inStock: true },
-      { bullet: "🎨", name: "CANVA PRO NÂNG CHÍNH CHỦ 1 THÁNG", price: "6.700đ", inStock: true },
-      { bullet: "🎨", name: "CANVA PRO VĨNH VIỄN", price: "200.300đ", inStock: true }
-    ] },
-    capcut: { title: "🎬 CAPCUT PRO", icon: "fa-video", items: [
-      { bullet: "🎬", name: "Capcut Pro 35 ngày", desc: "Hỗ trợ PC, iOS, Android", price: "80.000đ", inStock: true },
-      { bullet: "🎬", name: "Capcut Pro 6 tháng", price: "220.000đ", inStock: true }
-    ] },
-    expressvpn: { title: "🛡️ EXPRESSVPN", icon: "fa-shield-haltered", items: [
-      { bullet: "🛡️", name: "EXPRESS VPN 27-32 ngày", price: "8.700đ", inStock: true },
-      { bullet: "🛡️", name: "EXPRESS VPN 3 tháng", price: "60.500đ", inStock: true }
-    ] },
-    hma: { title: "🔐 HMA VPN", icon: "fa-lock", items: [
-      { bullet: "🔐", name: "KEY HMA 15-27 ngày", price: "6.100đ", inStock: true },
-      { bullet: "🔐", name: "HMA 5 thiết bị 12 tháng", price: "504.000đ", inStock: true }
-    ] },
+    claude: { title: "🧠 CLAUDE VIP", icon: "fa-brain", items: [{ bullet: "🧠", name: "Claude 5x Hạn 1 Tháng", note: "Nâng chính chủ qua token - VIP", price: "2.500.000đ", inStock: true },{ bullet: "🧠", name: "Claude 20x Hạn 1 Tháng", note: "Nâng chính chủ qua token - VIP", price: "4.300.000đ", inStock: true }] },
+    chatgpt: { title: "🤖 CHATGPT PLUS/PRO", icon: "fa-robot", items: [{ bullet: "🔥", name: "Team ChatGPT Bussiness", note: "Tut mới, Team trust", price: "80.000đ", inStock: true },{ bullet: "✨", name: "ChatGPT Plus 1 Tháng", note: "Chính chủ, NO Team", price: "190.000đ", inStock: true },{ bullet: "📱", name: "ChatGPT Go 1 Năm", note: "Acc cấp, pay điện thoại", price: "190.000đ", inStock: true },{ bullet: "👑", name: "CHÍNH CHỦ ChatGPT Plus 12 Tháng", price: "1.200.000đ", inStock: true },{ bullet: "🚀", name: "CHÍNH CHỦ ChatGPT Pro 1 Tháng", price: "2.700.000đ", inStock: true }] },
+    gemini: { title: "💎 GEMINI + VEO3", icon: "fa-gem", items: [{ bullet: "💠", name: "GEMINI PRO + VEO3 1K CREDIT 4 THÁNG", price: "25.500đ", inStock: true },{ bullet: "💠", name: "VEO 3 ULTRA 25K CREDIT + GEMINI ULTRA", price: "40.300đ", inStock: true },{ bullet: "💠", name: "GEMINI PRO + VEO3 1K CREDIT HẠN 1 NĂM", price: "60.500đ", inStock: true },{ bullet: "💠", name: "GEMINI ULTRA + 30TB DRIVER", price: "537.600đ", inStock: true }] },
+    canva: { title: "🎨 CANVA PRO/EDU", icon: "fa-palette", items: [{ bullet: "🎨", name: "CANVA EDU 1 THÁNG", price: "6.700đ", inStock: true },{ bullet: "🎨", name: "CANVA PRO NÂNG CHÍNH CHỦ 1 THÁNG", price: "6.700đ", inStock: true },{ bullet: "🎨", name: "CANVA PRO VĨNH VIỄN", price: "200.300đ", inStock: true }] },
+    capcut: { title: "🎬 CAPCUT PRO", icon: "fa-video", items: [{ bullet: "🎬", name: "Capcut Pro 35 ngày", desc: "Hỗ trợ PC, iOS, Android", price: "80.000đ", inStock: true },{ bullet: "🎬", name: "Capcut Pro 6 tháng", price: "220.000đ", inStock: true }] },
+    expressvpn: { title: "🛡️ EXPRESSVPN", icon: "fa-shield-haltered", items: [{ bullet: "🛡️", name: "EXPRESS VPN 27-32 ngày", price: "8.700đ", inStock: true },{ bullet: "🛡️", name: "EXPRESS VPN 3 tháng", price: "60.500đ", inStock: true }] },
+    hma: { title: "🔐 HMA VPN", icon: "fa-lock", items: [{ bullet: "🔐", name: "KEY HMA 15-27 ngày", price: "6.100đ", inStock: true },{ bullet: "🔐", name: "HMA 5 thiết bị 12 tháng", price: "504.000đ", inStock: true }] },
     grok: { title: "🚀 SUPER GROK", icon: "fa-rocket", items: [{ bullet: "🚀", name: "SUPER GROK 1 THÁNG", price: "250.500đ", inStock: true }] },
-    tool: { title: "🧰 TOOL", icon: "fa-microchip", items: [
-      { bullet: "🧰", name: "MaxCare - Nuôi Acc FB", price: "349.000đ", inStock: true },
-      { bullet: "🧰", name: "MaxTikTok Chrome", price: "349.000đ", inStock: true }
-    ] },
+    tool: { title: "🧰 TOOL", icon: "fa-microchip", items: [{ bullet: "🧰", name: "MaxCare - Nuôi Acc FB", price: "349.000đ", inStock: true },{ bullet: "🧰", name: "MaxTikTok Chrome", price: "349.000đ", inStock: true }] },
     kling: { title: "🎞️ KLING AI", icon: "fa-film", items: [{ bullet: "🎞️", name: "KLING STANDARD 1k CREDIT", price: "147.800đ", inStock: true }] },
-    netflix: { title: "📺 NETFLIX", icon: "fa-tv", items: [
-      { bullet: "📺", name: "NETFLIX DÙNG CHUNG 1 THÁNG", price: "39.000đ", inStock: true },
-      { bullet: "📺", name: "NETFLIX SLOT RIÊNG 12 THÁNG", price: "1.155.800đ", inStock: true }
-    ] },
+    netflix: { title: "📺 NETFLIX", icon: "fa-tv", items: [{ bullet: "📺", name: "NETFLIX DÙNG CHUNG 1 THÁNG", price: "39.000đ", inStock: true },{ bullet: "📺", name: "NETFLIX SLOT RIÊNG 12 THÁNG", price: "1.155.800đ", inStock: true }] },
     antigravity: { title: "🪐 ANTIGRAVITY", icon: "fa-meteor", items: [{ bullet: "🪐", name: "ANTIGRAVITY ULTRA", price: "60.500đ", inStock: true }] },
-    youtube: { title: "▶️ YOUTUBE", icon: "fa-youtube", items: [
-      { bullet: "▶️", name: "YOUTUBE PREMIUM 1 THÁNG", price: "16.100đ", inStock: true },
-      { bullet: "▶️", name: "YOUTUBE PREMIUM 12 THÁNG", price: "168.000đ", inStock: true }
-    ] },
+    youtube: { title: "▶️ YOUTUBE", icon: "fa-youtube", items: [{ bullet: "▶️", name: "YOUTUBE PREMIUM 1 THÁNG", price: "16.100đ", inStock: true },{ bullet: "▶️", name: "YOUTUBE PREMIUM 12 THÁNG", price: "168.000đ", inStock: true }] },
     gdrive: { title: "☁️ GOOGLE DRIVE", icon: "fa-cloud", items: [{ bullet: "☁️", name: "GOOGLE DRIVE 2TB 1 NĂM", price: "161.300đ", inStock: true }] },
     purchase: { title: "🛒 HƯỚNG DẪN MUA", icon: "fa-cart-shopping", items: [{ bullet: "🛍️", name: "Chọn sản phẩm cần mua", desc: "Liên hệ admin để mua hàng, sau đó nạp tiền bên dưới.", price: "", inStock: true }] },
     topup: { title: "💰 NẠP TIỀN", icon: "fa-money-bill-wave", items: [{ isBank: true }] },
     confirm: { title: "✅ XÁC NHẬN", icon: "fa-check-circle", items: [{ bullet: "📨", name: "Gửi xác nhận thanh toán", desc: "Gửi ảnh bill + nội dung CK cho admin", price: "", inStock: true }] }
   };
-  
   const order = ["claude","chatgpt","gemini","canva","capcut","expressvpn","hma","grok","tool","kling","netflix","antigravity","youtube","gdrive","purchase","topup","confirm"];
   
+  // Load dữ liệu từ localStorage
   function loadData() {
     const saved = localStorage.getItem("tainguyenmmo_data");
     if(saved) return JSON.parse(saved);
     return JSON.parse(JSON.stringify(rawSections));
   }
   function saveData(data) { localStorage.setItem("tainguyenmmo_data", JSON.stringify(data)); }
-  
   let appData = loadData();
   
-  // Helper set bullet
-  window.setBullet = function(bullet) {
-    document.getElementById("editBullet").value = bullet;
-  };
+  // Load admin pass & contact
+  if(localStorage.getItem("admin_pass")) ADMIN_PASSWORD = localStorage.getItem("admin_pass");
+  if(localStorage.getItem("zalo_personal")) ZALO_PERSONAL = localStorage.getItem("zalo_personal");
+  if(localStorage.getItem("zalo_group")) ZALO_GROUP = localStorage.getItem("zalo_group");
+  
+  window.setBullet = (b) => { document.getElementById("editBullet").value = b; };
   
   function renderApp() {
     const root = document.getElementById("appRoot");
@@ -339,17 +297,18 @@
               <div class="contact-title"><i class="fas fa-headset"></i> LIÊN HỆ ADMIN</div>
               <a href="https://zalo.me/${ZALO_PERSONAL}" target="_blank" class="zalo-btn"><i class="fab fa-zalo"></i> Zalo: ${ZALO_PERSONAL}</a>
               <a href="${ZALO_GROUP}" target="_blank" class="group-btn"><i class="fas fa-users"></i> Tham gia nhóm Zalo</a>
+              ${isAdmin ? `<button id="openAdminSettingsBtn" style="margin-top:12px; background:#2a2f45; border:1px solid #FFB347; padding:8px; border-radius:40px; width:100%;"><i class="fas fa-sliders-h"></i> Cài đặt Admin</button>` : ''}
             </div>
           </div>
           <div class="main" id="mainContentArea"></div>
         </div>
-        <div style="text-align:center; margin-top:32px; color:#aaa; font-size:0.8rem;"><i class="fas fa-shield-alt"></i> Bảo hành tận tâm · Hỗ trợ 24/7</div>
+        <div style="text-align:center; margin-top:32px; color:#aaa; font-size:0.7rem;"><i class="fas fa-shield-alt"></i> Bảo hành tận tâm · Hỗ trợ 24/7</div>
       </div>
     `;
-    
     const sidebarDiv = document.getElementById("categorySidebar");
     sidebarDiv.innerHTML = "";
     order.forEach(key => {
+      if(!appData[key]) return;
       const btn = document.createElement("button");
       btn.className = "cat-btn";
       btn.innerHTML = `<i class="fas ${appData[key].icon}"></i> <span>${appData[key].title}</span>`;
@@ -362,116 +321,60 @@
       sidebarDiv.appendChild(btn);
     });
     if(sidebarDiv.firstChild) sidebarDiv.firstChild.classList.add("active");
-    renderMainContent(order[0]);
+    renderMainContent(order.find(k => appData[k]) || "claude");
+    if(isAdmin) document.getElementById("openAdminSettingsBtn")?.addEventListener("click", () => document.getElementById("adminSettingsModal").classList.add("active"));
   }
   
   function renderMainContent(catKey) {
     const section = appData[catKey];
+    if(!section) return;
     const mainDiv = document.getElementById("mainContentArea");
     let itemsHtml = '';
-    
     section.items.forEach((it, idx) => {
       if(it.isBank) {
         itemsHtml += `<div class="price-item bank-card"><div class="bank-inner"><div style="font-weight:800;">🏦 MB BANK</div><div>CHỦ TK: NGUYEN VAN HOA</div><div class="account-number">9125112008</div><div>📌 Nội dung: <strong>Tên + SĐT</strong></div></div></div>`;
       } else {
         const stockClass = (it.inStock === false) ? "out-of-stock" : "";
-        itemsHtml += `
-          <div class="price-item ${stockClass}" data-idx="${idx}">
-            <div class="item-row">
-              <div class="item-name"><span class="bullet">${it.bullet || "✨"}</span><span>${it.name}</span>${it.note ? `<span style="font-size:0.75rem; opacity:0.7;">${it.note}</span>` : ''}</div>
-              <div class="item-price">${it.price || ""}</div>
-            </div>
-            ${it.desc ? `<div class="desc-text">${it.desc}</div>` : ''}
-            ${isAdmin ? `
-              <div class="admin-controls">
-                <div class="stock-toggle" data-action="toggle" data-idx="${idx}"><i class="fas ${it.inStock !== false ? 'fa-toggle-on' : 'fa-toggle-off'}"></i> ${it.inStock !== false ? 'Còn hàng' : 'Tạm hết'}</div>
-                <button class="edit-btn" data-action="edit" data-idx="${idx}"><i class="fas fa-edit"></i> Sửa</button>
-                <button class="delete-btn" data-action="delete" data-idx="${idx}"><i class="fas fa-trash-alt"></i> Xóa</button>
-              </div>
-            ` : (it.inStock === false ? `<div style="margin-top:8px; color:#ff8888;"><i class="fas fa-ban"></i> Tạm thời hết hàng</div>` : '')}
-          </div>
-        `;
+        itemsHtml += `<div class="price-item ${stockClass}" data-idx="${idx}"><div class="item-row"><div class="item-name"><span class="bullet">${it.bullet || "✨"}</span><span>${it.name}</span>${it.note ? `<span style="font-size:0.7rem; opacity:0.7;">${it.note}</span>` : ''}</div><div class="item-price">${it.price || ""}</div></div>${it.desc ? `<div class="desc-text">${it.desc}</div>` : ''}${isAdmin ? `<div class="admin-controls"><div class="stock-toggle" data-action="toggle" data-idx="${idx}"><i class="fas ${it.inStock !== false ? 'fa-toggle-on' : 'fa-toggle-off'}"></i> ${it.inStock !== false ? 'Còn hàng' : 'Tạm hết'}</div><button class="edit-btn" data-action="edit" data-idx="${idx}"><i class="fas fa-edit"></i> Sửa</button><button class="delete-btn" data-action="delete" data-idx="${idx}"><i class="fas fa-trash-alt"></i> Xóa</button></div>` : (it.inStock === false ? `<div style="margin-top:8px; color:#ff8888;"><i class="fas fa-ban"></i> Tạm thời hết hàng</div>` : '')}</div>`;
       }
     });
-    
     if(isAdmin) itemsHtml += `<div class="add-product-btn" id="adminAddBtn"><i class="fas fa-plus-circle"></i> + Thêm sản phẩm mới</div>`;
-    
     mainDiv.innerHTML = `<div class="section-card"><div class="section-header"><div class="header-left"><div class="icon"><i class="fas ${section.icon}"></i></div><h2>${section.title}</h2></div></div><div class="items-grid">${itemsHtml}</div></div>`;
-    
     if(isAdmin) {
       document.querySelectorAll(".stock-toggle").forEach(el => el.addEventListener("click", () => toggleStock(catKey, parseInt(el.dataset.idx))));
       document.querySelectorAll(".edit-btn").forEach(btn => btn.addEventListener("click", () => openEditModal(catKey, parseInt(btn.dataset.idx))));
-      document.querySelectorAll(".delete-btn").forEach(btn => btn.addEventListener("click", () => { if(confirm("Xóa?")) deleteProduct(catKey, parseInt(btn.dataset.idx)); }));
+      document.querySelectorAll(".delete-btn").forEach(btn => btn.addEventListener("click", () => { if(confirm("Xóa sản phẩm?")) deleteProduct(catKey, parseInt(btn.dataset.idx)); }));
       const addBtn = document.getElementById("adminAddBtn");
       if(addBtn) addBtn.onclick = () => openAddModal(catKey);
     }
   }
   
-  function toggleStock(catKey, idx) {
-    const item = appData[catKey].items[idx];
-    if(item && !item.isBank) { item.inStock = !item.inStock; saveData(appData); renderMainContent(currentCategory); }
-  }
+  function toggleStock(catKey, idx) { let item = appData[catKey].items[idx]; if(item && !item.isBank) { item.inStock = !item.inStock; saveData(appData); renderMainContent(currentCategory); } }
   function deleteProduct(catKey, idx) { appData[catKey].items.splice(idx,1); saveData(appData); renderMainContent(currentCategory); }
+  function openEditModal(catKey, idx) { editContext = { categoryKey: catKey, itemIndex: idx }; let item = appData[catKey].items[idx]; document.getElementById("editModalTitle").innerText = "✏️ Chỉnh sửa sản phẩm"; document.getElementById("editBullet").value = item.bullet || "✨"; document.getElementById("editName").value = item.name; document.getElementById("editDesc").value = item.desc || ""; document.getElementById("editPrice").value = item.price; document.getElementById("editNote").value = item.note || ""; document.getElementById("editModal").classList.add("active"); }
+  function openAddModal(catKey) { editContext = { categoryKey: catKey, itemIndex: null }; document.getElementById("editModalTitle").innerText = "✨ Thêm sản phẩm mới"; document.getElementById("editBullet").value = "✨"; document.getElementById("editName").value = ""; document.getElementById("editDesc").value = ""; document.getElementById("editPrice").value = ""; document.getElementById("editNote").value = ""; document.getElementById("editModal").classList.add("active"); }
   
-  function openEditModal(catKey, idx) {
-    editContext = { categoryKey: catKey, itemIndex: idx };
-    const item = appData[catKey].items[idx];
-    document.getElementById("editBullet").value = item.bullet || "✨";
-    document.getElementById("editName").value = item.name;
-    document.getElementById("editDesc").value = item.desc || "";
-    document.getElementById("editPrice").value = item.price;
-    document.getElementById("editNote").value = item.note || "";
-    document.getElementById("editModal").classList.add("active");
-  }
-  
-  function openAddModal(catKey) {
-    editContext = { categoryKey: catKey, itemIndex: null };
-    document.getElementById("editBullet").value = "✨";
-    document.getElementById("editName").value = "";
-    document.getElementById("editDesc").value = "";
-    document.getElementById("editPrice").value = "";
-    document.getElementById("editNote").value = "";
-    document.getElementById("editModal").classList.add("active");
-  }
-  
-  document.getElementById("saveEditBtn").onclick = () => {
-    const bullet = document.getElementById("editBullet").value.trim() || "✨";
-    const name = document.getElementById("editName").value.trim();
-    if(!name) { alert("Vui lòng nhập tên sản phẩm"); return; }
-    const desc = document.getElementById("editDesc").value;
-    const price = document.getElementById("editPrice").value;
-    const note = document.getElementById("editNote").value;
-    
-    if(editContext.itemIndex !== null) {
-      const item = appData[editContext.categoryKey].items[editContext.itemIndex];
-      item.bullet = bullet;
-      item.name = name;
-      if(desc) item.desc = desc; else delete item.desc;
-      item.price = price;
-      if(note) item.note = note; else delete item.note;
-    } else {
-      appData[editContext.categoryKey].items.push({ bullet, name, desc: desc || undefined, price, note: note || undefined, inStock: true });
-    }
-    saveData(appData);
-    document.getElementById("editModal").classList.remove("active");
-    renderMainContent(currentCategory);
-  };
+  document.getElementById("saveEditBtn").onclick = () => { let bullet = document.getElementById("editBullet").value.trim() || "✨"; let name = document.getElementById("editName").value.trim(); if(!name) { alert("Vui lòng nhập tên sản phẩm"); return; } let desc = document.getElementById("editDesc").value; let price = document.getElementById("editPrice").value; let note = document.getElementById("editNote").value; if(editContext.itemIndex !== null) { let item = appData[editContext.categoryKey].items[editContext.itemIndex]; item.bullet = bullet; item.name = name; if(desc) item.desc = desc; else delete item.desc; item.price = price; if(note) item.note = note; else delete item.note; } else { appData[editContext.categoryKey].items.push({ bullet, name, desc: desc || undefined, price, note: note || undefined, inStock: true }); } saveData(appData); document.getElementById("editModal").classList.remove("active"); renderMainContent(currentCategory); };
   document.getElementById("cancelEditBtn").onclick = () => document.getElementById("editModal").classList.remove("active");
+  
+  // Admin settings logic
+  document.getElementById("changePassBtn")?.addEventListener("click", () => { let newPass = document.getElementById("newAdminPass").value.trim(); if(newPass) { ADMIN_PASSWORD = newPass; localStorage.setItem("admin_pass", newPass); alert("Mật khẩu admin đã thay đổi!"); document.getElementById("adminSettingsModal").classList.remove("active"); } else alert("Nhập mật khẩu mới"); });
+  document.getElementById("backupDataBtn")?.addEventListener("click", () => { let dataStr = JSON.stringify(appData); let blob = new Blob([dataStr], {type: "application/json"}); let url = URL.createObjectURL(blob); let a = document.createElement("a"); a.href = url; a.download = "tainguyenmmo_backup.json"; a.click(); URL.revokeObjectURL(url); });
+  document.getElementById("restoreDataBtn")?.addEventListener("click", () => { document.getElementById("restoreFileInput").click(); });
+  document.getElementById("restoreFileInput")?.addEventListener("change", (e) => { let file = e.target.files[0]; if(!file) return; let reader = new FileReader(); reader.onload = function(ev) { try { let restored = JSON.parse(ev.target.result); appData = restored; saveData(appData); renderApp(); alert("Khôi phục thành công!"); document.getElementById("adminSettingsModal").classList.remove("active"); } catch(err) { alert("File lỗi!"); } }; reader.readAsText(file); });
+  document.getElementById("resetDataBtn")?.addEventListener("click", () => { if(confirm("RESET toàn bộ dữ liệu về mặc định? Mất dữ liệu hiện tại!")) { appData = JSON.parse(JSON.stringify(rawSections)); saveData(appData); renderApp(); alert("Đã reset!"); document.getElementById("adminSettingsModal").classList.remove("active"); } });
+  document.getElementById("closeSettingsBtn")?.addEventListener("click", () => document.getElementById("adminSettingsModal").classList.remove("active"));
   
   // Login logic
   const floatBtn = document.getElementById("adminFloatBtn");
   const loginModal = document.getElementById("loginModal");
-  floatBtn.onclick = () => {
-    if(isAdmin) { if(confirm("Đăng xuất?")) { isAdmin=false; localStorage.removeItem("tainguyenmmo_admin"); renderApp(); } }
-    else loginModal.classList.add("active");
-  };
-  document.getElementById("submitLoginBtn").onclick = () => {
-    const pass = document.getElementById("adminPasswordInput").value;
-    if(pass === ADMIN_PASSWORD) { isAdmin=true; localStorage.setItem("tainguyenmmo_admin","true"); loginModal.classList.remove("active"); renderApp(); }
-    else alert("Sai mật khẩu!");
-  };
+  floatBtn.onclick = () => { if(isAdmin) { if(confirm("Đăng xuất khỏi Admin?")) { isAdmin=false; localStorage.removeItem("tainguyenmmo_admin"); renderApp(); } } else loginModal.classList.add("active"); };
+  document.getElementById("submitLoginBtn").onclick = () => { let pass = document.getElementById("adminPasswordInput").value; if(pass === ADMIN_PASSWORD) { isAdmin=true; localStorage.setItem("tainguyenmmo_admin","true"); loginModal.classList.remove("active"); renderApp(); } else alert("Sai mật khẩu!"); };
   loginModal.onclick = (e) => { if(e.target === loginModal) loginModal.classList.remove("active"); };
+  document.getElementById("scrollTopBtn").onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
   
+  // Kiểm tra admin trước đó
+  if(localStorage.getItem("tainguyenmmo_admin") === "true") isAdmin = true;
   renderApp();
 </script>
 </body>
