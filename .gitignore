@@ -1,0 +1,13 @@
+node_modules/
+.output/
+.vercel/
+.grok/
+.tanstack/
+.vite/
+.env
+.env.*
+!.env.example
+*.log
+*.msi
+*.rar
+*.zip
